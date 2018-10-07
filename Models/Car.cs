@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,8 +12,8 @@ namespace RouteAPI.Models
         public string carCode { get; set; }
         [Column(TypeName = "NVARCHAR(50)")]
         public string driverName { get; set; }
-         [Column(TypeName = "NVARCHAR(50)")]
+        [Column(TypeName = "NVARCHAR(50)")]
         public string status { get; set; }
-
+        public ICollection<Delivery> deliveries { get; set; }
     }
 }

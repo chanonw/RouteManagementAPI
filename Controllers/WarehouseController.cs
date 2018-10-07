@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,20 +6,19 @@ using RouteAPI.Data;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class CarsController : Controller
+    public class WarehouseController : Controller
     {
         private readonly DataContext _context;
-        public CarsController(DataContext context)
+        public WarehouseController(DataContext context)
         {
             _context = context;
 
         }
         [HttpGet]
-        public async Task<IActionResult> GetCars()
+        public async Task<IActionResult> GetWarehouses() 
         {
-            var values = await _context.Cars.ToListAsync();
-            return Ok(values);
+            var warehouse = await _context.Warehouse.Include(z => z.zones).ToListAsync();
+            return Ok(warehouse);
         }
-        
     }
 }

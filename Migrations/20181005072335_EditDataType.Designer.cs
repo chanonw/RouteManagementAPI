@@ -11,9 +11,10 @@ using System;
 namespace RouteAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181005072335_EditDataType")]
+    partial class EditDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,9 +114,9 @@ namespace RouteAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NVARCHAR(50)");
 
-                    b.Property<string>("carCode");
+                    b.Property<string>("CustomercusCode");
 
-                    b.Property<string>("cusCode");
+                    b.Property<string>("carCode");
 
                     b.Property<int>("quantity");
 
@@ -126,9 +127,9 @@ namespace RouteAPI.Migrations
 
                     b.HasKey("deliveryId");
 
-                    b.HasIndex("carCode");
+                    b.HasIndex("CustomercusCode");
 
-                    b.HasIndex("cusCode");
+                    b.HasIndex("carCode");
 
                     b.ToTable("Delivery");
                 });
@@ -183,13 +184,13 @@ namespace RouteAPI.Migrations
 
             modelBuilder.Entity("RouteAPI.Models.Delivery", b =>
                 {
-                    b.HasOne("RouteAPI.Models.Car", "Car")
+                    b.HasOne("RouteAPI.Models.Customer")
+                        .WithMany("deliveries")
+                        .HasForeignKey("CustomercusCode");
+
+                    b.HasOne("RouteAPI.Models.Car")
                         .WithMany("deliveries")
                         .HasForeignKey("carCode");
-
-                    b.HasOne("RouteAPI.Models.Customer", "Customer")
-                        .WithMany("deliveries")
-                        .HasForeignKey("cusCode");
                 });
 
             modelBuilder.Entity("RouteAPI.Models.Zone", b =>
