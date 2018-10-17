@@ -46,8 +46,8 @@ namespace RouteAPI.Models
         public string status { get; set; }
         [ForeignKey("Zone")]
         [Column(TypeName = "NVARCHAR(50)")]
-        //public string zoneId { get; set; }
-        public virtual Zone zone { get; set; }
-        public ICollection<Delivery> deliveries { get; set; }
+        public string zoneId { get; set; }
+        //public virtual Zone zone { get; set; }
+        //public ICollection<Delivery> deliveries { get; set; }
     }
 }

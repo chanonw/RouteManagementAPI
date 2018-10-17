@@ -13,7 +13,7 @@ namespace RouteAPI.Models
         [Column(TypeName = "NVARCHAR(50)")]
         public string warehouseName { get; set; }
         [Column(TypeName = "NVARCHAR(50)")]
-        public ICollection<Zone> zones { get; set; }
+        //public ICollection<Zone> zones { get; set; }
         public string gps { get; set; }
     }
 }

@@ -17,18 +17,10 @@ namespace RouteAPI.Controllers
             _context = context;
 
         }
-        [HttpGet]
-        public async Task<IActionResult> GetCars()
-        {
-            var values = await _context.Car.ToListAsync();
-            return Ok(values);
+        [HttpPost("getcar")]
+        public async Task<IActionResult> getAveilableCar([FromBody] Dto dto) {
+            var car = await _context.Car.Where(z => z.zoneId == dto.zoneId).ToListAsync();
+            return Ok(car);
         }
-        [HttpGet("getavailablecar")]
-        public async Task<IActionResult> GetAvailableCar()
-        {
-            var availableCar = await _context.Car.Where(s => s.status == "available").ToListAsync();
-            return Ok(availableCar);
-        }
-        
     }
 }

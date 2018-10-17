@@ -14,6 +14,7 @@ namespace RouteAPI.Models
         public string driverName { get; set; }
         [Column(TypeName = "NVARCHAR(50)")]
         public string status { get; set; }
-        public ICollection<Delivery> deliveries { get; set; }
+        public string zoneId { get; set; }
+        //public ICollection<Delivery> deliveries { get; set; }
     }
 }

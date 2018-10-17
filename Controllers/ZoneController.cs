@@ -16,9 +16,9 @@ namespace RouteAPI.Controllers
 
         }
         [HttpPost("getzone")]
-        public async Task<IActionResult> getZone([FromBody]ZoneDdlDto zoneDdlDto)
+        public async Task<IActionResult> getZone([FromBody]Dto dto)
         {
-            var zone = await _context.Zone.Where(w => w.warehouseId == zoneDdlDto.warehouseID).ToListAsync();
+            var zone = await _context.Zone.Where(w => w.warehouseId == dto.warehouseId).ToListAsync();
             return Ok(zone);
         }
     }

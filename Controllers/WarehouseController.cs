@@ -17,7 +17,7 @@ namespace RouteAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetWarehouses() 
         {
-            var warehouse = await _context.Warehouse.Include(z => z.zones).ToListAsync();
+            var warehouse = await _context.Warehouse.ToListAsync();
             return Ok(warehouse);
         }
     }

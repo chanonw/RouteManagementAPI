@@ -12,8 +12,8 @@ namespace RouteAPI.Models
         public string zoneId { get; set; }
         [Column(TypeName = "NVARCHAR(50)")]
         public string zoneName { get; set; }
-        public ICollection<Car> cars {get; set;}
-        public virtual Customer customer {get; set;}
+        //public ICollection<Car> cars {get; set;}
+        //public virtual Customer customer {get; set;}
         public string warehouseId { get; set; }
     }
 }
