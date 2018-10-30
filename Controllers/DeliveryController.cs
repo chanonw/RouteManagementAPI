@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RouteAPI.Data;
+using RouteAPI.Models;
 
 namespace RouteAPI.Controllers
 {
@@ -48,23 +49,23 @@ namespace RouteAPI.Controllers
                     failedId.Add(deliveryId);
                 }
             }
-            if(failedId.Count == dto.deliveryId.Length)
+            if (failedId.Count == dto.deliveryId.Length)
             {
-                foreach(var deliveryId in failedId)
+                foreach (var deliveryId in failedId)
                 {
                     resetUnassignDelivery(deliveryId);
                 }
-                return Ok(new {success = false});
+                return Ok(new { success = false });
             }
-            if(failedId.Count > 0 && successId.Count > 0) 
+            if (failedId.Count > 0 && successId.Count > 0)
             {
-                foreach(var deliveryId in failedId)
+                foreach (var deliveryId in failedId)
                 {
                     resetUnassignDelivery(deliveryId);
                 }
-                return Ok(new {success = false, partialSuccess = true, failedList= failedId, successList = successId});
+                return Ok(new { success = false, partialSuccess = true, failedList = failedId, successList = successId });
             }
-            return Ok(new {success = "true"});
+            return Ok(new { success = "true" });
         }
 
         [HttpPost("saveroute")]
@@ -79,7 +80,7 @@ namespace RouteAPI.Controllers
                 var deliveryOrder = i + 1;
                 delivery.status = "พร้อมส่ง";
                 delivery.deliveryOrder = deliveryOrder.ToString();
-                 if (await _repo.saveAll())
+                if (await _repo.saveAll())
                 {
                     successId.Add(deliveryId);
                 }
@@ -88,23 +89,97 @@ namespace RouteAPI.Controllers
                     failedId.Add(deliveryId);
                 }
             }
-             if(failedId.Count == dto.deliveryId.Length)
+            if (failedId.Count == dto.deliveryId.Length)
             {
-                foreach(var deliveryId in failedId)
+                foreach (var deliveryId in failedId)
                 {
                     resetWaitingDelivery(deliveryId);
                 }
-                return Ok(new {success = false});
+                return Ok(new { success = false });
             }
-            if(failedId.Count > 0 && successId.Count > 0) 
+            if (failedId.Count > 0 && successId.Count > 0)
             {
-                foreach(var deliveryId in failedId)
+                foreach (var deliveryId in failedId)
                 {
-                   resetWaitingDelivery(deliveryId);
+                    resetWaitingDelivery(deliveryId);
                 }
-                return Ok(new {success = false, partialSuccess = true, failedList= failedId, successList = successId});
+                return Ok(new { success = false, partialSuccess = true, failedList = failedId, successList = successId });
             }
-            return Ok(new {success = "true"});
+            return Ok(new { success = "true" });
+        }
+        [HttpPost("auto")]
+        public async Task<IActionResult> autoJobRoute([FromBody]Dto dto)
+        {
+            List<string> firstTripId = new List<string>();
+            List<string> secondTripId = new List<string>();
+            //var delivery = await _repo.getDescUnassignDelivery(dto.transDate);
+            //int totalQuantity = calculateTotalQuantity(delivery);
+            //var firstRoundQuantityCri = 70;//Math.Floor(0.45 * totalQuantity);
+            //var secondRoundQuantity = 30;//Math.Floor(0.55 * totalQuantity)
+            //int cumQuan = 0;
+            int cu = 0;
+            // foreach (var item in delivery)
+            // {
+            //     cumQuan = cumQuan + item.quantity;
+            //     if (cumQuan <= firstRoundQuantityCri)
+            //     {
+            //         firstTripId.Add(item.deliveryId);
+            //     }
+            //     else
+            //     {
+            //         secondTripId.Add(item.deliveryId);
+            //     }
+            // }
+            // foreach (var deliveryId in firstTripId)
+            // {
+            //     await updateDeliveryFirstTrip(deliveryId);
+            // }
+            // foreach (var deliveryId in secondTripId)
+            // {
+            //     await updateDeliverySecondTrip(deliveryId);
+            // }
+            var firstTripDelivery = await _repo.getFirstTripDelivery(dto.transDate);
+            var secondTripDelivery = await _repo.getSecondTripDelivery(dto.transDate);
+            var accualFirstTripQuantity = calculateTotalQuantity(firstTripDelivery);
+            var accualSecondTripQuantity = calculateTotalQuantity(secondTripDelivery);
+            var cars = await _repo.getCar(dto.zoneId);
+            var aveilableCar = cars.Count();
+            var firstTripCarQuantity = accualFirstTripQuantity / aveilableCar;
+            var secondTripCarQuantity = accualSecondTripQuantity / aveilableCar;
+            if (firstTripCarQuantity > 40)
+            {
+                if (firstTripCarQuantity < 80)
+                {
+                    foreach (var item in firstTripDelivery)
+                    {
+                        foreach (var car in cars)
+                        {
+                            cu = cu + item.quantity;
+                            if (cu <= firstTripCarQuantity)
+                            {
+                                if (item.carCode == null)
+                                {
+                                    await updateResult(car.carCode, item.deliveryId);
+                                }
+
+                            }
+                            else
+                            {
+                                cu = 0;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return Ok(new { success = false, message = "จำนวนรถไม่เพียงพอ" });
+                }
+            }
+            else
+            {
+                return Ok(new { success = true, manual = true });
+            }
+            return Ok(new { success = true });
         }
         private async void resetUnassignDelivery(string deliveryId)
         {
@@ -118,6 +193,47 @@ namespace RouteAPI.Controllers
             var delivery = await _repo.getDelivery(deliveryId);
             delivery.status = "รอส่ง";
             await _repo.saveAll();
+        }
+        private int calculateTotalQuantity(IEnumerable<Delivery> deliveries)
+        {
+            //var delivery = await _repo.getDescUnassignDelivery(transDate);
+            var quantity = 0;
+            foreach (var item in deliveries)
+            {
+                quantity = quantity + item.quantity;
+            }
+            return quantity;
+        }
+        private async Task<bool> updateDeliveryFirstTrip(string deliveryId)
+        {
+            var delivery = await _repo.getDelivery(deliveryId);
+            delivery.trip = "1";
+            if (await _repo.saveAll())
+            {
+                return true;
+            }
+            return false;
+        }
+        private async Task<bool> updateDeliverySecondTrip(string deliveryId)
+        {
+            var delivery = await _repo.getDelivery(deliveryId);
+            delivery.trip = "2";
+            if (await _repo.saveAll())
+            {
+                return true;
+            }
+            return false;
+        }
+        private async Task<bool> updateResult(string carCode, string deliveryId)
+        {
+            var delivery = await _repo.getDelivery(deliveryId);
+            delivery.carCode = carCode;
+            delivery.status = "รอส่ง";
+            if (await _repo.saveAll())
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

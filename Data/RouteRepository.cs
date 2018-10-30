@@ -46,7 +46,55 @@ namespace RouteAPI.Data
         public async Task<bool> saveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
 
+        public async Task<IEnumerable<Delivery>> getDescUnassignDelivery(string transdate)
+        {
+            var tempDate = DateTime.Parse(transdate);
+
+            var delivery = await _context.Delivery.Include(c => c.Customer)
+                .Where(d => d.status == "unassign" && d.transDate == tempDate && d.trip == null)
+                .OrderByDescending(d => d.quantity)
+                .ToListAsync();
+            return delivery;
+        }
+
+        public async Task<IEnumerable<Delivery>> getFirstTripDelivery(string transdate)
+        {
+            var tempDate = DateTime.Parse(transdate);
+            var delivery = await _context.Delivery.Include(c => c.Customer)
+                .Where(d => d.status == "unassign" && d.transDate == tempDate && d.trip == "1")
+                .OrderByDescending(d => d.quantity)
+                .ToListAsync();
+            return delivery;
+        }
+
+        public async Task<IEnumerable<Delivery>> getSecondTripDelivery(string transdate)
+        {
+            var tempDate = DateTime.Parse(transdate);
+            var delivery = await _context.Delivery.Include(c => c.Customer)
+                .Where(d => d.status == "unassign" && d.transDate == tempDate && d.trip == "2")
+                .OrderByDescending(d => d.quantity)
+                .ToListAsync();
+            return delivery;
+        }
+
+        public async Task<IEnumerable<Car>> getCar(string zondId)
+        {
+            var car = await _context.Car
+                .Where(z => z.zoneId == zondId && z.status == "available")
+                .OrderBy(c => c.carCode)
+                .ToListAsync();
+            return car;
+        }
+
+        public async Task<IEnumerable<Car>> getCarDesc(string zondId)
+        {
+            var car = await _context.Car
+                .Where(z => z.zoneId == zondId && z.status == "available")
+                .OrderByDescending(c => c.carCode)
+                .ToListAsync();
+            return car;
         }
     }
 }
