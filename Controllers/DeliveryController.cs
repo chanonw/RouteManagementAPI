@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RouteAPI.Data;
 using RouteAPI.Models;
-
+using RouteAPI.Helpers;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
     public class DeliveryController : Controller
     {
         private readonly IRouteRepository _repo;
+        public List<Route> finalRoute = new List<Route>();
         public DeliveryController(IRouteRepository repo)
         {
             _repo = repo;
@@ -172,7 +173,41 @@ namespace RouteAPI.Controllers
                 }
                 else
                 {
-                    return Ok(new { success = false, message = "จำนวนรถไม่เพียงพอ" });
+                    return Ok(new { success = false, message = "จำนวนรถรอบเช้าไม่เพียงพอ" });
+                }
+            }
+            else
+            {
+                return Ok(new { success = true, manual = true });
+            }
+            cars = await _repo.getCarDesc(dto.zoneId);
+            if (secondTripCarQuantity > 40)
+            {
+                if (secondTripCarQuantity < 80)
+                {
+                    foreach (var item in secondTripDelivery)
+                    {
+                        foreach (var car in cars)
+                        {
+                            cu = cu + item.quantity;
+                            if (cu <= firstTripCarQuantity)
+                            {
+                                if (item.carCode == null)
+                                {
+                                    await updateResult(car.carCode, item.deliveryId);
+                                }
+
+                            }
+                            else
+                            {
+                                cu = 0;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return Ok(new { success = false, message = "จำนวนรถรอบบ่ายไม่เพียงพอ" });
                 }
             }
             else
@@ -180,6 +215,127 @@ namespace RouteAPI.Controllers
                 return Ok(new { success = true, manual = true });
             }
             return Ok(new { success = true });
+        }
+        private async void CalSaving(List<Delivery> deliveries, Dto dto)
+        {
+            double savingValue = 0;
+            List<SavingNode> saving = new List<SavingNode>();
+            string carCode = string.Empty;
+            string tmpWarehouseGPS = string.Empty;
+            string[] warehouseGPS = tmpWarehouseGPS.Split(",");
+            var cars = await _repo.getCar(dto.zoneId);
+            for (int i = 0; i < deliveries.Count(); i++)
+            {
+                for (int j = 0; j < deliveries.Count(); j++)
+                {
+                    if (i != j)
+                    {
+                        string tmpIGPS = deliveries[i].Customer.gps;
+                        string[] iGPS = tmpIGPS.Split(",");
+                        string tmpJGPS = deliveries[j].Customer.gps;
+                        string[] jGPS = tmpJGPS.Split(",");
+                        double CDi = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
+                            Double.Parse(warehouseGPS[1]), Double.Parse(iGPS[0]), Double.Parse(iGPS[1]));
+                        double CDj = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
+                            Double.Parse(warehouseGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
+                        double Cij = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(iGPS[0]),
+                            Double.Parse(iGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
+                        //sij = CDi + CDj - Cij
+                        savingValue = CDi + CDj - Cij;
+                        CustomerOrder c1 = new CustomerOrder(deliveries[i].quantity, deliveries[i].Customer.cusCode);
+                        CustomerOrder c2 = new CustomerOrder(deliveries[j].quantity, deliveries[j].Customer.cusCode);
+                        saving.Add(new SavingNode(c1, c2, savingValue));
+                    }
+                }
+            }
+            List<SavingNode> sortSaving = saving.OrderByDescending(s => s.savings).ToList();
+            foreach (var item in sortSaving)
+            {
+                if (!IsInRoutes(item.getFrom()) && !IsInRoutes(item.getTo()))
+                {
+                    Route route = new Route();
+                    route.Add(item.getFrom());
+                    route.Add(item.getTo());
+                    if (!finalRoute.Contains(route))
+                    {
+                        finalRoute.Add(route);
+                    }
+                }
+                else if (!IsInRoutes(item.getTo()))
+                {
+                    foreach (var r in finalRoute)
+                    {
+                        if (r.getLastCustomer() == item.getFrom())
+                        {
+                            if (r.hasCapacity(item.getTo().quantity, 80))
+                            {
+                                r.Add(0, item.getTo());
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (!IsInRoutes(item.getFrom()))
+                {
+                    foreach (var r in finalRoute)
+                    {
+                        if (r.getLastCustomer() == item.getTo())
+                        {
+                            if (r.hasCapacity(item.getFrom().quantity, 80))
+                            {
+                                r.Add(0, item.getFrom());
+                                break;
+                            }
+                        }
+                    }
+                }
+                Route merged = null;
+                foreach (var routeX in finalRoute)
+                {
+                    if (merged != null)
+                    {
+                        break;
+                    }
+                    if (routeX.getLastCustomer() == item.getFrom())
+                    {
+                        foreach (var routeY in finalRoute)
+                        {
+                            if (routeY.getFirstCustomer() == item.getTo())
+                            {
+                                if (routeX != routeY)
+                                {
+                                    if ((routeX.getCurrentCapacity() + routeY.getCurrentCapacity()) <= 80)
+                                    {
+                                        routeX.addAll(routeY);
+                                        merged = routeY;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (merged != null)
+                {
+                    finalRoute.Remove(merged);
+                }
+            }
+            //update db;
+        }
+        private bool IsInRoutes(CustomerOrder customer)
+        {
+            foreach (var item in finalRoute)
+            {
+                foreach (var cus in item.GetList())
+                {
+                    if (customer == cus)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
         }
         private async void resetUnassignDelivery(string deliveryId)
         {
