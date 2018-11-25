@@ -14,6 +14,9 @@ namespace RouteAPI.Controllers
     {
         private readonly IRouteRepository _repo;
         public List<Route> finalRoute = new List<Route>();
+        private List<Route2> solution;
+        private List<Saving> savings = new List<Saving>();
+        private List<Route2> joined = new List<Route2>();
         public DeliveryController(IRouteRepository repo)
         {
             _repo = repo;
@@ -216,39 +219,190 @@ namespace RouteAPI.Controllers
             }
             return Ok(new { success = true });
         }
-        private async void CalSaving(List<Delivery> deliveries, Dto dto)
+        [HttpGet("Route")]
+        public async Task<IActionResult> Route()
         {
-            double savingValue = 0;
-            List<SavingNode> saving = new List<SavingNode>();
-            string carCode = string.Empty;
-            string tmpWarehouseGPS = string.Empty;
-            string[] warehouseGPS = tmpWarehouseGPS.Split(",");
-            var cars = await _repo.getCar(dto.zoneId);
-            for (int i = 0; i < deliveries.Count(); i++)
+            string transDate = "2018-11-17";
+            string zoneId = "EF070666-88E9-42C9-96D5-FD2E59E50791";
+            //string warehouseGPS = "13.698936,100.487154";
+            var cars = await _repo.getCar(zoneId);
+            foreach (var item in cars)
             {
-                for (int j = 0; j < deliveries.Count(); j++)
+                var deliveries = await _repo.getCarDelivery(transDate, item.carCode);
+                if(deliveries != null)
                 {
-                    if (i != j)
+                     CalSaving(deliveries.ToList());
+                }   
+            }
+            return Ok();
+        }
+        private void CalSaving(List<Delivery> deliveries)
+        {
+            //double savingValue = 0;
+            //List<SavingNode> saving = new List<SavingNode>();
+            string carCode = string.Empty;
+            string tmpWarehouseGPS = "13.698936,100.487154";
+            string[] warehouseGPS = tmpWarehouseGPS.Split(",");
+            oneRoutePerCustomerSolution(deliveries, warehouseGPS);
+            findAllPairs();
+            // for (int i = 0; i < deliveries.Count(); i++)
+            // {
+            //     for (int j = 0; j < deliveries.Count(); j++)
+            //     {
+            //         if (i != j)
+            //         {
+            //             string tmpIGPS = deliveries[i].Customer.gps;
+            //             string[] iGPS = tmpIGPS.Split(",");
+            //             string tmpJGPS = deliveries[j].Customer.gps;
+            //             string[] jGPS = tmpJGPS.Split(",");
+            //             double CDi = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
+            //                 Double.Parse(warehouseGPS[1]), Double.Parse(iGPS[0]), Double.Parse(iGPS[1]));
+            //             double CDj = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
+            //                 Double.Parse(warehouseGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
+            //             double Cij = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(iGPS[0]),
+            //                 Double.Parse(iGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
+            //             //sij = CDi + CDj - Cij
+            //             savingValue = CDi + CDj - Cij;
+            //             Customer2 a = new Customer2(Double.Parse(iGPS[0]), Double.Parse(iGPS[1]), 
+            //                 deliveries[i].quantity, deliveries[i].Customer.cusCode);
+            //             Customer2 depot = new Customer2(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+            //             Customer2 b = new Customer2(Double.Parse(jGPS[0]), Double.Parse(jGPS[1]),
+            //                  deliveries[j].quantity, deliveries[j].Customer.cusCode);
+            //             Route2 r1 = new Route2(a, depot); 
+            //             Route2 r2 = new Route2(b, depot);
+            //             savings.Add(new Saving(savingValue, r1, r2));
+            //             // Customer2 cus1 = new Customer2(Double.Parse(iGPS[0]),Double.Parse(iGPS[1]),
+            //             //     deliveries[i].quantity, deliveries[i].Customer.cusCode);
+            //             // Customer2 cus2 = new Customer2(Double.Parse(jGPS[0]),Double.Parse(jGPS[1]),
+            //             //     deliveries[j].quantity, deliveries[j].Customer.cusCode);
+            //             // CustomerOrder c1 = new CustomerOrder(deliveries[i].quantity, deliveries[i].Customer.cusCode);
+            //             // CustomerOrder c2 = new CustomerOrder(deliveries[j].quantity, deliveries[j].Customer.cusCode);
+            //             // saving.Add(new SavingNode(c1, c2, savingValue));
+            //         }
+            //     }
+            // }
+            savings.Sort(new SavingSort());
+            //List<SavingNode> sortSaving = saving.OrderByDescending(s => s.savings).ToList();
+            //update db;
+             while (savings.Count() > 0)
+            {
+                for (int i = 0; i < savings.Count; i++)
+                {
+                    Saving saving = savings[i];
+                    Route2 a = saving.getR1();
+                    Route2 b = saving.getR2();
+                    if (!joined.Contains(a) && !joined.Contains(b))
                     {
-                        string tmpIGPS = deliveries[i].Customer.gps;
-                        string[] iGPS = tmpIGPS.Split(",");
-                        string tmpJGPS = deliveries[j].Customer.gps;
-                        string[] jGPS = tmpJGPS.Split(",");
-                        double CDi = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
-                            Double.Parse(warehouseGPS[1]), Double.Parse(iGPS[0]), Double.Parse(iGPS[1]));
-                        double CDj = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(warehouseGPS[0]),
-                            Double.Parse(warehouseGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
-                        double Cij = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(iGPS[0]),
-                            Double.Parse(iGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
-                        //sij = CDi + CDj - Cij
-                        savingValue = CDi + CDj - Cij;
-                        CustomerOrder c1 = new CustomerOrder(deliveries[i].quantity, deliveries[i].Customer.cusCode);
-                        CustomerOrder c2 = new CustomerOrder(deliveries[j].quantity, deliveries[j].Customer.cusCode);
-                        saving.Add(new SavingNode(c1, c2, savingValue));
+                        join(a, b);
+                        break;
+                    }
+                    else if (!joined.Contains(a))
+                    {
+                        foreach (var item in solution)
+                        {
+                            if (item.getStart() == b.getStart())
+                            {
+                                join(a, item);
+                            }
+                            break;
+                        }
+                    }
+                    else if (!joined.Contains(b))
+                    {
+                        foreach (var item in solution)
+                        {
+                            if (item.getEnd() == a.getEnd())
+                            {
+                                join(item, b);
+                            }
+                            break;
+                        }
                     }
                 }
             }
-            List<SavingNode> sortSaving = saving.OrderByDescending(s => s.savings).ToList();
+        }
+        private void join(Route2 a, Route2 b)
+        {
+            if (verifyJoin(a, b))
+            {
+                a.addRoute(b);
+                joined.Add(a);
+                joined.Add(b);
+                solution.Remove(b);
+            }
+        }
+        private void findAllPairs()
+        {
+            for (int j = 0; j < this.solution.Count; j++)
+            {
+                for (int i = j + 1; i < this.solution.Count; i++)
+                {
+                    Route2 a = this.solution[j];
+                    Route2 b = this.solution[i];
+                    double sav = calculatePairSaving(a, b);
+                    double sav2 = calculatePairSaving(b, a);
+                    if (sav > sav2)
+                    {
+                        if (sav > 1 && verifyJoin(a, b))
+                        {
+                            savings.Add(new Saving(sav, a, b));
+                        }
+                    }
+                    else if (sav2 > 1 && verifyJoin(b, a))
+                    {
+                        savings.Add(new Saving(sav, b, a));
+                    }
+                }
+            }
+            savings.Sort(new SavingSort());
+            //savings = savings.OrderByDescending(s => s.Savings).ToList();
+            // return saving;
+        }
+        private bool verifyJoin(Route2 r1, Route2 r2)
+        {
+            bool result = true;
+            int total = 0;
+            foreach (var item in r1.getRoute())
+            {
+                total = total + item.Quantity;
+            }
+            foreach (var item in r2.getRoute())
+            {
+                total = total + item.Quantity;
+            }
+            if (total > 80)
+            {
+                result = false;
+            }
+            return result;
+        }
+        private double calculatePairSaving(Route2 a, Route2 b)
+        {
+            Customer2 cus1 = a.getEnd();
+            Customer2 cus2 = b.getStart();
+            Customer2 depot = a.getDepot();
+            Customer2 depot2 = b.getDepot();
+            double bridge = DistanceMetrix.getDistanceMetrixInKM(cus1.Latitude, cus1.Longtitude, cus2.Latitude, cus2.Longtitude);
+            double sav1 = DistanceMetrix.getDistanceMetrixInKM(cus1.Latitude, cus1.Longtitude, depot.Latitude, depot.Longtitude);
+            double sav2 = DistanceMetrix.getDistanceMetrixInKM(cus2.Latitude, cus2.Longtitude, depot2.Latitude, depot2.Longtitude);
+            return sav1 + sav2 - bridge;
+        }
+        private void oneRoutePerCustomerSolution(List<Delivery> deliveries, string[] warehouseGPS)
+        {
+            this.solution = new List<Route2>();
+            foreach (var item in deliveries)
+            {
+                string cusGps = item.Customer.gps;
+                string cusCode = item.Customer.cusCode;
+                string[] iGPS = cusGps.Split(",");
+                Customer2 cus = new Customer2(Double.Parse(iGPS[0]), Double.Parse(iGPS[1]), item.quantity, cusCode);
+                Customer2 depot = new Customer2(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+                Route2 route = new Route2(cus, depot);
+                this.solution.Add(route);
+            }
+        }
+        private void test(List<SavingNode> sortSaving)
+        {
             foreach (var item in sortSaving)
             {
                 if (!IsInRoutes(item.getFrom()) && !IsInRoutes(item.getTo()))
@@ -320,7 +474,6 @@ namespace RouteAPI.Controllers
                     finalRoute.Remove(merged);
                 }
             }
-            //update db;
         }
         private bool IsInRoutes(CustomerOrder customer)
         {

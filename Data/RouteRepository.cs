@@ -24,7 +24,6 @@ namespace RouteAPI.Data
         {
             _context.Remove(entity);
         }
-
         public async Task<IEnumerable<Delivery>> getUnassignDelivery(string transdate)
         {
             var tempDate = DateTime.Parse(transdate);
@@ -95,6 +94,22 @@ namespace RouteAPI.Data
                 .OrderByDescending(c => c.carCode)
                 .ToListAsync();
             return car;
+        }
+
+        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate,string carCode)
+        {
+            var tempDate = DateTime.Parse(transdate);
+            var delivery = await _context.Delivery
+                .Include(c => c.Customer)
+                .Where(d => d.status == "รอส่ง" && d.transDate == tempDate && d.carCode == carCode)
+                .ToListAsync();
+            return delivery;
+        }
+
+        public async Task<Warehouse> getWarehouseGps(string warehoseId)
+        {
+            var warehouse = await _context.Warehouse.FirstOrDefaultAsync(w => w.warehouseId == warehoseId);
+            return warehouse;
         }
     }
 }
