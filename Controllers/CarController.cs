@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RouteAPI.Data;
+using RouteAPI.Dtos;
+using RouteAPI.Models;
 
 namespace RouteAPI.Controllers
 {
@@ -12,14 +14,52 @@ namespace RouteAPI.Controllers
     public class CarController : Controller
     {
         private readonly DataContext _context;
-        public CarController(DataContext context)
+        private readonly IRouteRepository _repo;
+        public CarController(DataContext context, IRouteRepository repo)
         {
+            _repo = repo;
             _context = context;
 
         }
         [HttpPost("getcar")]
-        public async Task<IActionResult> getAveilableCar([FromBody] Dto dto) {
+        public async Task<IActionResult> getAveilableCar([FromBody] Dto dto)
+        {
             var car = await _context.Car.Where(z => z.zoneId == dto.zoneId).ToListAsync();
+            return Ok(car);
+        }
+
+        [HttpPost("newcar")]
+        public async Task<IActionResult> AddNewCar([FromBody] DriverForNewDto driverForNewDto)
+        {
+            string carCode = string.Empty;
+            string latestCarCode = await _repo.getLatestCarCode(driverForNewDto.zoneId);
+            if(string.IsNullOrEmpty(latestCarCode))
+            {
+                carCode = "car";
+            }
+            else
+            {
+                int temp = int.Parse(latestCarCode.Substring(3));
+                carCode = "car" + (int.Parse(latestCarCode.Substring(3)) + 1).ToString();
+            }
+            var driverToCreate = new Car
+            {
+                carCode = carCode,
+                firstName = driverForNewDto.firstName,
+                lastName = driverForNewDto.lastName,
+                drivingLicenseNo = driverForNewDto.drivingLicenseNo,
+                carLicenseNo = driverForNewDto.carLicenseNo,
+                zoneId = driverForNewDto.zoneId,
+                status = "available"
+            };
+            var createDriver = await _repo.addNewCar(driverToCreate);
+            
+            return StatusCode(201, new { success = true });
+        }
+        [HttpPost("searchcar")]
+        public async Task<IActionResult> SearchCar([FromBody] CarForSearchDto carForSearchDto)
+        {
+            var car = await _repo.searchCar(carForSearchDto.carCode);
             return Ok(car);
         }
     }

@@ -19,6 +19,12 @@ namespace RouteAPI.Data
         Task<IEnumerable<Car>> getCarDesc(string zondId);
         Task<Delivery> getDelivery(string id);
         Task<Warehouse> getWarehouseGps(string warehoseId);
+        Task<Car> addNewCar(Car car);
+        Task<string> getLatestCarCode(string zondId);
+
+        Task<Car> searchCar(string carCode);
+        Task<bool> CarExists(string carCode);
+        
         Task<bool> saveAll();
 
     }

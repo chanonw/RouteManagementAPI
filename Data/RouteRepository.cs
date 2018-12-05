@@ -96,7 +96,7 @@ namespace RouteAPI.Data
             return car;
         }
 
-        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate,string carCode)
+        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode)
         {
             var tempDate = DateTime.Parse(transdate);
             var delivery = await _context.Delivery
@@ -110,6 +110,33 @@ namespace RouteAPI.Data
         {
             var warehouse = await _context.Warehouse.FirstOrDefaultAsync(w => w.warehouseId == warehoseId);
             return warehouse;
+        }
+
+        public async Task<Car> addNewCar(Car car)
+        {
+            await _context.Car.AddAsync(car);
+            await _context.SaveChangesAsync();
+            return car;
+        }
+        public async Task<bool> CarExists(string carCode)
+        {
+            if (await _context.Car.AnyAsync(c => c.carCode == carCode))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<string> getLatestCarCode(string zondId)
+        {
+           string carCode = await _context.Car.Where(z => z.zoneId == zondId).MaxAsync(c => c.carCode);
+           return carCode;
+        }
+
+        public async Task<Car> searchCar(string carCode)
+        {
+            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            return car;
         }
     }
 }
