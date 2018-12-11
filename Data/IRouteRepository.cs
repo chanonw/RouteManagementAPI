@@ -23,8 +23,12 @@ namespace RouteAPI.Data
         Task<string> getLatestCarCode(string zondId);
 
         Task<Car> searchCar(string carCode);
+        Task<Customer> addNewCustomer(Customer customer);
+        Task<string> GetLatestCusCode();
         Task<bool> CarExists(string carCode);
-        
+        Task<bool> getPersonalLeaveStatus(string carCode);
+        Task<Car> updatePersonalLeaveStatus(string carCode);
+        Task<Car> updateSickLeaveStatus(string carCode);
         Task<bool> saveAll();
 
     }

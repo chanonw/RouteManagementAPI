@@ -18,6 +18,8 @@ namespace RouteAPI.Models
         public string drivingLicenseNo { get; set; }
         public string carLicenseNo { get; set; }
         public string status { get; set; }
+        public bool personalLeave { get; set; }
+        public bool sickLeave { get; set; }
         public string zoneId { get; set; }
         //public ICollection<Delivery> deliveries { get; set; }
     }

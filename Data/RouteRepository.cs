@@ -138,5 +138,62 @@ namespace RouteAPI.Data
             var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
             return car;
         }
+
+        public async Task<Customer> addNewCustomer(Customer customer)
+        {
+            await _context.Customer.AddAsync(customer);
+            await _context.SaveChangesAsync();
+            return customer;
+        }
+
+        public async Task<string> GetLatestCusCode()
+        {
+            string cusCode = await _context.Customer.MaxAsync(c => c.cusCode);
+            return cusCode;
+        }
+
+        public async Task<bool> getPersonalLeaveStatus(string carCode)
+        {
+            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            if(car.personalLeave == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<Car> updatePersonalLeaveStatus(string carCode)
+        {
+            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            if(car.personalLeave == false)
+            {
+                car.personalLeave = true;
+                car.status = "ลากิจ";
+            }
+            else
+            {
+                car.personalLeave = false;
+                car.status = "available";
+            }
+            await _context.SaveChangesAsync();
+            return car;
+        }
+
+        public async Task<Car> updateSickLeaveStatus(string carCode)
+        {
+            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            if (car.sickLeave == false)
+            {
+                car.sickLeave = true;
+                car.status = "ลาป่วย";
+            }
+            else
+            {
+                car.sickLeave = false;
+                car.status = "available";
+            }
+            await _context.SaveChangesAsync();
+            return car;
+        }
     }
 }

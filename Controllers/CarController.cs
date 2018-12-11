@@ -62,5 +62,17 @@ namespace RouteAPI.Controllers
             var car = await _repo.searchCar(carForSearchDto.carCode);
             return Ok(car);
         }
+        [HttpPost("updatepersonalleave")]
+        public async Task<IActionResult> updatePersonalLeave([FromBody] Dto dto)
+        {
+            var car = await _repo.updatePersonalLeaveStatus(dto.carCode);
+            return Ok(car);
+        }
+        [HttpPost("updatesickleave")]
+        public async Task<IActionResult> updateSickLeave([FromBody] Dto dto)
+        {
+            var car = await _repo.updateSickLeaveStatus(dto.carCode);
+            return Ok(car);
+        }
     }
 }

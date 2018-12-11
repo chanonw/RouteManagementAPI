@@ -14,5 +14,7 @@ namespace RouteAPI.Data
 
         public string transDate {get; set;}
 
+        public bool pLeave { get; set; }
+
     }
 }
