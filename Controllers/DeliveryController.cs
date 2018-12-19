@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using RouteAPI.Data;
 using RouteAPI.Models;
 using RouteAPI.Helpers;
+using RouteAPI.Dtos;
+
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -229,10 +231,10 @@ namespace RouteAPI.Controllers
             foreach (var item in cars)
             {
                 var deliveries = await _repo.getCarDelivery(transDate, item.carCode);
-                if(deliveries != null)
+                if (deliveries != null)
                 {
-                     CalSaving(deliveries.ToList());
-                }   
+                    CalSaving(deliveries.ToList());
+                }
             }
             return Ok();
         }
@@ -284,7 +286,7 @@ namespace RouteAPI.Controllers
             savings.Sort(new SavingSort());
             //List<SavingNode> sortSaving = saving.OrderByDescending(s => s.savings).ToList();
             //update db;
-             while (savings.Count() > 0)
+            while (savings.Count() > 0)
             {
                 for (int i = 0; i < savings.Count; i++)
                 {
@@ -543,6 +545,41 @@ namespace RouteAPI.Controllers
                 return true;
             }
             return false;
+        }
+        [HttpPost("getcustomerdelivery")]
+        public async Task<IActionResult> getCustomerDelivery([FromBody] DeliveryForCustomerDto deliveryForCustomerDto)
+        {
+            var delivery = await _repo.getCustomerDelivery(deliveryForCustomerDto.cusCode, deliveryForCustomerDto.transdate);
+            return Ok(delivery);
+        }
+        [HttpPost("cancel")]
+        public async Task<IActionResult> cancelDelivery([FromBody] DeliveryForCancelAndChangeDateDto deliveryForCancelAndChangeDateDto)
+        {
+            var delivery = await _repo.cancelDelivery(deliveryForCancelAndChangeDateDto.deliveryId);
+            if(delivery == null)
+            {
+              return NotFound(new {success = false});
+            }
+            return Ok(new {success = true});
+        }
+        
+        [HttpPost("changedeliverydate")]
+        public async Task<IActionResult> changeDeliveryDate([FromBody] DeliveryForChangeDateDto deliveryForChangeDateDto)
+        {
+            var delivery = await _repo.cancelDelivery(deliveryForChangeDateDto.deliveryId);
+            if(delivery == null)
+            {
+                return NotFound(new {success = false});
+            }
+            var deliveryToCreate = new Delivery
+            {
+                deliveryId = deliveryForChangeDateDto.deliveryId,
+                transDate = DateTime.Parse(deliveryForChangeDateDto.TransDate),
+                cusCode = deliveryForChangeDateDto.cusCode,
+                status = "unassign"
+            };
+            var createDelivery = await _repo.changeDeliveryDate(deliveryToCreate);
+            return Ok(new {success = true});
         }
     }
 }

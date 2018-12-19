@@ -30,6 +30,9 @@ namespace RouteAPI.Data
         Task<Car> updatePersonalLeaveStatus(string carCode);
         Task<Car> updateSickLeaveStatus(string carCode);
         Task<bool> saveAll();
+        Task<Delivery> getCustomerDelivery(string cusCode, string transdate);
 
+        Task<Delivery> cancelDelivery(string deliveryId);
+        Task<Delivery> changeDeliveryDate(Delivery delivery);
     }
 }

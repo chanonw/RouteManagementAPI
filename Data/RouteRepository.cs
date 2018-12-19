@@ -195,5 +195,31 @@ namespace RouteAPI.Data
             await _context.SaveChangesAsync();
             return car;
         }
+
+        public async Task<Delivery> getCustomerDelivery(string cusCode, string transdate)
+        {
+            var tempDate = DateTime.Parse(transdate);
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.cusCode == cusCode && d.transDate == tempDate && d.status == "รอส่ง");
+            return delivery;
+        }
+
+        public async Task<Delivery> cancelDelivery(string deliveryId)
+        {
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
+            if (delivery == null)
+            {
+                return null;
+            }
+            delivery.status = "cancel";
+            await _context.SaveChangesAsync();
+            return delivery;
+        }
+
+        public async Task<Delivery> changeDeliveryDate(Delivery delivery)
+        {
+            await _context.Delivery.AddAsync(delivery);
+            await _context.SaveChangesAsync();
+            return delivery;
+        }
     }
 }
