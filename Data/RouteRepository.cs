@@ -96,12 +96,12 @@ namespace RouteAPI.Data
             return car;
         }
 
-        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode)
+        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode, string status)
         {
             var tempDate = DateTime.Parse(transdate);
             var delivery = await _context.Delivery
                 .Include(c => c.Customer)
-                .Where(d => d.status == "รอส่ง" && d.transDate == tempDate && d.carCode == carCode)
+                .Where(d => d.status == status && d.transDate == tempDate && d.carCode == carCode)
                 .ToListAsync();
             return delivery;
         }
@@ -218,6 +218,30 @@ namespace RouteAPI.Data
         public async Task<Delivery> changeDeliveryDate(Delivery delivery)
         {
             await _context.Delivery.AddAsync(delivery);
+            await _context.SaveChangesAsync();
+            return delivery;
+        }
+
+        public async Task<Delivery> updateDeliveryStatus(string deliveryId)
+        {
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
+            if (delivery == null)
+            {
+                return null;
+            }
+            delivery.status = "จัดส่งแล้ว";
+            await _context.SaveChangesAsync();
+            return delivery;
+        }
+
+        public async Task<Delivery> updateDeliveryStatus(string deliveryId, string reason)
+        {
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
+            if (delivery == null)
+            {
+                return null;
+            }
+            delivery.status = "จัดส่งแล้ว";
             await _context.SaveChangesAsync();
             return delivery;
         }

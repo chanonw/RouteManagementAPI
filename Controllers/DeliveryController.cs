@@ -230,7 +230,7 @@ namespace RouteAPI.Controllers
             var cars = await _repo.getCar(zoneId);
             foreach (var item in cars)
             {
-                var deliveries = await _repo.getCarDelivery(transDate, item.carCode);
+                var deliveries = await _repo.getCarDelivery(transDate, item.carCode, "รอส่ง");
                 if (deliveries != null)
                 {
                     CalSaving(deliveries.ToList());
@@ -574,12 +574,31 @@ namespace RouteAPI.Controllers
             var deliveryToCreate = new Delivery
             {
                 deliveryId = deliveryForChangeDateDto.deliveryId,
-                transDate = DateTime.Parse(deliveryForChangeDateDto.TransDate),
+                transDate = DateTime.Parse(deliveryForChangeDateDto.transDate),
                 cusCode = deliveryForChangeDateDto.cusCode,
                 status = "unassign"
             };
             var createDelivery = await _repo.changeDeliveryDate(deliveryToCreate);
             return Ok(new {success = true});
+        }
+        [HttpPost("getcardelivery")]
+        public async Task<IActionResult> getCarDelivery([FromBody] DeliveryForCarDto deliveryForCarDto)
+        {
+            var delivery = await _repo.getCarDelivery(deliveryForCarDto.transDate, deliveryForCarDto.carCode, "พร้อมส่ง");
+
+            return Ok(delivery);
+        }
+        [HttpPost("updatesuccess")]
+        public async Task<IActionResult> updateDeliverySuccessStatus([FromBody]DeliveryForUpdateStatusDto deliveryForUpdateStatusDto)
+        {
+            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId);
+            return Ok(delivery);
+        }
+        [HttpPost("updatefail")]
+        public async Task<IActionResult> updateDeliveryFailStatus([FromBody]DeliveryForUpdateStatusDto deliveryForUpdateStatusDto)
+        {
+            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId,deliveryForUpdateStatusDto.reason);
+            return Ok(delivery);
         }
     }
 }

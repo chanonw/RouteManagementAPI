@@ -20,5 +20,6 @@ namespace RouteAPI.Models
         public string carCode {get; set;}
         public string deliveryOrder {get; set;}
         public string trip { get; set; }
+        public string reason { get; set; }
     }
 }

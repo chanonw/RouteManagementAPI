@@ -14,7 +14,7 @@ namespace RouteAPI.Data
         Task<IEnumerable<Delivery>> getDescUnassignDelivery(string transdate);
         Task<IEnumerable<Delivery>> getFirstTripDelivery(string transdate);
         Task<IEnumerable<Delivery>> getSecondTripDelivery(string transdate);
-        Task<IEnumerable<Delivery>> getCarDelivery(string transdate,string carCode);
+        Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode, string status);
         Task<IEnumerable<Car>> getCar(string zondId);
         Task<IEnumerable<Car>> getCarDesc(string zondId);
         Task<Delivery> getDelivery(string id);
@@ -34,5 +34,8 @@ namespace RouteAPI.Data
 
         Task<Delivery> cancelDelivery(string deliveryId);
         Task<Delivery> changeDeliveryDate(Delivery delivery);
+
+        Task<Delivery> updateDeliveryStatus(string deliveryId);
+        Task<Delivery> updateDeliveryStatus(string deliveryId, string reason);
     }
 }
