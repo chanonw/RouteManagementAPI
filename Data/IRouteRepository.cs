@@ -37,5 +37,6 @@ namespace RouteAPI.Data
 
         Task<Delivery> updateDeliveryStatus(string deliveryId);
         Task<Delivery> updateDeliveryStatus(string deliveryId, string reason);
+        Task<Warehouse> addNewWarehouse(Warehouse warehouse);
     }
 }

@@ -556,20 +556,20 @@ namespace RouteAPI.Controllers
         public async Task<IActionResult> cancelDelivery([FromBody] DeliveryForCancelAndChangeDateDto deliveryForCancelAndChangeDateDto)
         {
             var delivery = await _repo.cancelDelivery(deliveryForCancelAndChangeDateDto.deliveryId);
-            if(delivery == null)
+            if (delivery == null)
             {
-              return NotFound(new {success = false});
+                return NotFound(new { success = false });
             }
-            return Ok(new {success = true});
+            return Ok(new { success = true });
         }
-        
+
         [HttpPost("changedeliverydate")]
         public async Task<IActionResult> changeDeliveryDate([FromBody] DeliveryForChangeDateDto deliveryForChangeDateDto)
         {
             var delivery = await _repo.cancelDelivery(deliveryForChangeDateDto.deliveryId);
-            if(delivery == null)
+            if (delivery == null)
             {
-                return NotFound(new {success = false});
+                return NotFound(new { success = false });
             }
             var deliveryToCreate = new Delivery
             {
@@ -579,7 +579,7 @@ namespace RouteAPI.Controllers
                 status = "unassign"
             };
             var createDelivery = await _repo.changeDeliveryDate(deliveryToCreate);
-            return Ok(new {success = true});
+            return Ok(new { success = true });
         }
         [HttpPost("getcardelivery")]
         public async Task<IActionResult> getCarDelivery([FromBody] DeliveryForCarDto deliveryForCarDto)
@@ -592,13 +592,21 @@ namespace RouteAPI.Controllers
         public async Task<IActionResult> updateDeliverySuccessStatus([FromBody]DeliveryForUpdateStatusDto deliveryForUpdateStatusDto)
         {
             var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId);
-            return Ok(delivery);
+            if (delivery == null)
+            {
+                return NotFound(new { success = false });
+            }
+            return Ok(new { success = true });
         }
         [HttpPost("updatefail")]
         public async Task<IActionResult> updateDeliveryFailStatus([FromBody]DeliveryForUpdateStatusDto deliveryForUpdateStatusDto)
         {
-            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId,deliveryForUpdateStatusDto.reason);
-            return Ok(delivery);
+            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId, deliveryForUpdateStatusDto.reason);
+            if (delivery == null)
+            {
+                return NotFound(new { success = false });
+            }
+            return Ok(new { success = true });
         }
     }
 }

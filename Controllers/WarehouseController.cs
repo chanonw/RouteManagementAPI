@@ -1,24 +1,32 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RouteAPI.Data;
+using RouteAPI.Dtos;
+using RouteAPI.Models;
 
 namespace RouteAPI.Controllers
 {
+
     [Route("api/[controller]")]
     public class WarehouseController : Controller
     {
         private readonly DataContext _context;
-        public WarehouseController(DataContext context)
+        private readonly IRouteRepository _repo;
+        public WarehouseController(DataContext context, IRouteRepository repo)
         {
+            _repo = repo;
             _context = context;
-
         }
-        [HttpGet]
-        public async Task<IActionResult> GetWarehouses() 
+        [HttpPost("newwarehouse")]
+        public async Task<IActionResult> AddNewWarehouse([FromBody]WarehouseForNewDto warehouseForNewDto)
         {
-            var warehouse = await _context.Warehouse.ToListAsync();
-            return Ok(warehouse);
+            var warehouseForCreate = new Warehouse
+            {
+                warehouseName = warehouseForNewDto.warehouseName,
+                gps = warehouseForNewDto.gps
+            };
+            var createWarehouse = await _repo.addNewWarehouse(warehouseForCreate);
+            return StatusCode(201, new { success = true });
         }
     }
 }

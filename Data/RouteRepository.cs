@@ -242,8 +242,16 @@ namespace RouteAPI.Data
                 return null;
             }
             delivery.status = "จัดส่งแล้ว";
+            delivery.reason = reason;
             await _context.SaveChangesAsync();
             return delivery;
+        }
+
+        public async Task<Warehouse> addNewWarehouse(Warehouse warehouse)
+        {
+            await _context.Warehouse.AddAsync(warehouse);
+            await _context.SaveChangesAsync();
+            return warehouse;
         }
     }
 }
