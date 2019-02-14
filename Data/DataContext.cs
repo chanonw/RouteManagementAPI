@@ -6,12 +6,13 @@ namespace RouteAPI.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base (options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
-        public DbSet<Car> Car { get; set; }
-        public DbSet<Customer> Customer {get; set;}
+        public DbSet<Truck> Truck { get; set; }
+        public DbSet<AdditionalTruck> AdditionalTruck { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<Delivery> Delivery { get; set; }
         public DbSet<Warehouse> Warehouse { get; set; }
         public DbSet<Zone> Zone { get; set; }

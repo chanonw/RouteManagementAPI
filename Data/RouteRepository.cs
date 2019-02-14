@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -78,20 +79,20 @@ namespace RouteAPI.Data
             return delivery;
         }
 
-        public async Task<IEnumerable<Car>> getCar(string zondId)
+        public async Task<IEnumerable<Truck>> getTrucks(string zondId)
         {
-            var car = await _context.Car
+            var car = await _context.Truck
                 .Where(z => z.zoneId == zondId && z.status == "available")
-                .OrderBy(c => c.carCode)
+                .OrderBy(c => c.truckCode)
                 .ToListAsync();
             return car;
         }
 
-        public async Task<IEnumerable<Car>> getCarDesc(string zondId)
+        public async Task<IEnumerable<Truck>> getCarDesc(string zondId)
         {
-            var car = await _context.Car
+            var car = await _context.Truck
                 .Where(z => z.zoneId == zondId && z.status == "available")
-                .OrderByDescending(c => c.carCode)
+                .OrderByDescending(c => c.truckCode)
                 .ToListAsync();
             return car;
         }
@@ -112,15 +113,15 @@ namespace RouteAPI.Data
             return warehouse;
         }
 
-        public async Task<Car> addNewCar(Car car)
+        public async Task<Truck> addNewCar(Truck car)
         {
-            await _context.Car.AddAsync(car);
+            await _context.Truck.AddAsync(car);
             await _context.SaveChangesAsync();
             return car;
         }
-        public async Task<bool> CarExists(string carCode)
+        public async Task<bool> CarExists(string truckCode)
         {
-            if (await _context.Car.AnyAsync(c => c.carCode == carCode))
+            if (await _context.Truck.AnyAsync(c => c.truckCode == truckCode))
             {
                 return true;
             }
@@ -129,13 +130,13 @@ namespace RouteAPI.Data
 
         public async Task<string> getLatestCarCode(string zondId)
         {
-           string carCode = await _context.Car.Where(z => z.zoneId == zondId).MaxAsync(c => c.carCode);
-           return carCode;
+           string truckCode = await _context.Truck.Where(z => z.zoneId == zondId).MaxAsync(c => c.truckCode);
+           return truckCode;
         }
 
-        public async Task<Car> searchCar(string carCode)
+        public async Task<Truck> searchCar(string truckCode)
         {
-            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
             return car;
         }
 
@@ -152,9 +153,9 @@ namespace RouteAPI.Data
             return cusCode;
         }
 
-        public async Task<bool> getPersonalLeaveStatus(string carCode)
+        public async Task<bool> getPersonalLeaveStatus(string truckCode)
         {
-            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
             if(car.personalLeave == true)
             {
                 return true;
@@ -162,9 +163,9 @@ namespace RouteAPI.Data
             return false;
         }
 
-        public async Task<Car> updatePersonalLeaveStatus(string carCode)
+        public async Task<Truck> updatePersonalLeaveStatus(string truckCode)
         {
-            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
             if(car.personalLeave == false)
             {
                 car.personalLeave = true;
@@ -179,9 +180,9 @@ namespace RouteAPI.Data
             return car;
         }
 
-        public async Task<Car> updateSickLeaveStatus(string carCode)
+        public async Task<Truck> updateSickLeaveStatus(string truckCode)
         {
-            var car = await _context.Car.FirstOrDefaultAsync(c => c.carCode == carCode);
+            var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
             if (car.sickLeave == false)
             {
                 car.sickLeave = true;
@@ -252,6 +253,33 @@ namespace RouteAPI.Data
             await _context.Warehouse.AddAsync(warehouse);
             await _context.SaveChangesAsync();
             return warehouse;
+        }
+
+        public async Task<IEnumerable<AdditionalTruck>> getAdditionalTruck(string zondId, int additionalTruckNeed)
+        {
+            //var paramZoneId = new SqlParameter("@zoneId", zondId);
+            //var paramAdditionalTruckNeed = new SqlParameter("@numberOfAddintonalCarNeed", additionalTruckNeed);
+            var additionTruck = await _context.AdditionalTruck.FromSql("usp_GetAdditionalTruck @p0, @p1", 
+               additionalTruckNeed, zondId).ToListAsync();
+            return additionTruck;
+        }
+
+        public async Task<bool> hasPendingOrder()
+        {
+            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "unassign").ToListAsync();
+            var count = delivery.Count;
+            if(count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async  Task<IEnumerable<Delivery>> getUnassignPendingDelivery(string transDate)
+        {
+            var tempDate = DateTime.Parse(transDate);
+            var delivery = await _context.Delivery.FromSql("usp_GetOtherDayOrders @p0", tempDate).ToListAsync();
+            return delivery;
         }
     }
 }

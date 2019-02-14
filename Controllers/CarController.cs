@@ -21,30 +21,35 @@ namespace RouteAPI.Controllers
             _context = context;
 
         }
-        [HttpPost("getcar")]
+        [HttpPost("gettruck")]
         public async Task<IActionResult> getAveilableCar([FromBody] Dto dto)
         {
-            var car = await _context.Car.Where(z => z.zoneId == dto.zoneId).ToListAsync();
+            var car = await _context.Truck.Where(z => z.zoneId == dto.zoneId).ToListAsync();
             return Ok(car);
         }
-
-        [HttpPost("newcar")]
-        public async Task<IActionResult> AddNewCar([FromBody] DriverForNewDto driverForNewDto)
+        [HttpPost("getadditionaltruck")]
+        public async Task<IActionResult> getAdditionaltruck([FromBody] Dto dto)
         {
-            string carCode = string.Empty;
-            string latestCarCode = await _repo.getLatestCarCode(driverForNewDto.zoneId);
-            if(string.IsNullOrEmpty(latestCarCode))
+            var additionalTruck = await _repo.getAdditionalTruck(dto.zoneId, 1);
+            return Ok(additionalTruck);
+        }
+        [HttpPost("newtruck")]
+        public async Task<IActionResult> AddNewTruck([FromBody] DriverForNewDto driverForNewDto)
+        {
+            string truckCode = string.Empty;
+            string latestTruckCode = await _repo.getLatestCarCode(driverForNewDto.zoneId);
+            if(string.IsNullOrEmpty(latestTruckCode))
             {
-                carCode = "car";
+                truckCode = "truck";
             }
             else
             {
-                int temp = int.Parse(latestCarCode.Substring(3));
-                carCode = "car" + (int.Parse(latestCarCode.Substring(3)) + 1).ToString();
+                int temp = int.Parse(latestTruckCode.Substring(3));
+                truckCode = "truck" + (int.Parse(latestTruckCode.Substring(3)) + 1).ToString();
             }
-            var driverToCreate = new Car
+            var driverToCreate = new Truck
             {
-                carCode = carCode,
+                truckCode = truckCode,
                 firstName = driverForNewDto.firstName,
                 lastName = driverForNewDto.lastName,
                 drivingLicenseNo = driverForNewDto.drivingLicenseNo,
@@ -56,7 +61,7 @@ namespace RouteAPI.Controllers
             
             return StatusCode(201, new { success = true });
         }
-        [HttpPost("searchcar")]
+        [HttpPost("searchtruck")]
         public async Task<IActionResult> SearchCar([FromBody] CarForSearchDto carForSearchDto)
         {
             var car = await _repo.searchCar(carForSearchDto.carCode);

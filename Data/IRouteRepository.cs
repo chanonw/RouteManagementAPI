@@ -15,20 +15,22 @@ namespace RouteAPI.Data
         Task<IEnumerable<Delivery>> getFirstTripDelivery(string transdate);
         Task<IEnumerable<Delivery>> getSecondTripDelivery(string transdate);
         Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode, string status);
-        Task<IEnumerable<Car>> getCar(string zondId);
-        Task<IEnumerable<Car>> getCarDesc(string zondId);
+        Task<IEnumerable<Truck>> getTrucks(string zondId);
+        Task<IEnumerable<AdditionalTruck>> getAdditionalTruck(string zondId, int additionalTruckNeed);
+
+        Task<IEnumerable<Truck>> getCarDesc(string zondId);
         Task<Delivery> getDelivery(string id);
         Task<Warehouse> getWarehouseGps(string warehoseId);
-        Task<Car> addNewCar(Car car);
+        Task<Truck> addNewCar(Truck car);
         Task<string> getLatestCarCode(string zondId);
 
-        Task<Car> searchCar(string carCode);
+        Task<Truck> searchCar(string carCode);
         Task<Customer> addNewCustomer(Customer customer);
         Task<string> GetLatestCusCode();
         Task<bool> CarExists(string carCode);
         Task<bool> getPersonalLeaveStatus(string carCode);
-        Task<Car> updatePersonalLeaveStatus(string carCode);
-        Task<Car> updateSickLeaveStatus(string carCode);
+        Task<Truck> updatePersonalLeaveStatus(string carCode);
+        Task<Truck> updateSickLeaveStatus(string carCode);
         Task<bool> saveAll();
         Task<Delivery> getCustomerDelivery(string cusCode, string transdate);
 
@@ -38,5 +40,9 @@ namespace RouteAPI.Data
         Task<Delivery> updateDeliveryStatus(string deliveryId);
         Task<Delivery> updateDeliveryStatus(string deliveryId, string reason);
         Task<Warehouse> addNewWarehouse(Warehouse warehouse);
+        Task<bool> hasPendingOrder();
+        Task<IEnumerable<Delivery>> getUnassignPendingDelivery(string transdate);
+
+
     }
 }

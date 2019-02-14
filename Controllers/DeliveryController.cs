@@ -18,6 +18,7 @@ namespace RouteAPI.Controllers
         public List<Route> finalRoute = new List<Route>();
         private List<Route2> solution;
         private List<Saving> savings = new List<Saving>();
+        private List<DeliveryOrder> deliveryOrders = new List<DeliveryOrder>();
         private List<Route2> joined = new List<Route2>();
         public DeliveryController(IRouteRepository repo)
         {
@@ -113,113 +114,321 @@ namespace RouteAPI.Controllers
             }
             return Ok(new { success = "true" });
         }
-        [HttpPost("auto")]
-        public async Task<IActionResult> autoJobRoute([FromBody]Dto dto)
+        [HttpPost("auto2")]
+        public async Task<IActionResult> auto([FromBody] Dto dto)
         {
             List<string> firstTripId = new List<string>();
             List<string> secondTripId = new List<string>();
-            //var delivery = await _repo.getDescUnassignDelivery(dto.transDate);
-            //int totalQuantity = calculateTotalQuantity(delivery);
-            //var firstRoundQuantityCri = 70;//Math.Floor(0.45 * totalQuantity);
-            //var secondRoundQuantity = 30;//Math.Floor(0.55 * totalQuantity)
-            //int cumQuan = 0;
+            var delivery = await _repo.getDescUnassignDelivery(dto.transDate);
+            int totalQuantity = calculateTotalQuantity(delivery);
+            var cars = await _repo.getTrucks(dto.zoneId);
+            var randomCars = cars.Randomize();
+            var availableCar = randomCars.Count();
+            int maximumOrder = availableCar * 2 * 80;
+            var quantity = Math.Round((decimal)totalQuantity / (availableCar * 2));
+            if (totalQuantity > maximumOrder)
+            {
+                firstTrip(randomCars, dto.transDate, quantity);
+                secondTrip(randomCars, dto.transDate, quantity);
+            }
+            else
+            {
+                if (quantity < 40)
+                {
+                    return Ok(new { success = true, manual = true, delivery = delivery });
+                }
+                else
+                {
+                    firstTrip(randomCars, dto.transDate, quantity);
+                    secondTrip(randomCars, dto.transDate, quantity);
+                }
+            }
+            return Ok(new { success = false });
+        }
+
+
+        private async void firstTrip(IEnumerable<Truck> cars, string transdate, decimal quantity)
+        {
+            List<string> firstTripId = new List<string>();
             int cu = 0;
-            // foreach (var item in delivery)
-            // {
-            //     cumQuan = cumQuan + item.quantity;
-            //     if (cumQuan <= firstRoundQuantityCri)
-            //     {
-            //         firstTripId.Add(item.deliveryId);
-            //     }
-            //     else
-            //     {
-            //         secondTripId.Add(item.deliveryId);
-            //     }
-            // }
-            // foreach (var deliveryId in firstTripId)
-            // {
-            //     await updateDeliveryFirstTrip(deliveryId);
-            // }
-            // foreach (var deliveryId in secondTripId)
-            // {
-            //     await updateDeliverySecondTrip(deliveryId);
-            // }
-            var firstTripDelivery = await _repo.getFirstTripDelivery(dto.transDate);
-            var secondTripDelivery = await _repo.getSecondTripDelivery(dto.transDate);
-            var accualFirstTripQuantity = calculateTotalQuantity(firstTripDelivery);
-            var accualSecondTripQuantity = calculateTotalQuantity(secondTripDelivery);
-            var cars = await _repo.getCar(dto.zoneId);
-            var aveilableCar = cars.Count();
-            var firstTripCarQuantity = accualFirstTripQuantity / aveilableCar;
-            var secondTripCarQuantity = accualSecondTripQuantity / aveilableCar;
-            if (firstTripCarQuantity > 40)
+            int carQauntity = 0;
+            if (quantity < 80)
             {
-                if (firstTripCarQuantity < 80)
+                foreach (var car in cars)
                 {
-                    foreach (var item in firstTripDelivery)
+                    if (await _repo.hasPendingOrder())
                     {
-                        foreach (var car in cars)
+                        var pendingOrder = await _repo.getUnassignPendingDelivery(transdate);
+                        var sortedPendingOrder = findDistanceAllCombi(pendingOrder);
+                        foreach (var delivery in sortedPendingOrder)
                         {
-                            cu = cu + item.quantity;
-                            if (cu <= firstTripCarQuantity)
+                            cu = cu + delivery.quantity;
+                            if (cu <= quantity)
                             {
-                                if (item.carCode == null)
-                                {
-                                    await updateResult(car.carCode, item.deliveryId);
-                                }
-
+                                firstTripId.Add(delivery.deliveryId);
+                                carQauntity = carQauntity + delivery.quantity;
                             }
                             else
                             {
-                                cu = 0;
+                                var gap = quantity - carQauntity;
+                                if (gap < 4)
+                                {
+                                    cu = cu - delivery.quantity;
+                                }
+                                else
+                                {
+                                    cu = 0;
+                                    carQauntity = 0;
+                                    //update db
+                                    foreach (var deliveryId in firstTripId)
+                                    {
+                                        await updateResult(car.truckCode, deliveryId);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (await _repo.hasPendingOrder())
+                        {
+                            var pendingOrder = await _repo.getUnassignPendingDelivery(transdate);
+                            var sortedPendingOrder = findDistanceAllCombi(pendingOrder);
+                            foreach (var delivery in sortedPendingOrder)
+                            {
+                                cu = cu + delivery.quantity;
+                                if (cu <= quantity)
+                                {
+                                    firstTripId.Add(delivery.deliveryId);
+                                    carQauntity = carQauntity + delivery.quantity;
+                                }
+                                else
+                                {
+                                    var gap = quantity - carQauntity;
+                                    if (gap < 4)
+                                    {
+                                        cu = cu - delivery.quantity;
+                                    }
+                                    else
+                                    {
+                                        cu = 0;
+                                        carQauntity = 0;
+                                        //update db
+                                        foreach (var deliveryId in firstTripId)
+                                        {
+                                            await updateResult(car.truckCode, deliveryId);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var deliveries = await _repo.getDescUnassignDelivery(transdate);
+                            var sortedOrder = findDistanceAllCombi(deliveries);
+                            foreach (var delivery in sortedOrder)
+                            {
+                                cu = cu + delivery.quantity;
+                                if (cu <= quantity)
+                                {
+                                    firstTripId.Add(delivery.deliveryId);
+                                    carQauntity = carQauntity + delivery.quantity;
+                                }
+                                else
+                                {
+                                    var gap = quantity - carQauntity;
+                                    if (gap < 4)
+                                    {
+                                        cu = cu - delivery.quantity;
+                                    }
+                                    else
+                                    {
+                                        cu = 0;
+                                        carQauntity = 0;
+                                        //update db
+                                        foreach (var deliveryId in firstTripId)
+                                        {
+                                            await updateResult(car.truckCode, deliveryId);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-                else
-                {
-                    return Ok(new { success = false, message = "จำนวนรถรอบเช้าไม่เพียงพอ" });
-                }
             }
             else
             {
-                return Ok(new { success = true, manual = true });
-            }
-            cars = await _repo.getCarDesc(dto.zoneId);
-            if (secondTripCarQuantity > 40)
-            {
-                if (secondTripCarQuantity < 80)
+                string zoneId = "EF070666-88E9-42C9-96D5-FD2E59E50791";
+                int noTruckNeed = (int)Math.Round((quantity / 160), MidpointRounding.AwayFromZero);
+                var availabletruck = await _repo.getAdditionalTruck(zoneId, noTruckNeed);
+                var randomTruck = availabletruck.Randomize();
+                foreach (var truck in randomTruck)
                 {
-                    foreach (var item in secondTripDelivery)
+                    if (await _repo.hasPendingOrder())
                     {
-                        foreach (var car in cars)
+                        var pendingOrder = await _repo.getUnassignPendingDelivery(transdate);
+                        var sortedPendingOrder = findDistanceAllCombi(pendingOrder);
+                        foreach (var delivery in sortedPendingOrder)
                         {
-                            cu = cu + item.quantity;
-                            if (cu <= firstTripCarQuantity)
+                            cu = cu + delivery.quantity;
+                            if (cu <= quantity)
                             {
-                                if (item.carCode == null)
-                                {
-                                    await updateResult(car.carCode, item.deliveryId);
-                                }
-
+                                firstTripId.Add(delivery.deliveryId);
+                                carQauntity = carQauntity + delivery.quantity;
                             }
                             else
                             {
-                                cu = 0;
+                                var gap = quantity - carQauntity;
+                                if (gap < 4)
+                                {
+                                    cu = cu - delivery.quantity;
+                                }
+                                else
+                                {
+                                    cu = 0;
+                                    carQauntity = 0;
+                                    //update db
+                                    foreach (var deliveryId in firstTripId)
+                                    {
+                                        await updateResult(truck.truckCode, deliveryId);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var deliveries = await _repo.getDescUnassignDelivery(transdate);
+                        var sortedOrder = findDistanceAllCombi(deliveries);
+                        foreach (var delivery in sortedOrder)
+                        {
+                            cu = cu + delivery.quantity;
+                            if (cu <= quantity)
+                            {
+                                firstTripId.Add(delivery.deliveryId);
+                                carQauntity = carQauntity + delivery.quantity;
+                            }
+                            else
+                            {
+                                var gap = quantity - carQauntity;
+                                if (gap < 4)
+                                {
+                                    cu = cu - delivery.quantity;
+                                }
+                                else
+                                {
+                                    cu = 0;
+                                    carQauntity = 0;
+                                    //update db
+                                    foreach (var deliveryId in firstTripId)
+                                    {
+                                        await updateResult(truck.truckCode, deliveryId);
+                                    }
+                                }
                             }
                         }
                     }
                 }
-                else
+            }
+        }
+        private async void secondTrip(IEnumerable<Truck> cars, string transdate, decimal quantity)
+        {
+            List<string> secondTripId = new List<string>();
+            int cu = 0;
+            int carQauntity = 0;
+            if (quantity < 80)
+            {
+                foreach (var car in cars)
                 {
-                    return Ok(new { success = false, message = "จำนวนรถรอบบ่ายไม่เพียงพอ" });
+                    var deliveries = await _repo.getDescUnassignDelivery(transdate);
+                    var sortedOrder = findDistanceAllCombi(deliveries);
+                    foreach (var delivery in sortedOrder)
+                    {
+                        cu = cu + delivery.quantity;
+                        if (cu <= quantity)
+                        {
+                            secondTripId.Add(delivery.deliveryId);
+                            carQauntity = carQauntity + delivery.quantity;
+                        }
+                        else
+                        {
+                            var gap = quantity - carQauntity;
+                            if (gap < 4)
+                            {
+                                cu = cu - delivery.quantity;
+                            }
+                            else
+                            {
+                                cu = 0;
+                                carQauntity = 0;
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateResult(car.truckCode, deliveryId);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                return Ok(new { success = true, manual = true });
+                //ใช้รถเสริม
+                string zoneId = "EF070666-88E9-42C9-96D5-FD2E59E50791";
+                int noTruckNeed = (int)Math.Round((quantity / 160), MidpointRounding.AwayFromZero);
+                var availabletruck = await _repo.getAdditionalTruck(zoneId, noTruckNeed);
+                var randomTruck = availabletruck.Randomize();
+                foreach (var truck in randomTruck)
+                {
+                    var deliveries = await _repo.getDescUnassignDelivery(transdate);
+                    var sortedOrder = findDistanceAllCombi(deliveries);
+                    foreach (var delivery in sortedOrder)
+                    {
+                        cu = cu + delivery.quantity;
+                        if (cu <= quantity)
+                        {
+                            secondTripId.Add(delivery.deliveryId);
+                            carQauntity = carQauntity + delivery.quantity;
+                        }
+                        else
+                        {
+                            var gap = quantity - carQauntity;
+                            if (gap < 4)
+                            {
+                                cu = cu - delivery.quantity;
+                            }
+                            else
+                            {
+                                cu = 0;
+                                carQauntity = 0;
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateResult(truck.truckCode, deliveryId);
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            return Ok(new { success = true });
+        }
+        private List<DeliveryOrder> findDistanceAllCombi(IEnumerable<Delivery> delivery)
+        {
+            List<Delivery> order = delivery.ToList();
+            deliveryOrders.Add(new DeliveryOrder(order[0].deliveryId, 0, order[0].quantity));
+            for (int j = 1; j < order.Count; j++)
+            {
+                string tmpIGPS = order[0].Customer.gps;
+                string[] iGPS = tmpIGPS.Split(",");
+                string tmpJGPS = order[j].Customer.gps;
+                string[] jGPS = tmpJGPS.Split(",");
+                double Cij = DistanceMetrix.getDistanceMetrixInKM(Double.Parse(iGPS[0]),
+                            Double.Parse(iGPS[1]), Double.Parse(jGPS[0]), Double.Parse(jGPS[1]));
+                deliveryOrders.Add(new DeliveryOrder(order[j].deliveryId, Cij, order[j].quantity));
+            }
+            List<DeliveryOrder> sortedOrder = deliveryOrders.OrderBy(d => d.distanceToRefPoint).ToList();
+            return sortedOrder;
         }
         [HttpGet("Route")]
         public async Task<IActionResult> Route()
@@ -227,10 +436,10 @@ namespace RouteAPI.Controllers
             string transDate = "2018-11-17";
             string zoneId = "EF070666-88E9-42C9-96D5-FD2E59E50791";
             //string warehouseGPS = "13.698936,100.487154";
-            var cars = await _repo.getCar(zoneId);
+            var cars = await _repo.getTrucks(zoneId);
             foreach (var item in cars)
             {
-                var deliveries = await _repo.getCarDelivery(transDate, item.carCode, "รอส่ง");
+                var deliveries = await _repo.getCarDelivery(transDate, item.truckCode, "รอส่ง");
                 if (deliveries != null)
                 {
                     CalSaving(deliveries.ToList());
