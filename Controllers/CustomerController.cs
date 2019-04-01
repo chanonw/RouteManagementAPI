@@ -37,7 +37,7 @@ namespace RouteAPI.Controllers
                 subDistrict = customerForNewDto.subDistrict,
                 district = customerForNewDto.district,
                 city = customerForNewDto.city,
-                portalCode = customerForNewDto.postalCode
+                postalCode = customerForNewDto.postalCode
             };
             var createCustomer = await _repo.addNewCustomer(customerForCreate);
             return StatusCode(201, new { success = true });

@@ -34,7 +34,7 @@ namespace RouteAPI.Data
         public async Task<IEnumerable<Delivery>> getWaitToSendDelivery(string transdate, string carcode)
         {
             var tempDate = DateTime.Parse(transdate);
-            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "รอส่ง" && d.transDate == tempDate && d.carCode == carcode).ToListAsync();
+            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "รอส่ง" && d.transDate == tempDate && d.truckCode == carcode).ToListAsync();
             return delivery;
         }
 
@@ -54,7 +54,7 @@ namespace RouteAPI.Data
 
             var delivery = await _context.Delivery.Include(c => c.Customer)
                 .Where(d => d.status == "unassign" && d.transDate == tempDate && d.trip == null)
-                .OrderByDescending(d => d.quantity)
+                .OrderBy(d => d.Customer.distanceToWh)
                 .ToListAsync();
             return delivery;
         }
@@ -97,12 +97,12 @@ namespace RouteAPI.Data
             return car;
         }
 
-        public async Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode, string status)
+        public async Task<IEnumerable<Delivery>> getCarDelivery(string truckCode, string status, string trip)
         {
-            var tempDate = DateTime.Parse(transdate);
+            //var tempDate = DateTime.Parse(transdate);
             var delivery = await _context.Delivery
                 .Include(c => c.Customer)
-                .Where(d => d.status == status && d.transDate == tempDate && d.carCode == carCode)
+                .Where(d => d.status == status && d.truckCode == truckCode && d.trip == trip)
                 .ToListAsync();
             return delivery;
         }
@@ -130,8 +130,8 @@ namespace RouteAPI.Data
 
         public async Task<string> getLatestCarCode(string zondId)
         {
-           string truckCode = await _context.Truck.Where(z => z.zoneId == zondId).MaxAsync(c => c.truckCode);
-           return truckCode;
+            string truckCode = await _context.Truck.Where(z => z.zoneId == zondId).MaxAsync(c => c.truckCode);
+            return truckCode;
         }
 
         public async Task<Truck> searchCar(string truckCode)
@@ -156,7 +156,7 @@ namespace RouteAPI.Data
         public async Task<bool> getPersonalLeaveStatus(string truckCode)
         {
             var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
-            if(car.personalLeave == true)
+            if (car.personalLeave == true)
             {
                 return true;
             }
@@ -166,7 +166,7 @@ namespace RouteAPI.Data
         public async Task<Truck> updatePersonalLeaveStatus(string truckCode)
         {
             var car = await _context.Truck.FirstOrDefaultAsync(c => c.truckCode == truckCode);
-            if(car.personalLeave == false)
+            if (car.personalLeave == false)
             {
                 car.personalLeave = true;
                 car.status = "ลากิจ";
@@ -259,26 +259,48 @@ namespace RouteAPI.Data
         {
             //var paramZoneId = new SqlParameter("@zoneId", zondId);
             //var paramAdditionalTruckNeed = new SqlParameter("@numberOfAddintonalCarNeed", additionalTruckNeed);
-            var additionTruck = await _context.AdditionalTruck.FromSql("usp_GetAdditionalTruck @p0, @p1", 
+            var additionTruck = await _context.AdditionalTruck.FromSql("usp_GetAdditionalTruck @p0, @p1",
                additionalTruckNeed, zondId).ToListAsync();
             return additionTruck;
         }
 
         public async Task<bool> hasPendingOrder()
         {
-            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "unassign").ToListAsync();
+            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "pending").ToListAsync();
             var count = delivery.Count;
-            if(count > 0)
+            if (count > 0)
             {
                 return true;
             }
             return false;
         }
 
-        public async  Task<IEnumerable<Delivery>> getUnassignPendingDelivery(string transDate)
+        public async Task<IEnumerable<Delivery>> getUnassignPendingDelivery(string transDate)
         {
             var tempDate = DateTime.Parse(transDate);
-            var delivery = await _context.Delivery.FromSql("usp_GetOtherDayOrders @p0", tempDate).ToListAsync();
+            //var delivery = await _context.Delivery.FromSql("usp_GetOtherDayOrders @p0", tempDate)
+                //.ToListAsync();
+            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "pending")
+                .Union(_context.Delivery.Include(c => c.Customer)
+                    .Where(d => d.status == "unassign" && d.transDate == tempDate))
+                    .OrderBy(d => d.transDate)
+                    .ThenBy(d => d.Customer.distanceToWh)                    
+                    .ToListAsync();
+            return delivery;
+        }
+        
+        public async Task<Delivery> updateDelivery(string deliveryId, string truckCode, string trip)
+        {
+
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
+            if (delivery == null)
+            {
+                return null;
+            }
+            delivery.status = "พร้อมส่ง";
+            delivery.truckCode = truckCode;
+            delivery.trip = trip;
+            await _context.SaveChangesAsync();
             return delivery;
         }
     }

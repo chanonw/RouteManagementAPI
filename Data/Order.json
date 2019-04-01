@@ -1,0 +1,386 @@
+[
+  {
+    "cusCode": "0001",
+    "quantity": 18,
+    "status": "pending",
+    "transDate": "2019-03-23"
+  },
+  {
+    "cusCode": "0002",
+    "quantity": 11,
+    "status": "pending",
+    "transDate": "2019-03-23"
+  },
+  {
+    "cusCode": "0003",
+    "quantity": 7,
+    "status": "pending",
+    "transDate": "2019-03-23"
+  },
+  {
+    "cusCode": "0004",
+    "quantity": 17,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0005",
+    "quantity": 17,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0006",
+    "quantity": 17,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0007",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0008",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0009",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0010",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0011",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0012",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0013",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0014",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0015",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0016",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0017",
+    "quantity": 15,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0018",
+    "quantity": 14,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0019",
+    "quantity": 14,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0020",
+    "quantity": 14,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0021",
+    "quantity": 14,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0022",
+    "quantity": 13,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0023",
+    "quantity": 13,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0024",
+    "quantity": 13,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0025",
+    "quantity": 13,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0026",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0027",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0028",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0029",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0030",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0031",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0032",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0033",
+    "quantity": 12,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0034",
+    "quantity": 11,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0035",
+    "quantity": 11,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0036",
+    "quantity": 11,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0037",
+    "quantity": 11,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0038",
+    "quantity": 11,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0039",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0040",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0041",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0042",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0043",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0044",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0045",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0046",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0047",
+    "quantity": 10,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0048",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0049",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0050",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0051",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0052",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0053",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0054",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0055",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0056",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0057",
+    "quantity": 9,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0058",
+    "quantity": 8,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0059",
+    "quantity": 8,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0060",
+    "quantity": 8,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0061",
+    "quantity": 8,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0062",
+    "quantity": 7,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0063",
+    "quantity": 6,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  },
+  {
+    "cusCode": "0064",
+    "quantity": 6,
+    "status": "unassign",
+    "transDate": "2019-03-24"
+  }
+]

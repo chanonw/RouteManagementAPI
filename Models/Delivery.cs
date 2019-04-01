@@ -15,9 +15,10 @@ namespace RouteAPI.Models
         [Column(TypeName = "NVARCHAR(20)")]
         public string status { get; set; }
         // public Car Car {get; set;}
-         public Customer Customer {get; set;}
+        public Customer Customer {get; set;}
+        //public string gps { get; set; }
         public string cusCode { get; set; }
-        public string carCode {get; set;}
+        public string truckCode {get; set;}
         public string deliveryOrder {get; set;}
         public string trip { get; set; }
         public string reason { get; set; }

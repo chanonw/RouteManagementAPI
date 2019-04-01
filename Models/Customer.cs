@@ -36,7 +36,7 @@ namespace RouteAPI.Models
         [Column(TypeName = "NVARCHAR(50)")]
         public string city { get; set; }
         [Column(TypeName = "NVARCHAR(5)")]
-        public string portalCode { get; set; }
+        public string postalCode { get; set; }
         [Column(TypeName = "NVARCHAR(10)")]
         public string day { get; set; }
         public int depBottle { get; set; }
@@ -47,6 +47,7 @@ namespace RouteAPI.Models
         [ForeignKey("Zone")]
         [Column(TypeName = "NVARCHAR(50)")]
         public string zoneId { get; set; }
+        public double distanceToWh { get; set; }
         //public virtual Zone zone { get; set; }
         //public ICollection<Delivery> deliveries { get; set; }
     }

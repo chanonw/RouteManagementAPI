@@ -14,7 +14,7 @@ namespace RouteAPI.Data
         Task<IEnumerable<Delivery>> getDescUnassignDelivery(string transdate);
         Task<IEnumerable<Delivery>> getFirstTripDelivery(string transdate);
         Task<IEnumerable<Delivery>> getSecondTripDelivery(string transdate);
-        Task<IEnumerable<Delivery>> getCarDelivery(string transdate, string carCode, string status);
+        Task<IEnumerable<Delivery>> getCarDelivery(string truckCode, string status, string trip);
         Task<IEnumerable<Truck>> getTrucks(string zondId);
         Task<IEnumerable<AdditionalTruck>> getAdditionalTruck(string zondId, int additionalTruckNeed);
 
@@ -42,7 +42,6 @@ namespace RouteAPI.Data
         Task<Warehouse> addNewWarehouse(Warehouse warehouse);
         Task<bool> hasPendingOrder();
         Task<IEnumerable<Delivery>> getUnassignPendingDelivery(string transdate);
-
-
+        Task<Delivery> updateDelivery(string deliveryId, string truckCode, string trip);
     }
 }
