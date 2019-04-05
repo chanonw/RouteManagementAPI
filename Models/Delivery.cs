@@ -19,7 +19,7 @@ namespace RouteAPI.Models
         //public string gps { get; set; }
         public string cusCode { get; set; }
         public string truckCode {get; set;}
-        public string deliveryOrder {get; set;}
+        //public string deliveryOrder {get; set;}
         public string trip { get; set; }
         public string reason { get; set; }
     }

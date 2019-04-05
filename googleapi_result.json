@@ -1,0 +1,2082 @@
+{
+    "routes": [
+        {
+            "summary": "ถนน สาทรเหนือ",
+            "legs": [
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>northwest</b> toward <b>ถนน เจริญนคร</b><div style=\"font-size:0.9em\">Restricted usage road</div>",
+                            "distance": {
+                                "value": 12,
+                                "text": "12 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 4,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.6988263,
+                                "lng": 100.4870317,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.6988813,
+                                "lng": 100.4869343,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "uprrA}jidRA@ABEL"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน เจริญนคร</b>",
+                            "distance": {
+                                "value": 299,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 42,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.6988813,
+                                "lng": 100.4869343,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.696282,
+                                "lng": 100.4864301,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "_qrrAijidR|Bj@D@h@Nj@N^J^LRBH@t@Af@CNAV?n@AN?H?"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>เจริญนคร 65</b>",
+                            "distance": {
+                                "value": 7,
+                                "text": "7 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 2,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.696282,
+                                "lng": 100.4864301,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.6962635,
+                                "lng": 100.4864907,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "w`rrAegidRBK"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b>",
+                            "distance": {
+                                "value": 282,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 40,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.6962635,
+                                "lng": 100.4864907,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.6962866,
+                                "lng": 100.4863154,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "s`rrAqgidRh@A^Ar@APAhAC@?B?F?@@@@?@@@?@?B?B?@?@ABCBC@KBC?]BgCLW?I?EAKE"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Slight <b>left</b> onto <b>ถนน เจริญนคร</b>",
+                            "distance": {
+                                "value": 747,
+                                "text": "0.7 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 85,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.6962866,
+                                "lng": 100.4863154,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.702665,
+                                "lng": 100.4882571,
+                                "address": null
+                            },
+                            "maneuver": "turn-slight-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "y`rrAofidRQBQ@a@?K@K?_@@a@?_@?A?[EYGME{@Qy@UcCo@OEs@UcA[OCWGYGEAs@SkASw@Y]Im@Oo@QQE}Bq@g@O_@M]O"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at <b>แยก บุคคโล</b> onto <b>ถนน มไหสวรรย์</b>",
+                            "distance": {
+                                "value": 364,
+                                "text": "0.4 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 68,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.702665,
+                                "lng": 100.4882571,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7045958,
+                                "lng": 100.4856926,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "shsrAsridRYBQBQBKDQDw@zAGNm@jA}@dB]n@]p@_@r@_@t@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> at <b>แยก มไหสวรรย์</b> onto <b>ถนน สมเด็จพระเจ้าตากสิน</b>",
+                            "distance": {
+                                "value": 1921,
+                                "text": "1.9 km"
+                            },
+                            "duration": {
+                                "text": "4 mins",
+                                "value": 250,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7045958,
+                                "lng": 100.4856926,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7209033,
+                                "lng": 100.4911561,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "wtsrAqbidRQZGCEAAAICA?ECYGEAQEQEYI[Go@QYIWGKCa@Ic@KWEWGMCA?A?EAAAA?i@KWGC?QEYG[GOEICEAA?GCSEA?_@K_@Ko@Os@Q[IQEiAYIC}Ac@y@UICQEMCGCGAUGOEQG_Du@[ISEq@MKEMCKC[Iq@Oy@SSGsA[m@QYG]I_@ICAkBc@YGe@MMEm@SaB_@aBa@s@OWGYGs@QMEYG}Aa@w@Q]K]IgAYgA[SEICKC[Ga@IQEa@I]I]I]IOEOEYIC?UI[Ig@QCAKC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> at <b>แยกตากสิน</b> onto <b>ถนน กรุงธนบุรี</b>",
+                            "distance": {
+                                "value": 445,
+                                "text": "0.4 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 66,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7209033,
+                                "lng": 100.4911561,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7213506,
+                                "lng": 100.4951692,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "szvrAwdjdRKCKCCM?MA]Iq@MaBASImACU?EAKASCa@EsBAy@?M?}@Ao@?UAkA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Take the ramp on the <b>right</b> onto <b>ถนน กรุงธนบุรี</b>",
+                            "distance": {
+                                "value": 1950,
+                                "text": "2.0 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 142,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7213506,
+                                "lng": 100.4951692,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7192171,
+                                "lng": 100.5129883,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "m}vrAy}jdRJo@?k@@U@i@?E@U@KB[FO@eB@W@kAByCD_DDcD?{@BeE?KA{@@wBBuD?iA@[@WA}@@I?u@?]TeEH_BDi@Dk@D]JcAD_@nAeI@c@@GDU?AD[|AeJHk@Fa@dAkHL}@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Continue onto <b>ถนน สาทรเหนือ</b><div style=\"font-size:0.9em\">Pass by Joy Kindergarten (on the left in 1.7&nbsp;km)</div>",
+                            "distance": {
+                                "value": 3526,
+                                "text": "3.5 km"
+                            },
+                            "duration": {
+                                "text": "11 mins",
+                                "value": 655,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7192171,
+                                "lng": 100.5129883,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7262201,
+                                "lng": 100.5442249,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "cpvrAemndRBQBQJq@V_B^}BV}ADQBOFYp@oDTiAJi@@[BU?W?[CWG_@GYMs@Me@YuACMCKMm@AGEUAAOu@EYCKGYEWEQG]Kk@Kc@Ic@Kg@Ow@AEEYS_AESG_@AGEOMu@AEKe@ESESCQEMES?COq@UkAI_@QaAWgA[aBQ}@Ga@G[UgAI]AG?CCIGWYuA?CMi@Y}AMm@Kk@UgAMi@EUGWYyAAICKKk@CMCMI_@EQMm@AAEUI_@EUGUCMEQCICMMs@Oq@CSESO{@Mq@i@}CKg@Me@Oe@Ow@Ow@Ow@COKc@Ga@AAE]?CESIm@Ic@IYEWGU?AEUESa@gBOk@G[?AIm@Mk@GWCMEYEWIa@G]Su@GWS}@GUeAcFMo@oAkGKi@QcAOaAGYG]EOKe@AOESEWIc@Sw@Wu@CGACACACCCCCAA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "At <b>แยก วิทยุ</b>, continue onto <b>ถนน วิทยุ</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "distance": {
+                                "value": 436,
+                                "text": "0.4 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 59,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7262201,
+                                "lng": 100.5442249,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7300036,
+                                "lng": 100.5451155,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{{wrAkptdRCCEEEEECECEEEEMEGEEAGCEAGCEAGAE?YEgBSsAOeAK}CY{C[o@G"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 9989,
+                        "text": "10.0 km"
+                    },
+                    "duration": {
+                        "text": "24 mins",
+                        "value": 1413,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.6988263,
+                        "lng": 100.4870317,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7300036,
+                        "lng": 100.5451155,
+                        "address": null
+                    },
+                    "start_address": "4 Charoen Nakhon 68 Alley, Khwaeng Dao Khanong, Khet Thon Buri, Krung Thep Maha Nakhon 10600, Thailand",
+                    "end_address": "139/4 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>north</b> on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 601,
+                                "text": "0.6 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 90,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7300036,
+                                "lng": 100.5451155,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7353235,
+                                "lng": 100.5460549,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "osxrA_vtdR{BSwEe@_BOoAKaDYmBWWEQEc@Gc@GQAo@GgAIWA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b>",
+                            "distance": {
+                                "value": 227,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 78,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7353235,
+                                "lng": 100.5460549,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7358998,
+                                "lng": 100.5442644,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "wtyrAy{tdREXCXk@rGCDABCBA@C?A@C?QCQCCR"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 828,
+                        "text": "0.8 km"
+                    },
+                    "duration": {
+                        "text": "3 mins",
+                        "value": 168,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7300036,
+                        "lng": 100.5451155,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7358998,
+                        "lng": 100.5442644,
+                        "address": null
+                    },
+                    "start_address": "139/4 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand",
+                    "end_address": "Sindhorn Building, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>west</b> toward <b>ซอย ต้นสน</b>",
+                            "distance": {
+                                "value": 20,
+                                "text": "20 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 6,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7358998,
+                                "lng": 100.5442644,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7359353,
+                                "lng": 100.5440838,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "kxyrAsptdRGb@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ซอย ต้นสน</b>",
+                            "distance": {
+                                "value": 190,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 52,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7359353,
+                                "lng": 100.5440838,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7342448,
+                                "lng": 100.543841,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "sxyrAootdRD?ZBzANt@Fz@HH?r@Fd@@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน สารสิน</b>",
+                            "distance": {
+                                "value": 219,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 55,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7342448,
+                                "lng": 100.543841,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7341507,
+                                "lng": 100.5458641,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "_nyrA_ntdRJiIDiA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> at <b>Sarasin Jct</b> onto <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 29,
+                                "text": "29 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 9,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7341507,
+                                "lng": 100.5458641,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7340084,
+                                "lng": 100.5459502,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "mmyrAsztdR@YNBHB"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>right</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 263,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 34,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7340084,
+                                "lng": 100.5459502,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7316862,
+                                "lng": 100.5455067,
+                                "address": null
+                            },
+                            "maneuver": "keep-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "qlyrAe{tdRNFhGp@tD\\"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>right</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 219,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 21,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7316862,
+                                "lng": 100.5455067,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7297434,
+                                "lng": 100.5451919,
+                                "address": null
+                            },
+                            "maneuver": "keep-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "a~xrAmxtdRvEb@lDZ"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>left</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 97,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 13,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7297434,
+                                "lng": 100.5451919,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "maneuver": "keep-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{qxrAmvtdR?G@GzCX"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> to stay on <b>ถนน วิทยุ</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "distance": {
+                                "value": 278,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 53,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7285668,
+                                "lng": 100.5476795,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "}lxrAcvtdRDo@B]Dk@Dk@XaDDi@TiC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 1315,
+                        "text": "1.3 km"
+                    },
+                    "duration": {
+                        "text": "4 mins",
+                        "value": 243,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7358998,
+                        "lng": 100.5442644,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7285668,
+                        "lng": 100.5476795,
+                        "address": null
+                    },
+                    "start_address": "Sindhorn Building, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand",
+                    "end_address": "141 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>west</b> on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 278,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 59,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7285668,
+                                "lng": 100.5476795,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "qjxrA_fudRUhCEh@Y`DEj@Ej@C\\En@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at the 1st cross street to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 296,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 87,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7263467,
+                                "lng": 100.5445819,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "}lxrAcvtdRzCZ|BTj@RTBTBn@HTBlAP@@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "At <b>แยก วิทยุ</b>, continue onto <b>ถนน สาทรใต้</b><div style=\"font-size:0.9em\">Pass by ธนาคาร LH Bank สาขา Q House Lumpini (on the left)</div>",
+                            "distance": {
+                                "value": 159,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 61,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7263467,
+                                "lng": 100.5445819,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7256523,
+                                "lng": 100.5434078,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "u|wrAsrtdR@?@@h@RHDFDDBDDB??@@@@??@@@@DDLFZFXLf@NbA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ซอย สาทร 1</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "distance": {
+                                "value": 171,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 45,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7256523,
+                                "lng": 100.5434078,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7242853,
+                                "lng": 100.5440482,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ixwrAiktdRREJCvBc@\\IJEDEFEDGJMHILIDCNG"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 904,
+                        "text": "0.9 km"
+                    },
+                    "duration": {
+                        "text": "4 mins",
+                        "value": 252,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7285668,
+                        "lng": 100.5476795,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7242853,
+                        "lng": 100.5440482,
+                        "address": null
+                    },
+                    "start_address": "141 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand",
+                    "end_address": "18, Sathon Rd., Thung Mahamek, Sathon , Bangkok, 10120, 10120, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>southeast</b> on <b>ซอย สาทร 1</b> toward <b>ซอย สาทร 1 แยก 2</b><div style=\"font-size:0.9em\">Pass by 123 Parking (on the left)</div>",
+                            "distance": {
+                                "value": 109,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 21,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7242853,
+                                "lng": 100.5440482,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7234099,
+                                "lng": 100.5445024,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "yowrAiotdR`@SNEb@QJCPIPIh@U"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ซอย สาทร 1 แยก 2</b>",
+                            "distance": {
+                                "value": 349,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 85,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7234099,
+                                "lng": 100.5445024,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7229312,
+                                "lng": 100.547439,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ijwrAcrtdRg@gCCOGg@Ge@AKAE?C?KAM?K?IFm@BM@KFMNYj@}@f@y@f@w@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ซอย งามดูพลี</b>",
+                            "distance": {
+                                "value": 209,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 62,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7229312,
+                                "lng": 100.547439,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7245153,
+                                "lng": 100.5484846,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "igwrAodudRQIQKcAm@qAw@EEa@S?AKEKGm@]IEKE"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน พระรามที่ 4</b>",
+                            "distance": {
+                                "value": 469,
+                                "text": "0.5 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 73,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7245153,
+                                "lng": 100.5484846,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7261177,
+                                "lng": 100.5444667,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gqwrA_kudRSl@Wv@CHCFCHw@lCSv@M^K^Oj@Sx@IVe@vAENWz@K`@CPGNIVEJGN"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> at <b>แยก วิทยุ</b> onto <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 984,
+                                "text": "1.0 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 139,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7261177,
+                                "lng": 100.5444667,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7346043,
+                                "lng": 100.5459515,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "g{wrA}qtdRIVIXCCEEEEECECEEEEMEGEEAGCEAGCEAGAE?YEgBSsAOeAK}CY{C[kD[wEe@_BOoAKaDYmBWWEQEc@Gc@GQA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> toward <b>ซอยร่วมฤดี</b>",
+                            "distance": {
+                                "value": 24,
+                                "text": "24 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 4,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7346043,
+                                "lng": 100.5459515,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.734751,
+                                "lng": 100.5461055,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gpyrAe{tdRAEAACCCAAAECCAAAAA?AAC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> onto <b>ซอยร่วมฤดี</b>",
+                            "distance": {
+                                "value": 725,
+                                "text": "0.7 km"
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 208,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.734751,
+                                "lng": 100.5461055,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7387036,
+                                "lng": 100.5490825,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "eqyrAe|tdRBm@FeAFkAXsF@MAE?C?CACEEEAgAKC?I?[Cc@CgDUcAK_AIQAKAYCWA_DUcCU"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> onto <b>ซอย ร่วมฤดี 2</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "distance": {
+                                "value": 464,
+                                "text": "0.5 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 98,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7387036,
+                                "lng": 100.5490825,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7359661,
+                                "lng": 100.5507703,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{izrAwnudR@m@Bk@JgE@S@EDCvEIbEChBC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 3333,
+                        "text": "3.3 km"
+                    },
+                    "duration": {
+                        "text": "12 mins",
+                        "value": 690,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7242853,
+                        "lng": 100.5440482,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7359661,
+                        "lng": 100.5507703,
+                        "address": null
+                    },
+                    "start_address": "18, Sathon Rd., Thung Mahamek, Sathon , Bangkok, 10120, 10120, Thailand",
+                    "end_address": "75/2 Soi Ruam Ruedi, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>north</b> on <b>ซอย ร่วมฤดี 2</b> toward <b>ซอยร่วมฤดี</b>",
+                            "distance": {
+                                "value": 464,
+                                "text": "0.5 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 119,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7359661,
+                                "lng": 100.5507703,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7387036,
+                                "lng": 100.5490825,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "yxyrAiyudRiBBcEBwEHEBADARKfECj@Al@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> onto <b>ซอยร่วมฤดี</b><div style=\"font-size:0.9em\">Pass by Novotel Bangkok Ploenchit Sukhumvit (on the left in 450&nbsp;m)</div>",
+                            "distance": {
+                                "value": 470,
+                                "text": "0.5 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 114,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7387036,
+                                "lng": 100.5490825,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7428514,
+                                "lng": 100.5498972,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{izrAwnudREAGAu@Ku@IOCOCUAIAeD_@i@GWCqBUAA}BW_@EKAa@EkAOC?AAC?EA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน เพลินจิต</b><div style=\"font-size:0.9em\">Pass by Krungsri Bank (on the left in 450&nbsp;m)</div>",
+                            "distance": {
+                                "value": 664,
+                                "text": "0.7 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 122,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7428514,
+                                "lng": 100.5498972,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7438743,
+                                "lng": 100.5438454,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "yc{rA{sudRANK~@Gl@ABGn@Gj@Cd@OjAOnAGh@?@A@AHAHGv@CPI`AAJIfAGr@SpBAJAJCTGn@CVE\\Iv@AJGx@ARCj@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at <b>แยก ขิดลม</b> onto <b>ถนน หลังสวน</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "distance": {
+                                "value": 974,
+                                "text": "1.0 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 126,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7438743,
+                                "lng": 100.5438454,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7352428,
+                                "lng": 100.5423492,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ej{rAantdRPBR@L@VDD?NBL@^DZBrCZL@t@F|@HP@b@Db@D`@Dr@HH?bALJ@`@DH@jAJp@FD@J@b@DZD\\Fh@D`@Bt@Hr@FL@@?@??@@?@?@?@?@@@?@?@?@?@@@?@?@?@??@@?@?@?@?@?j@Hd@DL?L@j@JXDXF@?@?@?@?@?@??@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@??@@?@?@?@?@?@?@?@??@@?@?@?@?ZBd@FZBZDj@D"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 2572,
+                        "text": "2.6 km"
+                    },
+                    "duration": {
+                        "text": "8 mins",
+                        "value": 481,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7359661,
+                        "lng": 100.5507703,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7352428,
+                        "lng": 100.5423492,
+                        "address": null
+                    },
+                    "start_address": "75/2 Soi Ruam Ruedi, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand",
+                    "end_address": "114 Sarasin Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>south</b> on <b>ถนน หลังสวน</b> toward <b>ถนน สารสิน</b>",
+                            "distance": {
+                                "value": 106,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 17,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7352428,
+                                "lng": 100.5423492,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7342985,
+                                "lng": 100.5422151,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gtyrAudtdRlAJlBL"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at <b>แยก หลังสวน</b> onto <b>ถนน สารสิน</b>",
+                            "distance": {
+                                "value": 395,
+                                "text": "0.4 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 77,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7342985,
+                                "lng": 100.5422151,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7341507,
+                                "lng": 100.5458641,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "knyrA{ctdRDiDDyCJiIDiA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at <b>Sarasin Jct</b> onto <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 51,
+                                "text": "51 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 11,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7341507,
+                                "lng": 100.5458641,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7346043,
+                                "lng": 100.5459515,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "mmyrAsztdRc@Gc@GQA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> toward <b>ซอยร่วมฤดี</b>",
+                            "distance": {
+                                "value": 24,
+                                "text": "24 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 4,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7346043,
+                                "lng": 100.5459515,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.734751,
+                                "lng": 100.5461055,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gpyrAe{tdRAEAACCCAAAECCAAAAA?AAC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> onto <b>ซอยร่วมฤดี</b><div style=\"font-size:0.9em\">Pass by Novotel Bangkok Ploenchit Sukhumvit (on the left in 1.2&nbsp;km)</div>",
+                            "distance": {
+                                "value": 1195,
+                                "text": "1.2 km"
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 321,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.734751,
+                                "lng": 100.5461055,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7428514,
+                                "lng": 100.5498972,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "eqyrAe|tdRBm@FeAFkAXsF@MAE?C?CACEEEAgAKC?I?[Cc@CgDUcAK_AIQAKAYCWA_DUcCUEAGAu@Ku@IOCOCUAIAeD_@i@GWCqBUAA}BW_@EKAa@EkAOC?AAC?EA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน เพลินจิต</b>",
+                            "distance": {
+                                "value": 254,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 47,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7428514,
+                                "lng": 100.5498972,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7432756,
+                                "lng": 100.5475889,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "yc{rA{sudRANK~@Gl@ABGn@Gj@Cd@OjAOnAGh@?@A@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> onto <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 618,
+                                "text": "0.6 km"
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 100,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7432756,
+                                "lng": 100.5475889,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7377966,
+                                "lng": 100.5466482,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "of{rAmeudRRBVD\\DJ@`@Db@Dd@B@@f@DnALB?jANf@FtAJRBN@j@HbAH~@Jp@FLBb@D`@DR@N@VBJ@j@DVB`@D`@BH@H@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b><div style=\"font-size:0.9em\">Restricted usage road</div><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "distance": {
+                                "value": 105,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 37,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7377966,
+                                "lng": 100.5466482,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7376357,
+                                "lng": 100.5476042,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gdzrAq_udRXoCDm@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 2748,
+                        "text": "2.7 km"
+                    },
+                    "duration": {
+                        "text": "10 mins",
+                        "value": 614,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7352428,
+                        "lng": 100.5423492,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.7376357,
+                        "lng": 100.5476042,
+                        "address": null
+                    },
+                    "start_address": "114 Sarasin Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand",
+                    "end_address": "L15 , Diethelm Tower Building , 93/1 , Wireless Road , Lum Phini , 10330 Pathum Wan, Bangkok, 10330, Thailand"
+                },
+                {
+                    "steps": [
+                        {
+                            "html_instructions": "Head <b>east</b><div style=\"font-size:0.9em\">Restricted usage road</div>",
+                            "distance": {
+                                "value": 47,
+                                "text": "47 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 15,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7376357,
+                                "lng": 100.5476042,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7375634,
+                                "lng": 100.5480332,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "gczrAoeudRNuA"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b>",
+                            "distance": {
+                                "value": 226,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 60,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7375634,
+                                "lng": 100.5480332,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7371841,
+                                "lng": 100.5465321,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "wbzrAehudR|BRYjCWjC"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b> at the 1st cross street onto <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 118,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 23,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7371841,
+                                "lng": 100.5465321,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7361337,
+                                "lng": 100.546366,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "k`zrAy~tdRL@nBPr@FJ@H@H?"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>left</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 241,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 51,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7361337,
+                                "lng": 100.546366,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7340084,
+                                "lng": 100.5459502,
+                                "address": null
+                            },
+                            "maneuver": "keep-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "yyyrAy}tdRH@jBTzARn@DP@`@DvAPNBHB"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>right</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 263,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 34,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7340084,
+                                "lng": 100.5459502,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7316862,
+                                "lng": 100.5455067,
+                                "address": null
+                            },
+                            "maneuver": "keep-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "qlyrAe{tdRNFhGp@tD\\"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>right</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 219,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 21,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7316862,
+                                "lng": 100.5455067,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7297434,
+                                "lng": 100.5451919,
+                                "address": null
+                            },
+                            "maneuver": "keep-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "a~xrAmxtdRvEb@lDZ"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>left</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 97,
+                                "text": "0.1 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 13,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7297434,
+                                "lng": 100.5451919,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "maneuver": "keep-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{qxrAmvtdR?G@GzCX"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Keep <b>left</b> to stay on <b>ถนน วิทยุ</b>",
+                            "distance": {
+                                "value": 296,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 79,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7289513,
+                                "lng": 100.545135,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7263467,
+                                "lng": 100.5445819,
+                                "address": null
+                            },
+                            "maneuver": "keep-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "}lxrAcvtdRzCZ|BTj@RTBTBn@HTBlAP@@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "At <b>แยก วิทยุ</b>, continue onto <b>ถนน สาทรใต้</b><div style=\"font-size:0.9em\">Pass by ธนาคาร LH Bank สาขา Q House Lumpini (on the left)</div>",
+                            "distance": {
+                                "value": 2938,
+                                "text": "2.9 km"
+                            },
+                            "duration": {
+                                "text": "9 mins",
+                                "value": 537,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7263467,
+                                "lng": 100.5445819,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7183473,
+                                "lng": 100.5188152,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "u|wrAsrtdR@?@@h@RHDFDDBDDB??@@@@??@@@@DDLFZFXLf@NbAVxADRH^TjAP~@@?Jd@BNJh@DXFR@FFTFRDPDTF\\BLDPDVDNLp@RtARrAH\\BLT~@n@hCVhALf@?DNn@DZH`@BF@HDPDRFXJf@FXF^RlANt@Jd@BNBNH^BNH^BLDTF\\Pz@Pz@Jb@Jd@Pt@Nv@TrA@D@DHb@DTBN\\`BXnABJDVDVDNFXH\\FV?BFZJn@BHx@tD^nBLp@@H@@R`AH\\h@dC?@b@tBJn@@@R`AFZBRDN@BP|@ThADLBLTnAVlAH`@ZzAF\\F^BHBJDVNp@@DLt@BF@FDVJd@FXDVBH@F@JNl@H^R~@\\fBHb@\\fB@LBLLr@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Continue straight to stay on <b>ถนนสาทรใต้</b>",
+                            "distance": {
+                                "value": 658,
+                                "text": "0.7 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 49,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7183473,
+                                "lng": 100.5188152,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7189835,
+                                "lng": 100.5129007,
+                                "address": null
+                            },
+                            "maneuver": "straight",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ujvrAsqodRBJ@JFZ^hCBJDXDXBVBV@V@VAXC\\qAtHG^CHCRKj@In@a@nCEZUtAABAJCP?@CR"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Continue onto <b>ถนน กรุงธนบุรี</b>",
+                            "distance": {
+                                "value": 557,
+                                "text": "0.6 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 32,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7189835,
+                                "lng": 100.5129007,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7202148,
+                                "lng": 100.5078981,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "snvrAslndRo@`Em@`EKj@yAdJG^?FCNEVUlAIr@"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Take the exit toward <b>Charoen Nakhon Road</b>",
+                            "distance": {
+                                "value": 342,
+                                "text": "0.3 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 33,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7202148,
+                                "lng": 100.5078981,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.719334,
+                                "lng": 100.5064836,
+                                "address": null
+                            },
+                            "maneuver": "ramp-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ivvrAkmmdRAd@AFGx@El@E\\MrB?LDTFNLNFDHHHDJBJ@L@L?NANCNGJGJIHOFQFU?AFS"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Continue onto <b>ถนน กรุงธนบุรี</b>",
+                            "distance": {
+                                "value": 187,
+                                "text": "0.2 km"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 36,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.719334,
+                                "lng": 100.5064836,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.7188603,
+                                "lng": 100.5081407,
+                                "address": null
+                            },
+                            "maneuver": "None",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "ypvrAodmdRDSBQJg@XyAHe@b@}B"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>right</b> onto <b>ถนน เจริญนคร</b>",
+                            "distance": {
+                                "value": 3339,
+                                "text": "3.3 km"
+                            },
+                            "duration": {
+                                "text": "7 mins",
+                                "value": 399,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.7188603,
+                                "lng": 100.5081407,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.6988813,
+                                "lng": 100.4869343,
+                                "address": null
+                            },
+                            "maneuver": "turn-right",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "{mvrA{nmdRBI@KHDHBRHFBFBPFn@Xr@ZJDVHDB~Aj@PHh@Pp@VRPNNRT^`@h@p@@@n@t@BDLNRP~@fAp@x@JL\\b@JJDFLN^f@b@d@TXHH@B~@hADDFFNPNPNNFHfArAZ\\Z^VXXXFLHLFNDN@BLVBHDNDNDLDLJZFTFVPj@BFBJNf@BFNh@FPBLJXHXBFBHJXJZFNFPHTFRNf@Lf@DHDTDVDRDNFTBNBDPd@Pd@DJVd@R^BDR^FNHLDFDHl@fAXj@BBDHBDDJXd@Vb@JPTf@BDj@lAR^R^DJDJNZBDDHFLJRFLBD\\r@FJHPJRd@dANXTd@x@bBBDFLZr@r@vAbAxBJNJJ`Ap@TPTPl@`@jAv@DBFDr@b@NLLHXRfAt@TRNNp@f@r@d@@@f@^FDd@Zn@^FB@?HDB@NF^N\\N\\J\\H\\LJDx@TbAXPDtAX`@L~@VzBh@F@\\JB@NDNDHBFBRHRF^J^J"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        },
+                        {
+                            "html_instructions": "Turn <b>left</b><div style=\"font-size:0.9em\">Restricted usage road</div><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "distance": {
+                                "value": 12,
+                                "text": "12 m"
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 21,
+                                "time_zone": null
+                            },
+                            "start_location": {
+                                "lat": 13.6988813,
+                                "lng": 100.4869343,
+                                "address": null
+                            },
+                            "end_location": {
+                                "lat": 13.6988263,
+                                "lng": 100.4870317,
+                                "address": null
+                            },
+                            "maneuver": "turn-left",
+                            "travel_mode": "Driving",
+                            "polyline": {
+                                "points": "_qrrAijidRDM@C@A"
+                            },
+                            "transit_details": null,
+                            "steps": null
+                        }
+                    ],
+                    "distance": {
+                        "value": 9540,
+                        "text": "9.5 km"
+                    },
+                    "duration": {
+                        "text": "23 mins",
+                        "value": 1403,
+                        "time_zone": null
+                    },
+                    "duration_in_traffic": null,
+                    "arrival_time": null,
+                    "departure_time": null,
+                    "start_location": {
+                        "lat": 13.7376357,
+                        "lng": 100.5476042,
+                        "address": null
+                    },
+                    "end_location": {
+                        "lat": 13.6988263,
+                        "lng": 100.4870317,
+                        "address": null
+                    },
+                    "start_address": "L15 , Diethelm Tower Building , 93/1 , Wireless Road , Lum Phini , 10330 Pathum Wan, Bangkok, 10330, Thailand",
+                    "end_address": "4 Charoen Nakhon 68 Alley, Khwaeng Dao Khanong, Khet Thon Buri, Krung Thep Maha Nakhon 10600, Thailand"
+                }
+            ],
+            "waypoint_order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "overview_polyline": {
+                "points": "uprrA}jidRCDEL|Bj@n@PjAZr@P~@?nAE~@AH?BKhACdACvACBD@JEJq@H_DLOA]As@@yABa@?u@MgG}AwC{@kBe@kASw@YkAYgFyA}@]k@F]HQDw@zAu@zA{AtCoBvDa@OcEcAmGqAqKiC{EqAeIoBmQiEoCs@uCq@sBg@oKmCcE}@uDeA[IKCCMAk@WsCKaBG{@K}ECoEJo@?k@B_AFcAFO@eBBcBNyOBeKB_GBs@?{Cj@{JPaBtAeJHcAbBaKdBwLj@uD`A}FzA}HDq@?s@Kw@UmAo@uCy@cEqA{GiBiJgCkM}@qEaEsSqBuJmA_Hy@kD_AiFc@_CSeA_AcE_@sBYaBw@iDkDuPu@iEeAkF_@eAKMu@i@w@U{Gu@eNqAiP{A{Dk@mD[WAEXo@lHKN[AQCCRGb@D?vBRpBP|@Fd@@JiIFcBXFNFhGp@lK`AlDZ?G@GzCXHmAJwA^kETiCUhC_@jEKvAIlAxGp@`AVdALdBVnAj@BDPp@T`ANbAREbCg@\\I^YTWRMdBs@xAm@k@wCOmACa@AYFw@DYVg@rAwBf@w@QIuAy@wA}@y@c@w@c@KESl@[`AGPeBdGsAtEm@~B_@bASp@IIWSa@S[KoC[g_@oDoGq@i@KgAOSGKIMIHyB`@sIGQ{AMkHi@wBQwDWcCU@m@NsFBY|EMlHGmHF}ELCXOrFAl@EA}@MkBSqFm@oKmAKCU|B}@lIg@tFo@zGYzCE~@d@Dz@J|Ef@pHp@hGl@hBTtDZN@B@D?F@JBF?`BNpBZP@R@d@Dd@BxBTxBPlBLDiDPcNDiAc@Gu@ICGOKGGj@oMAGKGqBOoIo@oAIcHk@MCkC]yN_BcD_@EAANK~@YlCk@jFPFvEd@zSrB~D\\^}DNuA|BRq@vG|BRrAJ`Gp@zC\\XJ~LnAdK~@@OvHt@|BTj@Rj@FdALpARlAl@DDVhAz@xEr@jDz@~Dv@~Dt@tEjBzHp@jDvAtH~@|Ez@zDh@vCzAvHv@xDhB`JhAfFvAjHvDfRv@~DvBtKdAxGRbBBn@Ev@}A~I{@~Fc@tCoEhY_@|BKxAI`AYlELd@TTRNVDz@CZOTYV}@bBaJxB|@jHnCvAxA~AnBnEhF|IlKtA`BXp@t@xBlAfE`AzC`@jAh@nBXpAj@`B`B|CzBbEvC|Fz@fBjCpF`BjDvBpEVZzCvBlCdB~B`Bd@b@dBlAvAbAbAh@r@XvBr@zCz@rHhBnBl@r@R^JDMBE"
+            },
+            "copyrights": "Map data ©2019 Google",
+            "warnings": [],
+            "fare": null,
+            "bounds": {
+                "northeast": {
+                    "lat": 13.7438743,
+                    "lng": 100.5507703,
+                    "address": null
+                },
+                "southwest": {
+                    "lat": 13.6950679,
+                    "lng": 100.4855508,
+                    "address": null
+                }
+            }
+        }
+    ],
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJozxcD4eY4jARts4-9IuzB04",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJ7S51xCaf4jARRvBo59009_o",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJw1R9wtie4jARwBaNAjnCyvA",
+            "types": [
+                "premise"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJ_4_-XSGf4jAR3TsIdh8UaSc",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJXybB5iSf4jAR-FfiMIzuiU0",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJu88duN-e4jARl_zoT89Xhrk",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJOx-pFNie4jARF3rsEP08G78",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJlwjSxN6e4jARPmjLw2r1XwU",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": 1,
+            "partial_match": null,
+            "place_id": "ChIJozxcD4eY4jARts4-9IuzB04",
+            "types": [
+                "street_address"
+            ]
+        }
+    ],
+    "rawJson": "{\n   \"geocoded_waypoints\" : [\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJozxcD4eY4jARts4-9IuzB04\",\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJ7S51xCaf4jARRvBo59009_o\",\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJw1R9wtie4jARwBaNAjnCyvA\",\n         \"types\" : [ \"premise\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJ_4_-XSGf4jAR3TsIdh8UaSc\",\n         \"types\" : [ \"establishment\", \"point_of_interest\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJXybB5iSf4jAR-FfiMIzuiU0\",\n         \"types\" : [ \"establishment\", \"point_of_interest\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJu88duN-e4jARl_zoT89Xhrk\",\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJOx-pFNie4jARF3rsEP08G78\",\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJlwjSxN6e4jARPmjLw2r1XwU\",\n         \"types\" : [ \"establishment\", \"point_of_interest\" ]\n      },\n      {\n         \"geocoder_status\" : \"OK\",\n         \"place_id\" : \"ChIJozxcD4eY4jARts4-9IuzB04\",\n         \"types\" : [ \"street_address\" ]\n      }\n   ],\n   \"routes\" : [\n      {\n         \"bounds\" : {\n            \"northeast\" : {\n               \"lat\" : 13.7438743,\n               \"lng\" : 100.5507703\n            },\n            \"southwest\" : {\n               \"lat\" : 13.6950679,\n               \"lng\" : 100.4855508\n            }\n         },\n         \"copyrights\" : \"Map data ©2019 Google\",\n         \"legs\" : [\n            {\n               \"distance\" : {\n                  \"text\" : \"10.0 km\",\n                  \"value\" : 9989\n               },\n               \"duration\" : {\n                  \"text\" : \"24 mins\",\n                  \"value\" : 1413\n               },\n               \"end_address\" : \"139/4 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7300036,\n                  \"lng\" : 100.5451155\n               },\n               \"start_address\" : \"4 Charoen Nakhon 68 Alley, Khwaeng Dao Khanong, Khet Thon Buri, Krung Thep Maha Nakhon 10600, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.6988263,\n                  \"lng\" : 100.4870317\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"12 m\",\n                        \"value\" : 12\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 4\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.6988813,\n                        \"lng\" : 100.4869343\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003enorthwest\\u003c/b\\u003e toward \\u003cb\\u003eถนน เจริญนคร\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eRestricted usage road\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"uprrA}jidRA@ABEL\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.6988263,\n                        \"lng\" : 100.4870317\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 299\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 42\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.696282,\n                        \"lng\" : 100.4864301\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน เจริญนคร\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"_qrrAijidR|Bj@D@h@Nj@N^J^LRBH@t@Af@CNAV?n@AN?H?\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.6988813,\n                        \"lng\" : 100.4869343\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"7 m\",\n                        \"value\" : 7\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 2\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.6962635,\n                        \"lng\" : 100.4864907\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eเจริญนคร 65\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"w`rrAegidRBK\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.696282,\n                        \"lng\" : 100.4864301\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 282\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 40\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.6962866,\n                        \"lng\" : 100.4863154\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"s`rrAqgidRh@A^Ar@APAhAC@?B?F?@@@@?@@@?@?B?B?@?@ABCBC@KBC?]BgCLW?I?EAKE\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.6962635,\n                        \"lng\" : 100.4864907\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.7 km\",\n                        \"value\" : 747\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 85\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.702665,\n                        \"lng\" : 100.4882571\n                     },\n                     \"html_instructions\" : \"Slight \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน เจริญนคร\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-slight-left\",\n                     \"polyline\" : {\n                        \"points\" : \"y`rrAofidRQBQ@a@?K@K?_@@a@?_@?A?[EYGME{@Qy@UcCo@OEs@UcA[OCWGYGEAs@SkASw@Y]Im@Oo@QQE}Bq@g@O_@M]O\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.6962866,\n                        \"lng\" : 100.4863154\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.4 km\",\n                        \"value\" : 364\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 68\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7045958,\n                        \"lng\" : 100.4856926\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at \\u003cb\\u003eแยก บุคคโล\\u003c/b\\u003e onto \\u003cb\\u003eถนน มไหสวรรย์\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"shsrAsridRYBQBQBKDQDw@zAGNm@jA}@dB]n@]p@_@r@_@t@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.702665,\n                        \"lng\" : 100.4882571\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"1.9 km\",\n                        \"value\" : 1921\n                     },\n                     \"duration\" : {\n                        \"text\" : \"4 mins\",\n                        \"value\" : 250\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7209033,\n                        \"lng\" : 100.4911561\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e at \\u003cb\\u003eแยก มไหสวรรย์\\u003c/b\\u003e onto \\u003cb\\u003eถนน สมเด็จพระเจ้าตากสิน\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"wtsrAqbidRQZGCEAAAICA?ECYGEAQEQEYI[Go@QYIWGKCa@Ic@KWEWGMCA?A?EAAAA?i@KWGC?QEYG[GOEICEAA?GCSEA?_@K_@Ko@Os@Q[IQEiAYIC}Ac@y@UICQEMCGCGAUGOEQG_Du@[ISEq@MKEMCKC[Iq@Oy@SSGsA[m@QYG]I_@ICAkBc@YGe@MMEm@SaB_@aBa@s@OWGYGs@QMEYG}Aa@w@Q]K]IgAYgA[SEICKC[Ga@IQEa@I]I]I]IOEOEYIC?UI[Ig@QCAKC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7045958,\n                        \"lng\" : 100.4856926\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.4 km\",\n                        \"value\" : 445\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 66\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7213506,\n                        \"lng\" : 100.4951692\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e at \\u003cb\\u003eแยกตากสิน\\u003c/b\\u003e onto \\u003cb\\u003eถนน กรุงธนบุรี\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"szvrAwdjdRKCKCCM?MA]Iq@MaBASImACU?EAKASCa@EsBAy@?M?}@Ao@?UAkA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7209033,\n                        \"lng\" : 100.4911561\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"2.0 km\",\n                        \"value\" : 1950\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 142\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7192171,\n                        \"lng\" : 100.5129883\n                     },\n                     \"html_instructions\" : \"Take the ramp on the \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eถนน กรุงธนบุรี\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"m}vrAy}jdRJo@?k@@U@i@?E@U@KB[FO@eB@W@kAByCD_DDcD?{@BeE?KA{@@wBBuD?iA@[@WA}@@I?u@?]TeEH_BDi@Dk@D]JcAD_@nAeI@c@@GDU?AD[|AeJHk@Fa@dAkHL}@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7213506,\n                        \"lng\" : 100.4951692\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"3.5 km\",\n                        \"value\" : 3526\n                     },\n                     \"duration\" : {\n                        \"text\" : \"11 mins\",\n                        \"value\" : 655\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7262201,\n                        \"lng\" : 100.5442249\n                     },\n                     \"html_instructions\" : \"Continue onto \\u003cb\\u003eถนน สาทรเหนือ\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by Joy Kindergarten (on the left in 1.7&nbsp;km)\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"cpvrAemndRBQBQJq@V_B^}BV}ADQBOFYp@oDTiAJi@@[BU?W?[CWG_@GYMs@Me@YuACMCKMm@AGEUAAOu@EYCKGYEWEQG]Kk@Kc@Ic@Kg@Ow@AEEYS_AESG_@AGEOMu@AEKe@ESESCQEMES?COq@UkAI_@QaAWgA[aBQ}@Ga@G[UgAI]AG?CCIGWYuA?CMi@Y}AMm@Kk@UgAMi@EUGWYyAAICKKk@CMCMI_@EQMm@AAEUI_@EUGUCMEQCICMMs@Oq@CSESO{@Mq@i@}CKg@Me@Oe@Ow@Ow@Ow@COKc@Ga@AAE]?CESIm@Ic@IYEWGU?AEUESa@gBOk@G[?AIm@Mk@GWCMEYEWIa@G]Su@GWS}@GUeAcFMo@oAkGKi@QcAOaAGYG]EOKe@AOESEWIc@Sw@Wu@CGACACACCCCCAA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7192171,\n                        \"lng\" : 100.5129883\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.4 km\",\n                        \"value\" : 436\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 59\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7300036,\n                        \"lng\" : 100.5451155\n                     },\n                     \"html_instructions\" : \"At \\u003cb\\u003eแยก วิทยุ\\u003c/b\\u003e, continue onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the right\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"{{wrAkptdRCCEEEEECECEEEEMEGEEAGCEAGCEAGAE?YEgBSsAOeAK}CY{C[o@G\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7262201,\n                        \"lng\" : 100.5442249\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"0.8 km\",\n                  \"value\" : 828\n               },\n               \"duration\" : {\n                  \"text\" : \"3 mins\",\n                  \"value\" : 168\n               },\n               \"end_address\" : \"Sindhorn Building, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7358998,\n                  \"lng\" : 100.5442644\n               },\n               \"start_address\" : \"139/4 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7300036,\n                  \"lng\" : 100.5451155\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.6 km\",\n                        \"value\" : 601\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 90\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7353235,\n                        \"lng\" : 100.5460549\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003enorth\\u003c/b\\u003e on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"osxrA_vtdR{BSwEe@_BOoAKaDYmBWWEQEc@Gc@GQAo@GgAIWA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7300036,\n                        \"lng\" : 100.5451155\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 227\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 78\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7358998,\n                        \"lng\" : 100.5442644\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"wtyrAy{tdREXCXk@rGCDABCBA@C?A@C?QCQCCR\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7353235,\n                        \"lng\" : 100.5460549\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"1.3 km\",\n                  \"value\" : 1315\n               },\n               \"duration\" : {\n                  \"text\" : \"4 mins\",\n                  \"value\" : 243\n               },\n               \"end_address\" : \"141 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7285668,\n                  \"lng\" : 100.5476795\n               },\n               \"start_address\" : \"Sindhorn Building, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7358998,\n                  \"lng\" : 100.5442644\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"20 m\",\n                        \"value\" : 20\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 6\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7359353,\n                        \"lng\" : 100.5440838\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003ewest\\u003c/b\\u003e toward \\u003cb\\u003eซอย ต้นสน\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"kxyrAsptdRGb@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7358998,\n                        \"lng\" : 100.5442644\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 190\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 52\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7342448,\n                        \"lng\" : 100.543841\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eซอย ต้นสน\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"sxyrAootdRD?ZBzANt@Fz@HH?r@Fd@@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7359353,\n                        \"lng\" : 100.5440838\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 219\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 55\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7341507,\n                        \"lng\" : 100.5458641\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน สารสิน\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"_nyrA_ntdRJiIDiA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7342448,\n                        \"lng\" : 100.543841\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"29 m\",\n                        \"value\" : 29\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 9\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7340084,\n                        \"lng\" : 100.5459502\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e at \\u003cb\\u003eSarasin Jct\\u003c/b\\u003e onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"mmyrAsztdR@YNBHB\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7341507,\n                        \"lng\" : 100.5458641\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 263\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 34\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7316862,\n                        \"lng\" : 100.5455067\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eright\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-right\",\n                     \"polyline\" : {\n                        \"points\" : \"qlyrAe{tdRNFhGp@tD\\\\\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7340084,\n                        \"lng\" : 100.5459502\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 219\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 21\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7297434,\n                        \"lng\" : 100.5451919\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eright\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-right\",\n                     \"polyline\" : {\n                        \"points\" : \"a~xrAmxtdRvEb@lDZ\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7316862,\n                        \"lng\" : 100.5455067\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 97\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 13\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eleft\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-left\",\n                     \"polyline\" : {\n                        \"points\" : \"{qxrAmvtdR?G@GzCX\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7297434,\n                        \"lng\" : 100.5451919\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 278\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 53\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7285668,\n                        \"lng\" : 100.5476795\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the right\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"}lxrAcvtdRDo@B]Dk@Dk@XaDDi@TiC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"0.9 km\",\n                  \"value\" : 904\n               },\n               \"duration\" : {\n                  \"text\" : \"4 mins\",\n                  \"value\" : 252\n               },\n               \"end_address\" : \"18, Sathon Rd., Thung Mahamek, Sathon , Bangkok, 10120, 10120, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7242853,\n                  \"lng\" : 100.5440482\n               },\n               \"start_address\" : \"141 Witthayu Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7285668,\n                  \"lng\" : 100.5476795\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 278\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 59\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003ewest\\u003c/b\\u003e on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"qjxrA_fudRUhCEh@Y`DEj@Ej@C\\\\En@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7285668,\n                        \"lng\" : 100.5476795\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 296\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 87\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7263467,\n                        \"lng\" : 100.5445819\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at the 1st cross street to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"}lxrAcvtdRzCZ|BTj@RTBTBn@HTBlAP@@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 159\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 61\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7256523,\n                        \"lng\" : 100.5434078\n                     },\n                     \"html_instructions\" : \"At \\u003cb\\u003eแยก วิทยุ\\u003c/b\\u003e, continue onto \\u003cb\\u003eถนน สาทรใต้\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by ธนาคาร LH Bank สาขา Q House Lumpini (on the left)\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"u|wrAsrtdR@?@@h@RHDFDDBDDB??@@@@??@@@@DDLFZFXLf@NbA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7263467,\n                        \"lng\" : 100.5445819\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 171\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 45\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7242853,\n                        \"lng\" : 100.5440482\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eซอย สาทร 1\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the left\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"ixwrAiktdRREJCvBc@\\\\IJEDEFEDGJMHILIDCNG\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7256523,\n                        \"lng\" : 100.5434078\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"3.3 km\",\n                  \"value\" : 3333\n               },\n               \"duration\" : {\n                  \"text\" : \"12 mins\",\n                  \"value\" : 690\n               },\n               \"end_address\" : \"75/2 Soi Ruam Ruedi, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7359661,\n                  \"lng\" : 100.5507703\n               },\n               \"start_address\" : \"18, Sathon Rd., Thung Mahamek, Sathon , Bangkok, 10120, 10120, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7242853,\n                  \"lng\" : 100.5440482\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 109\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 21\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7234099,\n                        \"lng\" : 100.5445024\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003esoutheast\\u003c/b\\u003e on \\u003cb\\u003eซอย สาทร 1\\u003c/b\\u003e toward \\u003cb\\u003eซอย สาทร 1 แยก 2\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by 123 Parking (on the left)\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"yowrAiotdR`@SNEb@QJCPIPIh@U\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7242853,\n                        \"lng\" : 100.5440482\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 349\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 85\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7229312,\n                        \"lng\" : 100.547439\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eซอย สาทร 1 แยก 2\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"ijwrAcrtdRg@gCCOGg@Ge@AKAE?C?KAM?K?IFm@BM@KFMNYj@}@f@y@f@w@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7234099,\n                        \"lng\" : 100.5445024\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 209\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 62\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7245153,\n                        \"lng\" : 100.5484846\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eซอย งามดูพลี\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"igwrAodudRQIQKcAm@qAw@EEa@S?AKEKGm@]IEKE\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7229312,\n                        \"lng\" : 100.547439\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.5 km\",\n                        \"value\" : 469\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 73\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7261177,\n                        \"lng\" : 100.5444667\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน พระรามที่ 4\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"gqwrA_kudRSl@Wv@CHCFCHw@lCSv@M^K^Oj@Sx@IVe@vAENWz@K`@CPGNIVEJGN\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7245153,\n                        \"lng\" : 100.5484846\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"1.0 km\",\n                        \"value\" : 984\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 139\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7346043,\n                        \"lng\" : 100.5459515\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e at \\u003cb\\u003eแยก วิทยุ\\u003c/b\\u003e onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"g{wrA}qtdRIVIXCCEEEEECECEEEEMEGEEAGCEAGCEAGAE?YEgBSsAOeAK}CY{C[kD[wEe@_BOoAKaDYmBWWEQEc@Gc@GQA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7261177,\n                        \"lng\" : 100.5444667\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"24 m\",\n                        \"value\" : 24\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 4\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.734751,\n                        \"lng\" : 100.5461055\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e toward \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"gpyrAe{tdRAEAACCCAAAECCAAAAA?AAC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7346043,\n                        \"lng\" : 100.5459515\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.7 km\",\n                        \"value\" : 725\n                     },\n                     \"duration\" : {\n                        \"text\" : \"3 mins\",\n                        \"value\" : 208\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7387036,\n                        \"lng\" : 100.5490825\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"eqyrAe|tdRBm@FeAFkAXsF@MAE?C?CACEEEAgAKC?I?[Cc@CgDUcAK_AIQAKAYCWA_DUcCU\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.734751,\n                        \"lng\" : 100.5461055\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.5 km\",\n                        \"value\" : 464\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 98\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7359661,\n                        \"lng\" : 100.5507703\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eซอย ร่วมฤดี 2\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the left\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"{izrAwnudR@m@Bk@JgE@S@EDCvEIbEChBC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7387036,\n                        \"lng\" : 100.5490825\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"2.6 km\",\n                  \"value\" : 2572\n               },\n               \"duration\" : {\n                  \"text\" : \"8 mins\",\n                  \"value\" : 481\n               },\n               \"end_address\" : \"114 Sarasin Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7352428,\n                  \"lng\" : 100.5423492\n               },\n               \"start_address\" : \"75/2 Soi Ruam Ruedi, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7359661,\n                  \"lng\" : 100.5507703\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.5 km\",\n                        \"value\" : 464\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 119\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7387036,\n                        \"lng\" : 100.5490825\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003enorth\\u003c/b\\u003e on \\u003cb\\u003eซอย ร่วมฤดี 2\\u003c/b\\u003e toward \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"yxyrAiyudRiBBcEBwEHEBADARKfECj@Al@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7359661,\n                        \"lng\" : 100.5507703\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.5 km\",\n                        \"value\" : 470\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 114\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7428514,\n                        \"lng\" : 100.5498972\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by Novotel Bangkok Ploenchit Sukhumvit (on the left in 450&nbsp;m)\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"{izrAwnudREAGAu@Ku@IOCOCUAIAeD_@i@GWCqBUAA}BW_@EKAa@EkAOC?AAC?EA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7387036,\n                        \"lng\" : 100.5490825\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.7 km\",\n                        \"value\" : 664\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 122\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7438743,\n                        \"lng\" : 100.5438454\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน เพลินจิต\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by Krungsri Bank (on the left in 450&nbsp;m)\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"yc{rA{sudRANK~@Gl@ABGn@Gj@Cd@OjAOnAGh@?@A@AHAHGv@CPI`AAJIfAGr@SpBAJAJCTGn@CVE\\\\Iv@AJGx@ARCj@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7428514,\n                        \"lng\" : 100.5498972\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"1.0 km\",\n                        \"value\" : 974\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 126\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7352428,\n                        \"lng\" : 100.5423492\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at \\u003cb\\u003eแยก ขิดลม\\u003c/b\\u003e onto \\u003cb\\u003eถนน หลังสวน\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the left\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"ej{rAantdRPBR@L@VDD?NBL@^DZBrCZL@t@F|@HP@b@Db@D`@Dr@HH?bALJ@`@DH@jAJp@FD@J@b@DZD\\\\Fh@D`@Bt@Hr@FL@@?@??@@?@?@?@?@@@?@?@?@?@@@?@?@?@??@@?@?@?@?@?j@Hd@DL?L@j@JXDXF@?@?@?@?@?@??@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@@@?@?@?@?@?@?@?@??@@?@?@?@?@?@?@?@??@@?@?@?@?ZBd@FZBZDj@D\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7438743,\n                        \"lng\" : 100.5438454\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"2.7 km\",\n                  \"value\" : 2748\n               },\n               \"duration\" : {\n                  \"text\" : \"10 mins\",\n                  \"value\" : 614\n               },\n               \"end_address\" : \"L15 , Diethelm Tower Building , 93/1 , Wireless Road , Lum Phini , 10330 Pathum Wan, Bangkok, 10330, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.7376357,\n                  \"lng\" : 100.5476042\n               },\n               \"start_address\" : \"114 Sarasin Rd, Khwaeng Lumphini, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7352428,\n                  \"lng\" : 100.5423492\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 106\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 17\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7342985,\n                        \"lng\" : 100.5422151\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003esouth\\u003c/b\\u003e on \\u003cb\\u003eถนน หลังสวน\\u003c/b\\u003e toward \\u003cb\\u003eถนน สารสิน\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"gtyrAudtdRlAJlBL\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7352428,\n                        \"lng\" : 100.5423492\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.4 km\",\n                        \"value\" : 395\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 77\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7341507,\n                        \"lng\" : 100.5458641\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at \\u003cb\\u003eแยก หลังสวน\\u003c/b\\u003e onto \\u003cb\\u003eถนน สารสิน\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"knyrA{ctdRDiDDyCJiIDiA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7342985,\n                        \"lng\" : 100.5422151\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"51 m\",\n                        \"value\" : 51\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 11\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7346043,\n                        \"lng\" : 100.5459515\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at \\u003cb\\u003eSarasin Jct\\u003c/b\\u003e onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"mmyrAsztdRc@Gc@GQA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7341507,\n                        \"lng\" : 100.5458641\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"24 m\",\n                        \"value\" : 24\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 4\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.734751,\n                        \"lng\" : 100.5461055\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e toward \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"gpyrAe{tdRAEAACCCAAAECCAAAAA?AAC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7346043,\n                        \"lng\" : 100.5459515\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"1.2 km\",\n                        \"value\" : 1195\n                     },\n                     \"duration\" : {\n                        \"text\" : \"5 mins\",\n                        \"value\" : 321\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7428514,\n                        \"lng\" : 100.5498972\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eซอยร่วมฤดี\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by Novotel Bangkok Ploenchit Sukhumvit (on the left in 1.2&nbsp;km)\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"eqyrAe|tdRBm@FeAFkAXsF@MAE?C?CACEEEAgAKC?I?[Cc@CgDUcAK_AIQAKAYCWA_DUcCUEAGAu@Ku@IOCOCUAIAeD_@i@GWCqBUAA}BW_@EKAa@EkAOC?AAC?EA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.734751,\n                        \"lng\" : 100.5461055\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 254\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 47\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7432756,\n                        \"lng\" : 100.5475889\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน เพลินจิต\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"yc{rA{sudRANK~@Gl@ABGn@Gj@Cd@OjAOnAGh@?@A@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7428514,\n                        \"lng\" : 100.5498972\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.6 km\",\n                        \"value\" : 618\n                     },\n                     \"duration\" : {\n                        \"text\" : \"2 mins\",\n                        \"value\" : 100\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7377966,\n                        \"lng\" : 100.5466482\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"of{rAmeudRRBVD\\\\DJ@`@Db@Dd@B@@f@DnALB?jANf@FtAJRBN@j@HbAH~@Jp@FLBb@D`@DR@N@VBJ@j@DVB`@D`@BH@H@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7432756,\n                        \"lng\" : 100.5475889\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 105\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 37\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7376357,\n                        \"lng\" : 100.5476042\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eRestricted usage road\\u003c/div\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the right\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"gdzrAq_udRXoCDm@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7377966,\n                        \"lng\" : 100.5466482\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            },\n            {\n               \"distance\" : {\n                  \"text\" : \"9.5 km\",\n                  \"value\" : 9540\n               },\n               \"duration\" : {\n                  \"text\" : \"23 mins\",\n                  \"value\" : 1403\n               },\n               \"end_address\" : \"4 Charoen Nakhon 68 Alley, Khwaeng Dao Khanong, Khet Thon Buri, Krung Thep Maha Nakhon 10600, Thailand\",\n               \"end_location\" : {\n                  \"lat\" : 13.6988263,\n                  \"lng\" : 100.4870317\n               },\n               \"start_address\" : \"L15 , Diethelm Tower Building , 93/1 , Wireless Road , Lum Phini , 10330 Pathum Wan, Bangkok, 10330, Thailand\",\n               \"start_location\" : {\n                  \"lat\" : 13.7376357,\n                  \"lng\" : 100.5476042\n               },\n               \"steps\" : [\n                  {\n                     \"distance\" : {\n                        \"text\" : \"47 m\",\n                        \"value\" : 47\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 15\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7375634,\n                        \"lng\" : 100.5480332\n                     },\n                     \"html_instructions\" : \"Head \\u003cb\\u003eeast\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eRestricted usage road\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"gczrAoeudRNuA\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7376357,\n                        \"lng\" : 100.5476042\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 226\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 60\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7371841,\n                        \"lng\" : 100.5465321\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"wbzrAehudR|BRYjCWjC\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7375634,\n                        \"lng\" : 100.5480332\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 118\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 23\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7361337,\n                        \"lng\" : 100.546366\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e at the 1st cross street onto \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"k`zrAy~tdRL@nBPr@FJ@H@H?\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7371841,\n                        \"lng\" : 100.5465321\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 241\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 51\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7340084,\n                        \"lng\" : 100.5459502\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eleft\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-left\",\n                     \"polyline\" : {\n                        \"points\" : \"yyyrAy}tdRH@jBTzARn@DP@`@DvAPNBHB\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7361337,\n                        \"lng\" : 100.546366\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 263\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 34\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7316862,\n                        \"lng\" : 100.5455067\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eright\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-right\",\n                     \"polyline\" : {\n                        \"points\" : \"qlyrAe{tdRNFhGp@tD\\\\\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7340084,\n                        \"lng\" : 100.5459502\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 219\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 21\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7297434,\n                        \"lng\" : 100.5451919\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eright\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-right\",\n                     \"polyline\" : {\n                        \"points\" : \"a~xrAmxtdRvEb@lDZ\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7316862,\n                        \"lng\" : 100.5455067\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.1 km\",\n                        \"value\" : 97\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 13\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eleft\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-left\",\n                     \"polyline\" : {\n                        \"points\" : \"{qxrAmvtdR?G@GzCX\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7297434,\n                        \"lng\" : 100.5451919\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 296\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 79\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7263467,\n                        \"lng\" : 100.5445819\n                     },\n                     \"html_instructions\" : \"Keep \\u003cb\\u003eleft\\u003c/b\\u003e to stay on \\u003cb\\u003eถนน วิทยุ\\u003c/b\\u003e\",\n                     \"maneuver\" : \"keep-left\",\n                     \"polyline\" : {\n                        \"points\" : \"}lxrAcvtdRzCZ|BTj@RTBTBn@HTBlAP@@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7289513,\n                        \"lng\" : 100.545135\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"2.9 km\",\n                        \"value\" : 2938\n                     },\n                     \"duration\" : {\n                        \"text\" : \"9 mins\",\n                        \"value\" : 537\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7183473,\n                        \"lng\" : 100.5188152\n                     },\n                     \"html_instructions\" : \"At \\u003cb\\u003eแยก วิทยุ\\u003c/b\\u003e, continue onto \\u003cb\\u003eถนน สาทรใต้\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003ePass by ธนาคาร LH Bank สาขา Q House Lumpini (on the left)\\u003c/div\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"u|wrAsrtdR@?@@h@RHDFDDBDDB??@@@@??@@@@DDLFZFXLf@NbAVxADRH^TjAP~@@?Jd@BNJh@DXFR@FFTFRDPDTF\\\\BLDPDVDNLp@RtARrAH\\\\BLT~@n@hCVhALf@?DNn@DZH`@BF@HDPDRFXJf@FXF^RlANt@Jd@BNBNH^BNH^BLDTF\\\\Pz@Pz@Jb@Jd@Pt@Nv@TrA@D@DHb@DTBN\\\\`BXnABJDVDVDNFXH\\\\FV?BFZJn@BHx@tD^nBLp@@H@@R`AH\\\\h@dC?@b@tBJn@@@R`AFZBRDN@BP|@ThADLBLTnAVlAH`@ZzAF\\\\F^BHBJDVNp@@DLt@BF@FDVJd@FXDVBH@F@JNl@H^R~@\\\\fBHb@\\\\fB@LBLLr@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7263467,\n                        \"lng\" : 100.5445819\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.7 km\",\n                        \"value\" : 658\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 49\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7189835,\n                        \"lng\" : 100.5129007\n                     },\n                     \"html_instructions\" : \"Continue straight to stay on \\u003cb\\u003eถนนสาทรใต้\\u003c/b\\u003e\",\n                     \"maneuver\" : \"straight\",\n                     \"polyline\" : {\n                        \"points\" : \"ujvrAsqodRBJ@JFZ^hCBJDXDXBVBV@V@VAXC\\\\qAtHG^CHCRKj@In@a@nCEZUtAABAJCP?@CR\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7183473,\n                        \"lng\" : 100.5188152\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.6 km\",\n                        \"value\" : 557\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 32\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7202148,\n                        \"lng\" : 100.5078981\n                     },\n                     \"html_instructions\" : \"Continue onto \\u003cb\\u003eถนน กรุงธนบุรี\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"snvrAslndRo@`Em@`EKj@yAdJG^?FCNEVUlAIr@\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7189835,\n                        \"lng\" : 100.5129007\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.3 km\",\n                        \"value\" : 342\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 33\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.719334,\n                        \"lng\" : 100.5064836\n                     },\n                     \"html_instructions\" : \"Take the exit toward \\u003cb\\u003eCharoen Nakhon Road\\u003c/b\\u003e\",\n                     \"maneuver\" : \"ramp-left\",\n                     \"polyline\" : {\n                        \"points\" : \"ivvrAkmmdRAd@AFGx@El@E\\\\MrB?LDTFNLNFDHHHDJBJ@L@L?NANCNGJGJIHOFQFU?AFS\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7202148,\n                        \"lng\" : 100.5078981\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"0.2 km\",\n                        \"value\" : 187\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 36\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.7188603,\n                        \"lng\" : 100.5081407\n                     },\n                     \"html_instructions\" : \"Continue onto \\u003cb\\u003eถนน กรุงธนบุรี\\u003c/b\\u003e\",\n                     \"polyline\" : {\n                        \"points\" : \"ypvrAodmdRDSBQJg@XyAHe@b@}B\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.719334,\n                        \"lng\" : 100.5064836\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"3.3 km\",\n                        \"value\" : 3339\n                     },\n                     \"duration\" : {\n                        \"text\" : \"7 mins\",\n                        \"value\" : 399\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.6988813,\n                        \"lng\" : 100.4869343\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eright\\u003c/b\\u003e onto \\u003cb\\u003eถนน เจริญนคร\\u003c/b\\u003e\",\n                     \"maneuver\" : \"turn-right\",\n                     \"polyline\" : {\n                        \"points\" : \"{mvrA{nmdRBI@KHDHBRHFBFBPFn@Xr@ZJDVHDB~Aj@PHh@Pp@VRPNNRT^`@h@p@@@n@t@BDLNRP~@fAp@x@JL\\\\b@JJDFLN^f@b@d@TXHH@B~@hADDFFNPNPNNFHfArAZ\\\\Z^VXXXFLHLFNDN@BLVBHDNDNDLDLJZFTFVPj@BFBJNf@BFNh@FPBLJXHXBFBHJXJZFNFPHTFRNf@Lf@DHDTDVDRDNFTBNBDPd@Pd@DJVd@R^BDR^FNHLDFDHl@fAXj@BBDHBDDJXd@Vb@JPTf@BDj@lAR^R^DJDJNZBDDHFLJRFLBD\\\\r@FJHPJRd@dANXTd@x@bBBDFLZr@r@vAbAxBJNJJ`Ap@TPTPl@`@jAv@DBFDr@b@NLLHXRfAt@TRNNp@f@r@d@@@f@^FDd@Zn@^FB@?HDB@NF^N\\\\N\\\\J\\\\H\\\\LJDx@TbAXPDtAX`@L~@VzBh@F@\\\\JB@NDNDHBFBRHRF^J^J\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.7188603,\n                        \"lng\" : 100.5081407\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  },\n                  {\n                     \"distance\" : {\n                        \"text\" : \"12 m\",\n                        \"value\" : 12\n                     },\n                     \"duration\" : {\n                        \"text\" : \"1 min\",\n                        \"value\" : 21\n                     },\n                     \"end_location\" : {\n                        \"lat\" : 13.6988263,\n                        \"lng\" : 100.4870317\n                     },\n                     \"html_instructions\" : \"Turn \\u003cb\\u003eleft\\u003c/b\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eRestricted usage road\\u003c/div\\u003e\\u003cdiv style=\\\"font-size:0.9em\\\"\\u003eDestination will be on the left\\u003c/div\\u003e\",\n                     \"maneuver\" : \"turn-left\",\n                     \"polyline\" : {\n                        \"points\" : \"_qrrAijidRDM@C@A\"\n                     },\n                     \"start_location\" : {\n                        \"lat\" : 13.6988813,\n                        \"lng\" : 100.4869343\n                     },\n                     \"travel_mode\" : \"DRIVING\"\n                  }\n               ],\n               \"traffic_speed_entry\" : [],\n               \"via_waypoint\" : []\n            }\n         ],\n         \"overview_polyline\" : {\n            \"points\" : \"uprrA}jidRCDEL|Bj@n@PjAZr@P~@?nAE~@AH?BKhACdACvACBD@JEJq@H_DLOA]As@@yABa@?u@MgG}AwC{@kBe@kASw@YkAYgFyA}@]k@F]HQDw@zAu@zA{AtCoBvDa@OcEcAmGqAqKiC{EqAeIoBmQiEoCs@uCq@sBg@oKmCcE}@uDeA[IKCCMAk@WsCKaBG{@K}ECoEJo@?k@B_AFcAFO@eBBcBNyOBeKB_GBs@?{Cj@{JPaBtAeJHcAbBaKdBwLj@uD`A}FzA}HDq@?s@Kw@UmAo@uCy@cEqA{GiBiJgCkM}@qEaEsSqBuJmA_Hy@kD_AiFc@_CSeA_AcE_@sBYaBw@iDkDuPu@iEeAkF_@eAKMu@i@w@U{Gu@eNqAiP{A{Dk@mD[WAEXo@lHKN[AQCCRGb@D?vBRpBP|@Fd@@JiIFcBXFNFhGp@lK`AlDZ?G@GzCXHmAJwA^kETiCUhC_@jEKvAIlAxGp@`AVdALdBVnAj@BDPp@T`ANbAREbCg@\\\\I^YTWRMdBs@xAm@k@wCOmACa@AYFw@DYVg@rAwBf@w@QIuAy@wA}@y@c@w@c@KESl@[`AGPeBdGsAtEm@~B_@bASp@IIWSa@S[KoC[g_@oDoGq@i@KgAOSGKIMIHyB`@sIGQ{AMkHi@wBQwDWcCU@m@NsFBY|EMlHGmHF}ELCXOrFAl@EA}@MkBSqFm@oKmAKCU|B}@lIg@tFo@zGYzCE~@d@Dz@J|Ef@pHp@hGl@hBTtDZN@B@D?F@JBF?`BNpBZP@R@d@Dd@BxBTxBPlBLDiDPcNDiAc@Gu@ICGOKGGj@oMAGKGqBOoIo@oAIcHk@MCkC]yN_BcD_@EAANK~@YlCk@jFPFvEd@zSrB~D\\\\^}DNuA|BRq@vG|BRrAJ`Gp@zC\\\\XJ~LnAdK~@@OvHt@|BTj@Rj@FdALpARlAl@DDVhAz@xEr@jDz@~Dv@~Dt@tEjBzHp@jDvAtH~@|Ez@zDh@vCzAvHv@xDhB`JhAfFvAjHvDfRv@~DvBtKdAxGRbBBn@Ev@}A~I{@~Fc@tCoEhY_@|BKxAI`AYlELd@TTRNVDz@CZOTYV}@bBaJxB|@jHnCvAxA~AnBnEhF|IlKtA`BXp@t@xBlAfE`AzC`@jAh@nBXpAj@`B`B|CzBbEvC|Fz@fBjCpF`BjDvBpEVZzCvBlCdB~B`Bd@b@dBlAvAbAbAh@r@XvBr@zCz@rHhBnBl@r@R^JDMBE\"\n         },\n         \"summary\" : \"ถนน สาทรเหนือ\",\n         \"warnings\" : [],\n         \"waypoint_order\" : [ 0, 1, 2, 3, 4, 5, 6 ]\n      }\n   ],\n   \"status\" : \"OK\"\n}\n",
+    "rawQueryString": "/maps/api/directions/json?key=***REMOVED***&origin=13.698936%2C100.487154&destination=13.698936%2C100.487154&units=metric&mode=driving&language=en&avoid=tolls&waypoints=13.7300004%2C100.5451364%7C13.7359079317224%2C100.544266083545%7C13.7285412%2C100.5476752%7C13.7244858%2C100.5443305%7C13.7359672%2C100.5508057%7C13.7352249422083%2C100.542465070835%7C13.7375557633886%2C100.547589941276&departure_time=now&traffic_model=best_guess",
+    "status": "OK",
+    "error_message": null,
+    "html_attributions": null
+}

@@ -93,7 +93,7 @@ namespace RouteAPI.Controllers
                 var delivery = await _repo.getDelivery(deliveryId);
                 var deliveryOrder = i + 1;
                 delivery.status = "พร้อมส่ง";
-                delivery.deliveryOrder = deliveryOrder.ToString();
+                //delivery.deliveryOrder = deliveryOrder.ToString();
                 if (await _repo.saveAll())
                 {
                     successId.Add(deliveryId);
@@ -187,29 +187,62 @@ namespace RouteAPI.Controllers
         // [HttpGet("test")]
         // public async Task<IActionResult> test()
         // {
+        //     List<Order> OrderList = new List<Order>();
         //     double totalDistance = 0;
+        //     int totalSeconds = 0;
+        //     OrderList.Add(new Order("f9452f82-e0a1-4bf5-b330-2ecc2383021f", "13.7300004,100.5451364"));
+        //     OrderList.Add(new Order("ef5bbe07-8bb2-4f22-b96d-15b0e24eba06",
+        //         "13.735907931722435,100.54426608354522"));
+        //     OrderList.Add(new Order("6ed7e298-8840-4ec5-994e-cc8a6b06b67b", "13.7285412,100.5476752"));
+        //     OrderList.Add(new Order("c4b05cce-7d31-4aae-9a7d-fa46d5efa469", "13.7244858,100.5443305"));
+        //     OrderList.Add(new Order("0dc91725-2426-46d1-9399-4a64de16fc99", "13.7359672,100.5508057"));
+        //     OrderList.Add(new Order("f46e1152-8b14-4a38-aa68-c85fa50b0e0b",
+        //         "13.735224942208344,100.54246507083465"));
+        //     OrderList.Add(new Order("b75b7a37-47da-4ff0-8bb2-8bee53a79a35",
+        //         "13.737555763388642,100.54758994127575"));
+        //     //var totalDistance = getTotalDistanceFromGoogleApi(OrderList);
         //     var key = _config.GetSection("AppSettings:ApiKey").Value;
-        //     string tmpWarehouseGPS = "13.671433,100.472616";//"13.698936,100.487154";
+        //     string tmpWarehouseGPS = "13.698936,100.487154";
         //     string[] warehouseGPS = tmpWarehouseGPS.Split(",");
-        //     string gps = "13.765937,101.893546";
-        //     string[] gps2 = gps.Split(",");
-        //     var request = new DistanceMatrixRequest
+        //     List<Location> dest = new List<Location>();
+        //     foreach (var order in OrderList)
+        //     {
+        //         string[] gps = order.gps.Split(",");
+        //         Location dropPoint = new Location(Double.Parse(gps[0]), Double.Parse(gps[1]));
+        //         dest.Add(dropPoint);
+        //     }
+        //     Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+        //     //dest.Add(origin);
+        //     Location[] destination = dest.ToArray();
+        //     dest.Clear();
+        //     var request2 = new DirectionsRequest
         //     {
         //         Key = key,
-        //         Origins = new[] { new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1])) },
-        //         Destinations = new[] {
-        //             new Location(13.680128,100.609519),
-        //             new Location(Double.Parse(gps2[0]), Double.Parse(gps2[1]))
-        //         },
-        //         Avoid = AvoidWay.Tolls
+        //         Origin = origin,
+        //         Destination = origin,
+        //         Waypoints = destination,
+        //         TravelMode = TravelMode.Driving,
+        //         Avoid = AvoidWay.Tolls,
+        //         Units = Units.Metric
         //     };
-        //     var response = GoogleApi.GoogleMaps.DistanceMatrix.QueryAsync(request).Result;
-        //     if(response.Status == Status.Ok)
+        //     var response = GoogleApi.GoogleMaps.Directions.Query(request2);
+        //     if (response.Status == Status.Ok)
         //     {
-        //         var distance = (response.Rows.First().Elements.Last().Distance.Value / 1000);
-        //         totalDistance = totalDistance + distance;
+        //         var legs = response.Routes.First().Legs;
+        //         foreach (var leg in legs)
+        //         {
+        //             totalDistance = totalDistance + leg.Distance.Value;
+        //             totalSeconds = totalSeconds + leg.Duration.Value;
+        //         }
+        //         double distance = totalDistance / 1000.0;
+        //         int days = totalSeconds / 86400;
+        //         int hours = (totalSeconds - days * 86400) / 3600;
+        //         int minutes = (totalSeconds - days * 86400 - hours * 3600) / 60;
+        //         int seconds = totalSeconds - days * 86400 - hours * 3600 - minutes * 60;
+        //         Result result = new Result(distance, days, hours, minutes, seconds);
+        //         return Ok(result);
         //     }
-        //     return Ok(totalDistance);
+        //     return BadRequest();
         // }
         private async Task<bool> updateFirstTrip(List<Order> firstTripOrder, string truckCode)
         {
@@ -303,6 +336,7 @@ namespace RouteAPI.Controllers
             var averageDistance = Math.Round(distance / orderList.Count);
             return averageDistance;
         }
+
         private double getTotalDistance(List<Order> orders)
         {
             double totalDistance = 0;
@@ -329,10 +363,11 @@ namespace RouteAPI.Controllers
             }
             return totalDistance;
         }
-        private double getTotalDistanceFromGoogleApi(List<Order> orders)
+        private Result getTotalDistanceFromGoogleApi(List<Order> orders)
         {
             var key = _config.GetSection("AppSettings:ApiKey").Value;
             double totalDistance = 0;
+            int totalSeconds = 0;
             string tmpWarehouseGPS = "13.698936,100.487154";
             string[] warehouseGPS = tmpWarehouseGPS.Split(",");
             List<Location> dest = new List<Location>();
@@ -344,14 +379,14 @@ namespace RouteAPI.Controllers
             }
             Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
             //dest.Add(origin);
-            //Location[] destination = dest.ToArray();
-            //dest.Clear();
+            Location[] destination = dest.ToArray();
+            dest.Clear();
             var request2 = new DirectionsRequest
             {
                 Key = key,
                 Origin = origin,
                 Destination = origin,
-                Waypoints = dest.ToArray(),
+                Waypoints = destination,
                 TravelMode = TravelMode.Driving,
                 Avoid = AvoidWay.Tolls,
                 Units = Units.Metric
@@ -362,10 +397,16 @@ namespace RouteAPI.Controllers
                 var legs = response.Routes.First().Legs;
                 foreach (var leg in legs)
                 {
-                    var distance = (leg.Distance.Value / 1000);
-                    totalDistance = totalDistance + distance;
+                    totalDistance = totalDistance + leg.Distance.Value;
+                    totalSeconds = totalSeconds + leg.Duration.Value;
                 }
             }
+            double distance = totalDistance / 1000.0;
+            int days = totalSeconds / 86400;
+            int hours = (totalSeconds - days * 86400) / 3600;
+            int minutes = (totalSeconds - days * 86400 - hours * 3600) / 60;
+            int seconds = totalSeconds - days * 86400 - hours * 3600 - minutes * 60;
+            Result result = new Result(distance, days, hours, minutes, seconds);
             // var request = new DistanceMatrixRequest
             // {
             //     Key = key,
@@ -391,7 +432,7 @@ namespace RouteAPI.Controllers
             // //     }
             // // }
             // }
-            return totalDistance;
+            return result;
         }
         private async Task<bool> firstTrip(IEnumerable<Truck> trucks, string transdate, double quantity)
         {
@@ -419,6 +460,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้                                  
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     firstTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -430,6 +472,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -443,17 +486,47 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(firstTripId);
-                            //จัดลง list เที่ยวแรก
-                            var index = firstTripList.Count + 1;
-                            List<Order> deliveryIdList = firstTripId.ToList();
-                            OrderList first = new OrderList(deliveryIdList, totalDistance, index);
-                            firstTripList.Add(first);
-                            //update db
-                            foreach (var deliveryId in firstTripId)
+                            //var totalDistance = getTotalDistance(firstTripId);
+                            Result result = getTotalDistanceFromGoogleApi(firstTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                //update status = จัดแล้ว
-                                await updateJob(deliveryId.deliveryId);
+                                var min = firstTripId.Min(q => q.quantity);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                foreach (var item in firstTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        firstTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             firstTripId.Clear();
                             cu = 0;
@@ -476,6 +549,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     firstTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -488,6 +562,7 @@ namespace RouteAPI.Controllers
                                         //ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -501,16 +576,47 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(firstTripId);
-                            //จัดลง list เที่ยวแรก
-                            var index = firstTripList.Count + 1;
-                            List<Order> deliveryIdList = firstTripId.ToList();
-                            OrderList first = new OrderList(deliveryIdList, totalDistance, index);
-                            firstTripList.Add(first);
-                            //update db
-                            foreach (var deliveryId in firstTripId)
+                            //var totalDistance = getTotalDistance(firstTripId);
+                            Result result = getTotalDistanceFromGoogleApi(firstTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = firstTripId.Min(q => q.quantity);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                foreach (var item in firstTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        firstTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             firstTripId.Clear();
                             cu = 0;
@@ -545,6 +651,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     firstTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -556,6 +663,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -569,16 +677,47 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(firstTripId);
-                            //จัดลง list เที่ยวแรก
-                            var index = firstTripList.Count + 1;
-                            List<Order> deliveryIdList = firstTripId.ToList();
-                            OrderList first = new OrderList(deliveryIdList, totalDistance, index);
-                            firstTripList.Add(first);
-                            //update db
-                            foreach (var deliveryId in firstTripId)
+                            //var totalDistance = getTotalDistance(firstTripId);
+                            Result result = getTotalDistanceFromGoogleApi(firstTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = firstTripId.Min(q => q.quantity);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                foreach (var item in firstTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        firstTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             firstTripId.Clear();
                             cu = 0;
@@ -601,6 +740,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     firstTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -612,6 +752,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -625,16 +766,47 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(firstTripId);
-                            //จัดลง list เที่ยวแรก
-                            var index = firstTripList.Count + 1;
-                            List<Order> deliveryIdList = firstTripId.ToList();
-                            OrderList first = new OrderList(deliveryIdList, totalDistance, index);
-                            firstTripList.Add(first);
-                            //update db
-                            foreach (var deliveryId in firstTripId)
+                            //var totalDistance = getTotalDistance(firstTripId);
+                            Result result = getTotalDistanceFromGoogleApi(firstTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = firstTripId.Min(q => q.quantity);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                foreach (var item in firstTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        firstTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยวแรก
+                                var index = firstTripList.Count + 1;
+                                List<Order> deliveryIdList = firstTripId.ToList();
+                                OrderList first = new OrderList(deliveryIdList, totalDistance, index);
+                                firstTripList.Add(first);
+                                //update db
+                                foreach (var deliveryId in firstTripId)
+                                {
+                                    //update status = จัดแล้ว
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             firstTripId.Clear();
                             cu = 0;
@@ -672,6 +844,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     secondTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -683,6 +856,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         secondTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -696,16 +870,44 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(secondTripId);
-                            //จัดลง list เที่ยว 2
-                            var index = secondTripList.Count + 1;
-                            List<Order> deliveryIdList = secondTripId.ToList();
-                            OrderList second = new OrderList(deliveryIdList, totalDistance, index);
-                            secondTripList.Add(second);
-                            //update db
-                            foreach (var deliveryId in secondTripId)
+                            //var totalDistance = getTotalDistance(secondTripId);
+                            Result result = getTotalDistanceFromGoogleApi(secondTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = secondTripId.Min(q => q.quantity);
+                                foreach (var item in secondTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        secondTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             secondTripId.Clear();
                             cu = 0;
@@ -728,6 +930,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     secondTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -739,6 +942,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         secondTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -752,16 +956,44 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(secondTripId);
-                            //จัดลง list เที่ยว 2
-                            var index = secondTripList.Count + 1;
-                            List<Order> deliveryIdList = secondTripId.ToList();
-                            OrderList second = new OrderList(deliveryIdList, totalDistance, index);
-                            secondTripList.Add(second);
-                            //update db
-                            foreach (var deliveryId in secondTripId)
+                            //var totalDistance = getTotalDistance(secondTripId);
+                            Result result = getTotalDistanceFromGoogleApi(secondTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = secondTripId.Min(q => q.quantity);
+                                foreach (var item in secondTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        secondTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             secondTripId.Clear();
                             cu = 0;
@@ -796,6 +1028,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     secondTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -807,6 +1040,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         secondTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -820,16 +1054,44 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(secondTripId);
-                            //จัดลง list เที่ยว 2
-                            var index = secondTripList.Count + 1;
-                            List<Order> deliveryIdList = secondTripId.ToList();
-                            OrderList second = new OrderList(deliveryIdList, totalDistance, index);
-                            secondTripList.Add(second);
-                            //update db
-                            foreach (var deliveryId in secondTripId)
+                            //var totalDistance = getTotalDistance(secondTripId);
+                            Result result = getTotalDistanceFromGoogleApi(secondTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = secondTripId.Min(q => q.quantity);
+                                foreach (var item in secondTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        secondTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             secondTripId.Clear();
                             cu = 0;
@@ -852,6 +1114,7 @@ namespace RouteAPI.Controllers
                                     //ลงรถได้
                                     o.deliveryId = order.deliveryId;
                                     o.gps = order.gps;
+                                    o.quantity = order.quantity;
                                     secondTripId.Add(o);
                                     carQauntity = carQauntity + order.quantity;
                                 }
@@ -863,6 +1126,7 @@ namespace RouteAPI.Controllers
                                         //ถ้ายอดสะสม < 80 ลงรถได้
                                         o.deliveryId = order.deliveryId;
                                         o.gps = order.gps;
+                                        o.quantity = order.quantity;
                                         secondTripId.Add(o);
                                         cu = 0;
                                         carQauntity = 0;
@@ -876,16 +1140,44 @@ namespace RouteAPI.Controllers
                                 }
                             }
                             //คำนวณระยะทาง
-                            var totalDistance = getTotalDistance(secondTripId);
-                            //จัดลง list เที่ยว 2
-                            var index = secondTripList.Count + 1;
-                            List<Order> deliveryIdList = secondTripId.ToList();
-                            OrderList second = new OrderList(deliveryIdList, totalDistance, index);
-                            secondTripList.Add(second);
-                            //update db
-                            foreach (var deliveryId in secondTripId)
+                            //var totalDistance = getTotalDistance(secondTripId);
+                            Result result = getTotalDistanceFromGoogleApi(secondTripId);
+                            var totalDistance = result.totalDistance;
+                            var hour = result.hours;
+                            if (hour > 5)
                             {
-                                await updateJob(deliveryId.deliveryId);
+                                //เอา order ที่จำนวนถังน้อยสุดออก
+                                var min = secondTripId.Min(q => q.quantity);
+                                foreach (var item in secondTripId)
+                                {
+                                    if (item.quantity == min)
+                                    {
+                                        secondTripId.Remove(item);
+                                    }
+                                }
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
+                            }
+                            else
+                            {
+                                //จัดลง list เที่ยว 2
+                                var index = secondTripList.Count + 1;
+                                List<Order> deliveryIdList = secondTripId.ToList();
+                                OrderList second = new OrderList(deliveryIdList, totalDistance, index);
+                                secondTripList.Add(second);
+                                //update db
+                                foreach (var deliveryId in secondTripId)
+                                {
+                                    await updateJob(deliveryId.deliveryId);
+                                }
                             }
                             secondTripId.Clear();
                             cu = 0;
