@@ -28,5 +28,11 @@ namespace RouteAPI.Controllers
             var createWarehouse = await _repo.addNewWarehouse(warehouseForCreate);
             return StatusCode(201, new { success = true });
         }
+        [HttpGet]
+        public async Task<IActionResult> getWarehouse()
+        {
+            var warehouse = await _repo.getWarehouse();
+            return Ok(warehouse);
+        }
     }
 }

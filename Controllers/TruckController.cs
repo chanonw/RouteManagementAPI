@@ -11,21 +11,21 @@ using RouteAPI.Models;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class CarController : Controller
+    public class TruckController : Controller
     {
         private readonly DataContext _context;
         private readonly IRouteRepository _repo;
-        public CarController(DataContext context, IRouteRepository repo)
+        public TruckController(DataContext context, IRouteRepository repo)
         {
             _repo = repo;
             _context = context;
 
         }
         [HttpPost("gettruck")]
-        public async Task<IActionResult> getAveilableCar([FromBody] Dto dto)
+        public async Task<IActionResult> getAveilableTruck([FromBody] Dto dto)
         {
-            var car = await _context.Truck.Where(z => z.zoneId == dto.zoneId).ToListAsync();
-            return Ok(car);
+            var trucks = await _context.Truck.Where(z => z.zoneId == dto.zoneId).ToListAsync();
+            return Ok(trucks);
         }
         [HttpPost("getadditionaltruck")]
         public async Task<IActionResult> getAdditionaltruck([FromBody] Dto dto)
@@ -64,19 +64,19 @@ namespace RouteAPI.Controllers
         [HttpPost("searchtruck")]
         public async Task<IActionResult> SearchCar([FromBody] CarForSearchDto carForSearchDto)
         {
-            var car = await _repo.searchCar(carForSearchDto.carCode);
+            var car = await _repo.searchCar(carForSearchDto.truckCode);
             return Ok(car);
         }
         [HttpPost("updatepersonalleave")]
         public async Task<IActionResult> updatePersonalLeave([FromBody] Dto dto)
         {
-            var car = await _repo.updatePersonalLeaveStatus(dto.carCode);
+            var car = await _repo.updatePersonalLeaveStatus(dto.truckCode);
             return Ok(car);
         }
         [HttpPost("updatesickleave")]
         public async Task<IActionResult> updateSickLeave([FromBody] Dto dto)
         {
-            var car = await _repo.updateSickLeaveStatus(dto.carCode);
+            var car = await _repo.updateSickLeaveStatus(dto.truckCode);
             return Ok(car);
         }
     }

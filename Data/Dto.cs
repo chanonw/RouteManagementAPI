@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RouteAPI.Models;
 
 namespace RouteAPI.Data
@@ -10,11 +11,14 @@ namespace RouteAPI.Data
         public string[] deliveryId { get; set; }
         public Customer[] customer { get; set; }
 
-        public string carCode {get; set;}
+        public string truckCode {get; set;}
 
         public string transDate {get; set;}
 
         public bool pLeave { get; set; }
+
+        public IEnumerable<Delivery> deliveries { get; set; }
+        public IEnumerable<Truck> trucks { get; set; }
 
     }
 }

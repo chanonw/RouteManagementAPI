@@ -20,6 +20,7 @@ namespace RouteAPI.Models
         public string status { get; set; }
         public bool personalLeave { get; set; }
         public bool sickLeave { get; set; }
+        public int idleTime { get; set; }
         public string zoneId { get; set; }
         //public ICollection<Delivery> deliveries { get; set; }
     }

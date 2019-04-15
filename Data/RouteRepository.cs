@@ -34,7 +34,7 @@ namespace RouteAPI.Data
         public async Task<IEnumerable<Delivery>> getWaitToSendDelivery(string transdate, string carcode)
         {
             var tempDate = DateTime.Parse(transdate);
-            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "รอส่ง" && d.transDate == tempDate && d.truckCode == carcode).ToListAsync();
+            var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "unassign" && d.transDate == tempDate).ToListAsync();
             return delivery;
         }
 
@@ -97,12 +97,12 @@ namespace RouteAPI.Data
             return car;
         }
 
-        public async Task<IEnumerable<Delivery>> getCarDelivery(string truckCode, string status, string trip)
+        public async Task<IEnumerable<Delivery>> getCarDelivery(string truckCode, string status, string transDate)
         {
-            //var tempDate = DateTime.Parse(transdate);
+            var tempDate = DateTime.Parse(transDate);
             var delivery = await _context.Delivery
                 .Include(c => c.Customer)
-                .Where(d => d.status == status && d.truckCode == truckCode && d.trip == trip)
+                .Where(d => d.status == status && d.truckCode == truckCode && d.transDate == tempDate)
                 .ToListAsync();
             return delivery;
         }
@@ -200,7 +200,7 @@ namespace RouteAPI.Data
         public async Task<Delivery> getCustomerDelivery(string cusCode, string transdate)
         {
             var tempDate = DateTime.Parse(transdate);
-            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.cusCode == cusCode && d.transDate == tempDate && d.status == "รอส่ง");
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.cusCode == cusCode && d.transDate == tempDate && d.status == "unassign");
             return delivery;
         }
 
@@ -216,9 +216,15 @@ namespace RouteAPI.Data
             return delivery;
         }
 
-        public async Task<Delivery> changeDeliveryDate(Delivery delivery)
+        public async Task<Delivery> changeDeliveryDate(string deliveryId, string transdate)
         {
-            await _context.Delivery.AddAsync(delivery);
+            var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
+            if (delivery == null)
+            {
+                return null;
+            }
+            var tempDate = DateTime.Parse(transdate);
+            delivery.transDate = tempDate;
             await _context.SaveChangesAsync();
             return delivery;
         }
@@ -242,7 +248,7 @@ namespace RouteAPI.Data
             {
                 return null;
             }
-            delivery.status = "จัดส่งแล้ว";
+            delivery.status = "เหตุขาดส่ง";
             delivery.reason = reason;
             await _context.SaveChangesAsync();
             return delivery;
@@ -279,16 +285,16 @@ namespace RouteAPI.Data
         {
             var tempDate = DateTime.Parse(transDate);
             //var delivery = await _context.Delivery.FromSql("usp_GetOtherDayOrders @p0", tempDate)
-                //.ToListAsync();
+            //.ToListAsync();
             var delivery = await _context.Delivery.Include(c => c.Customer).Where(d => d.status == "pending")
                 .Union(_context.Delivery.Include(c => c.Customer)
                     .Where(d => d.status == "unassign" && d.transDate == tempDate))
                     .OrderBy(d => d.transDate)
-                    .ThenBy(d => d.Customer.distanceToWh)                    
+                    .ThenBy(d => d.Customer.distanceToWh)
                     .ToListAsync();
             return delivery;
         }
-        
+
         public async Task<Delivery> updateDelivery(string deliveryId, string truckCode, string trip)
         {
 
@@ -301,6 +307,23 @@ namespace RouteAPI.Data
             delivery.truckCode = truckCode;
             delivery.trip = trip;
             await _context.SaveChangesAsync();
+            return delivery;
+        }
+
+        public async Task<IEnumerable<Warehouse>> getWarehouse()
+        {
+            var warehouse = await _context.Warehouse.ToListAsync();
+            return warehouse;
+        }
+
+        public async Task<IEnumerable<Delivery>> getCarDeliveryPerTrip(string truckCode, string status, string trip)
+        {
+            //var tempDate = DateTime.Parse(transDate);
+            var delivery = await _context.Delivery
+                .Include(c => c.Customer)
+                .Where(d => d.status == status && d.truckCode == truckCode && 
+                    d.trip == trip)
+                .ToListAsync();
             return delivery;
         }
     }

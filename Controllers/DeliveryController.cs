@@ -40,10 +40,15 @@ namespace RouteAPI.Controllers
         [HttpPost("waiting")]
         public async Task<IActionResult> getWaitToSendDelivery([FromBody] Dto dto)
         {
-            var delivery = await _repo.getWaitToSendDelivery(dto.transDate, dto.carCode);
+            var delivery = await _repo.getWaitToSendDelivery(dto.transDate, dto.truckCode);
             return Ok(delivery);
         }
-
+        [HttpPost("getcardelivery")]
+        public async Task<IActionResult> getTruckDelivery([FromBody] Dto dto)
+        {
+            var delivery = await _repo.getCarDelivery(dto.truckCode, "พร้อมส่ง", dto.transDate);
+            return Ok(delivery);
+        }
         [HttpPost("savejob")]
         public async Task<IActionResult> saveJob([FromBody] Dto dto)
         {
@@ -52,7 +57,7 @@ namespace RouteAPI.Controllers
             foreach (var deliveryId in dto.deliveryId)
             {
                 var delivery = await _repo.getDelivery(deliveryId);
-                delivery.truckCode = dto.carCode;
+                delivery.truckCode = dto.truckCode;
                 delivery.status = "รอส่ง";
                 if (await _repo.saveAll())
                 {
@@ -162,7 +167,10 @@ namespace RouteAPI.Controllers
             {
                 if (quantity < 40)
                 {
-                    return Ok(new { success = true, manual = true, delivery = delivery });
+                    Dto a = new Dto();
+                    a.deliveries = delivery;
+                    a.trucks = trucks;
+                    return Ok(new { success = true, manual = true, dto = a });
                 }
                 else
                 {
@@ -183,6 +191,38 @@ namespace RouteAPI.Controllers
                 }
             }
             return Ok(new { success = false });
+        }
+        [HttpPost("manual")]
+        public async Task<IActionResult> manual([FromBody] ManualDto ManualDto)
+        {
+            int totalQuantity = 0;
+            if (ManualDto.unUsedTruck != null)
+            {
+                //update idletime
+                foreach (var unUsedTruck in ManualDto.unUsedTruck)
+                {
+                    await updateIdleTime(unUsedTruck.truckCode);
+                }
+            }
+            var deliveries = ManualDto.deliveries;
+            totalQuantity = calculateTotalQuantity(deliveries);
+            var trucks = ManualDto.selectedTruck;
+            var randomTrucks = trucks.Randomize();
+            var availableTrucks = randomTrucks.Count();
+            double truckQuantity = totalQuantity / (availableTrucks * 2);
+            var quantity = Math.Round(truckQuantity);
+            if (await firstTrip(randomTrucks, ManualDto.transDate, quantity))
+            {
+                if (await secondTrip(randomTrucks, ManualDto.transDate, quantity))
+                {
+                    // return Ok(new { success = true });
+                    if (await merge(firstTripList, secondTripList, randomTrucks))
+                    {
+                        return Ok(new { success = true });
+                    }
+                }
+            }
+            return Ok(new { sucess = false });
         }
         // [HttpGet("test")]
         // public async Task<IActionResult> test()
@@ -433,6 +473,45 @@ namespace RouteAPI.Controllers
             // // }
             // }
             return result;
+        }
+        [HttpPost("getpolyline")]
+        public async Task<IActionResult> getPolyLine([FromBody]ViewMapDto viewMapDto)
+        {
+            var key = _config.GetSection("AppSettings:ApiKey").Value;
+            string tmpWarehouseGPS = "13.698936,100.487154";
+            string[] warehouseGPS = tmpWarehouseGPS.Split(",");
+            List<Location> dest = new List<Location>();
+            var deliveries = await _repo.getCarDeliveryPerTrip(viewMapDto.truckCode, "พร้อมส่ง",
+                viewMapDto.trip);
+
+            foreach (var item in deliveries)
+            {
+                string[] gps = item.Customer.gps.Split(",");
+                Location dropPoint = new Location(Double.Parse(gps[0]), Double.Parse(gps[1]));
+                dest.Add(dropPoint);
+            }
+            Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+            //dest.Add(origin);
+            Location[] destination = dest.ToArray();
+            dest.Clear();
+            var request2 = new DirectionsRequest
+            {
+                Key = key,
+                Origin = origin,
+                Destination = origin,
+                Waypoints = destination,
+                TravelMode = TravelMode.Driving,
+                Avoid = AvoidWay.Tolls,
+                //OptimizeWaypoints = true,
+                Units = Units.Metric
+            };
+            var response = GoogleApi.GoogleMaps.Directions.Query(request2);
+            if (response.Status == Status.Ok)
+            {
+                var overviewPath = response.Routes.First().OverviewPath;
+                return Ok(overviewPath);
+            }
+            return BadRequest();
         }
         private async Task<bool> firstTrip(IEnumerable<Truck> trucks, string transdate, double quantity)
         {
@@ -1222,6 +1301,23 @@ namespace RouteAPI.Controllers
             }
             return false;
         }
+        private async Task<bool> updateIdleTime(string truckCode)
+        {
+            var truck = await _repo.searchCar(truckCode);
+            if (truck.idleTime > 0)
+            {
+                truck.idleTime = 0;
+            }
+            else
+            {
+                truck.idleTime = truck.idleTime + 1;
+            }
+            if (await _repo.saveAll())
+            {
+                return true;
+            }
+            return false;
+        }
         private async void resetUnassignDelivery(string deliveryId)
         {
             var delivery = await _repo.getDelivery(deliveryId);
@@ -1296,19 +1392,20 @@ namespace RouteAPI.Controllers
         [HttpPost("changedeliverydate")]
         public async Task<IActionResult> changeDeliveryDate([FromBody] DeliveryForChangeDateDto deliveryForChangeDateDto)
         {
-            var delivery = await _repo.cancelDelivery(deliveryForChangeDateDto.deliveryId);
-            if (delivery == null)
-            {
-                return NotFound(new { success = false });
-            }
-            var deliveryToCreate = new Delivery
-            {
-                deliveryId = deliveryForChangeDateDto.deliveryId,
-                transDate = DateTime.Parse(deliveryForChangeDateDto.transDate),
-                cusCode = deliveryForChangeDateDto.cusCode,
-                status = "unassign"
-            };
-            var createDelivery = await _repo.changeDeliveryDate(deliveryToCreate);
+            //var delivery = await _repo.cancelDelivery(deliveryForChangeDateDto.deliveryId);
+            // if (delivery == null)
+            // {
+            //     return NotFound(new { success = false });
+            // }
+            // var deliveryToCreate = new Delivery
+            // {
+            //     deliveryId = deliveryForChangeDateDto.deliveryId,
+            //     transDate = DateTime.Parse(deliveryForChangeDateDto.transDate),
+            //     cusCode = deliveryForChangeDateDto.cusCode,
+            //     status = "unassign"
+            // };
+            var createDelivery = await _repo.changeDeliveryDate(deliveryForChangeDateDto.deliveryId,
+                deliveryForChangeDateDto.transDate);
             return Ok(new { success = true });
         }
 
