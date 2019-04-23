@@ -22,5 +22,8 @@ namespace RouteAPI.Models
         //public string deliveryOrder {get; set;}
         public string trip { get; set; }
         public string reason { get; set; }
+        public Truck Truck { get; set; }
+        public string giveback { get; set; }
+        public string coupon { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace RouteAPI.Data
         Task<Delivery> cancelDelivery(string deliveryId);
         Task<Delivery> changeDeliveryDate(string deliveryId, string transdate);
 
-        Task<Delivery> updateDeliveryStatus(string deliveryId);
+        Task<Delivery> updateDeliveryStatus(string deliveryId, string giveback, string coupon);
         Task<Delivery> updateDeliveryStatus(string deliveryId, string reason);
         Task<Warehouse> addNewWarehouse(Warehouse warehouse);
         Task<bool> hasPendingOrder();
@@ -45,5 +45,11 @@ namespace RouteAPI.Data
         Task<Delivery> updateDelivery(string deliveryId, string truckCode, string trip);
         Task<IEnumerable<Warehouse>> getWarehouse();
         Task<IEnumerable<Delivery>> getCarDeliveryPerTrip(string truckCode, string status, string trip);
+        Task<IEnumerable<Customer>> getNewCustomer();
+        Task<Customer> updateZone(string cusCode, string zoneId, string gps, string cusCond, string cusType, string day, double distanceToWh);
+        Task<bool> checkUsedDate(string transdate);
+
+        Task<UsedDate> insertUsedDate(UsedDate usedDate);
+      
     }
 }

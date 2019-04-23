@@ -13,5 +13,6 @@ namespace RouteAPI.Dtos
         public string district { get; set; }
         public string city { get; set; }
         public string postalCode { get; set; }
+        public string depBottle  { get; set; }
     }
 }

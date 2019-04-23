@@ -16,5 +16,6 @@ namespace RouteAPI.Data
         public DbSet<Delivery> Delivery { get; set; }
         public DbSet<Warehouse> Warehouse { get; set; }
         public DbSet<Zone> Zone { get; set; }
+        public DbSet<UsedDate> UsedDate { get; set; }
     }
 }

@@ -37,10 +37,30 @@ namespace RouteAPI.Controllers
                 subDistrict = customerForNewDto.subDistrict,
                 district = customerForNewDto.district,
                 city = customerForNewDto.city,
-                postalCode = customerForNewDto.postalCode
+                postalCode = customerForNewDto.postalCode,
+                depBottle = int.Parse(customerForNewDto.depBottle),
+                status = "new"
             };
             var createCustomer = await _repo.addNewCustomer(customerForCreate);
             return StatusCode(201, new { success = true });
+        }
+        [HttpGet("getnewcustomer")]
+        public async Task<IActionResult> getNewCustomer()
+        {
+            var customer = await _repo.getNewCustomer();
+            return Ok(customer);
+        }
+        [HttpPost("updatezone")]
+        public async Task<IActionResult> updateZone([FromBody] CustomerForUpdateDto customerForUpdateDto)
+        {
+            var customer = await _repo.updateZone(customerForUpdateDto.cusCode, customerForUpdateDto.zoneId, 
+                customerForUpdateDto.gps, customerForUpdateDto.cusCond, customerForUpdateDto.cusType, customerForUpdateDto.day, 
+                customerForUpdateDto.distanceToWh);
+            if (customer == null)
+            {
+                return NotFound(new { success = false });
+            }
+            return Ok(new { success = true });
         }
     }
 }

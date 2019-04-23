@@ -15,6 +15,9 @@ using GoogleApi.Entities.Maps.DistanceMatrix.Request;
 using GoogleApi.Entities.Maps.Directions.Request;
 using GoogleApi.Exceptions;
 using Microsoft.Extensions.Configuration;
+using DinkToPdf.Contracts;
+using DinkToPdf;
+using System.IO;
 
 namespace RouteAPI.Controllers
 {
@@ -23,13 +26,14 @@ namespace RouteAPI.Controllers
     {
         private readonly IRouteRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IConverter _converter;
         private List<OrderList> firstTripList = new List<OrderList>();
         private List<OrderList> secondTripList = new List<OrderList>();
-        public DeliveryController(IRouteRepository repo, IConfiguration config)
+        public DeliveryController(IRouteRepository repo, IConfiguration config, IConverter converter)
         {
             _repo = repo;
             _config = config;
-
+            _converter = converter;
         }
         [HttpPost("unassign")]
         public async Task<IActionResult> getUnassignDelivery([FromBody] Dto dto)
@@ -155,7 +159,18 @@ namespace RouteAPI.Controllers
                     {
                         if (await merge(firstTripList, secondTripList, randomTrucks))
                         {
+                            var date = DateTime.Parse(dto.transDate);
+                            //update used date
+                            var usedDate = new UsedDate
+                            {
+                                transDate = date
+                            };
+                            await _repo.insertUsedDate(usedDate);
                             return Ok(new { success = true });
+                            // if (await createPDF(randomTrucks))
+                            // {
+                            //     return Ok(new { success = true });
+                            // }
                         }
                     }
                 }
@@ -181,7 +196,19 @@ namespace RouteAPI.Controllers
                             // return Ok(new { success = true });
                             if (await merge(firstTripList, secondTripList, randomTrucks))
                             {
+                                //update used date
+                                var date = DateTime.Parse(dto.transDate);
+                                //update used date
+                                var usedDate = new UsedDate
+                                {
+                                    transDate = date
+                                };
+                                await _repo.insertUsedDate(usedDate);
                                 return Ok(new { success = true });
+                                // if (await createPDF(randomTrucks))
+                                // {
+                                //     return Ok(new { success = true });
+                                // }
                             }
                         }
                     }
@@ -192,6 +219,7 @@ namespace RouteAPI.Controllers
             }
             return Ok(new { success = false });
         }
+
         [HttpPost("manual")]
         public async Task<IActionResult> manual([FromBody] ManualDto ManualDto)
         {
@@ -218,71 +246,152 @@ namespace RouteAPI.Controllers
                     // return Ok(new { success = true });
                     if (await merge(firstTripList, secondTripList, randomTrucks))
                     {
+                        //update used date
+                        var date = DateTime.Parse(ManualDto.transDate);
+                        //update used date
+                        var usedDate = new UsedDate
+                        {
+                            transDate = date
+                        };
+                        await _repo.insertUsedDate(usedDate);
                         return Ok(new { success = true });
+                        // if (await createPDF(randomTrucks))
+                        // {
+                        //     return Ok(new { success = true });
+                        // }
                     }
                 }
             }
             return Ok(new { sucess = false });
         }
+        [HttpPost("getreport")]
+        public async Task<IActionResult> getReportData([FromBody] Dto dto)
+        {
+            var truck = await _repo.searchCar(dto.truckCode);
+            var firstTripData = await _repo.getCarDeliveryPerTrip(dto.truckCode, "พร้อมส่ง", "1");
+            var secondTripData = await _repo.getCarDeliveryPerTrip(dto.truckCode, "พร้อมส่ง", "2");
+            return Ok(new { truck = truck, firstTrip = firstTripData, secondTrip = secondTripData });
+        }
+        public async Task<bool> createPDF(IEnumerable<Truck> trucks)
+        {
+            bool status = false;
+            foreach (var truck in trucks)
+            {
+                var data = await _repo.getCarDeliveryPerTrip(truck.truckCode, "พร้อมส่ง", "1");
+                List<Delivery> reportData = data.ToList();
+                var globalSettings = new GlobalSettings
+                {
+                    ColorMode = ColorMode.Color,
+                    Orientation = Orientation.Portrait,
+                    PaperSize = PaperKind.A4,
+                    Margins = new MarginSettings { Top = 10 },
+                    DocumentTitle = "PDF Report",
+                    Out = @"D:\PDFCreator\Test.pdf"
+                };
+                var objectSettings = new ObjectSettings
+                {
+                    PagesCount = true,
+                    HtmlContent = TemplateGenerator.GetHTMLString(reportData),//TemplateGenerator.GetHTMLString(),
+                    WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
+                    HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
+                    FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+                };
+                var pdf = new HtmlToPdfDocument()
+                {
+                    GlobalSettings = globalSettings,
+                    Objects = { objectSettings }
+                };
+                _converter.Convert(pdf);
+            }
+            status = true;
+            return status;
+        }
         // [HttpGet("test")]
         // public async Task<IActionResult> test()
         // {
-        //     List<Order> OrderList = new List<Order>();
-        //     double totalDistance = 0;
-        //     int totalSeconds = 0;
-        //     OrderList.Add(new Order("f9452f82-e0a1-4bf5-b330-2ecc2383021f", "13.7300004,100.5451364"));
-        //     OrderList.Add(new Order("ef5bbe07-8bb2-4f22-b96d-15b0e24eba06",
-        //         "13.735907931722435,100.54426608354522"));
-        //     OrderList.Add(new Order("6ed7e298-8840-4ec5-994e-cc8a6b06b67b", "13.7285412,100.5476752"));
-        //     OrderList.Add(new Order("c4b05cce-7d31-4aae-9a7d-fa46d5efa469", "13.7244858,100.5443305"));
-        //     OrderList.Add(new Order("0dc91725-2426-46d1-9399-4a64de16fc99", "13.7359672,100.5508057"));
-        //     OrderList.Add(new Order("f46e1152-8b14-4a38-aa68-c85fa50b0e0b",
-        //         "13.735224942208344,100.54246507083465"));
-        //     OrderList.Add(new Order("b75b7a37-47da-4ff0-8bb2-8bee53a79a35",
-        //         "13.737555763388642,100.54758994127575"));
-        //     //var totalDistance = getTotalDistanceFromGoogleApi(OrderList);
-        //     var key = _config.GetSection("AppSettings:ApiKey").Value;
-        //     string tmpWarehouseGPS = "13.698936,100.487154";
-        //     string[] warehouseGPS = tmpWarehouseGPS.Split(",");
-        //     List<Location> dest = new List<Location>();
-        //     foreach (var order in OrderList)
+        //     var data = await _repo.getCarDeliveryPerTrip("car11", "พร้อมส่ง", "1");
+        //     List<Delivery> reportData = data.ToList();
+        //     var globalSettings = new GlobalSettings
         //     {
-        //         string[] gps = order.gps.Split(",");
-        //         Location dropPoint = new Location(Double.Parse(gps[0]), Double.Parse(gps[1]));
-        //         dest.Add(dropPoint);
-        //     }
-        //     Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
-        //     //dest.Add(origin);
-        //     Location[] destination = dest.ToArray();
-        //     dest.Clear();
-        //     var request2 = new DirectionsRequest
-        //     {
-        //         Key = key,
-        //         Origin = origin,
-        //         Destination = origin,
-        //         Waypoints = destination,
-        //         TravelMode = TravelMode.Driving,
-        //         Avoid = AvoidWay.Tolls,
-        //         Units = Units.Metric
+        //         ColorMode = ColorMode.Color,
+        //         Orientation = Orientation.Portrait,
+        //         PaperSize = PaperKind.A4,
+        //         Margins = new MarginSettings { Top = 10 },
+        //         DocumentTitle = "PDF Report",
+        //         Out = @"D:\PDFCreator\Test.pdf"
         //     };
-        //     var response = GoogleApi.GoogleMaps.Directions.Query(request2);
-        //     if (response.Status == Status.Ok)
+        //     var objectSettings = new ObjectSettings
         //     {
-        //         var legs = response.Routes.First().Legs;
-        //         foreach (var leg in legs)
-        //         {
-        //             totalDistance = totalDistance + leg.Distance.Value;
-        //             totalSeconds = totalSeconds + leg.Duration.Value;
-        //         }
-        //         double distance = totalDistance / 1000.0;
-        //         int days = totalSeconds / 86400;
-        //         int hours = (totalSeconds - days * 86400) / 3600;
-        //         int minutes = (totalSeconds - days * 86400 - hours * 3600) / 60;
-        //         int seconds = totalSeconds - days * 86400 - hours * 3600 - minutes * 60;
-        //         Result result = new Result(distance, days, hours, minutes, seconds);
-        //         return Ok(result);
-        //     }
-        //     return BadRequest();
+        //         PagesCount = true,
+        //         HtmlContent = TemplateGenerator.GetHTMLString(reportData),//TemplateGenerator.GetHTMLString(),
+        //         WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
+        //         //WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = @"D:\RouteManage\RouteAPI\assets\style.css" },
+        //         HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
+        //         FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+        //     };
+        //     var pdf = new HtmlToPdfDocument()
+        //     {
+        //         GlobalSettings = globalSettings,
+        //         Objects = { objectSettings }
+        //     };
+        //     _converter.Convert(pdf);
+        //     return Ok();
+        //     // List<Order> OrderList = new List<Order>();
+        //     // double totalDistance = 0;
+        //     // int totalSeconds = 0;
+        //     // OrderList.Add(new Order("f9452f82-e0a1-4bf5-b330-2ecc2383021f", "13.7300004,100.5451364"));
+        //     // OrderList.Add(new Order("ef5bbe07-8bb2-4f22-b96d-15b0e24eba06",
+        //     //     "13.735907931722435,100.54426608354522"));
+        //     // OrderList.Add(new Order("6ed7e298-8840-4ec5-994e-cc8a6b06b67b", "13.7285412,100.5476752"));
+        //     // OrderList.Add(new Order("c4b05cce-7d31-4aae-9a7d-fa46d5efa469", "13.7244858,100.5443305"));
+        //     // OrderList.Add(new Order("0dc91725-2426-46d1-9399-4a64de16fc99", "13.7359672,100.5508057"));
+        //     // OrderList.Add(new Order("f46e1152-8b14-4a38-aa68-c85fa50b0e0b",
+        //     //     "13.735224942208344,100.54246507083465"));
+        //     // OrderList.Add(new Order("b75b7a37-47da-4ff0-8bb2-8bee53a79a35",
+        //     //     "13.737555763388642,100.54758994127575"));
+        //     // //var totalDistance = getTotalDistanceFromGoogleApi(OrderList);
+        //     // var key = _config.GetSection("AppSettings:ApiKey").Value;
+        //     // string tmpWarehouseGPS = "13.698936,100.487154";
+        //     // string[] warehouseGPS = tmpWarehouseGPS.Split(",");
+        //     // List<Location> dest = new List<Location>();
+        //     // foreach (var order in OrderList)
+        //     // {
+        //     //     string[] gps = order.gps.Split(",");
+        //     //     Location dropPoint = new Location(Double.Parse(gps[0]), Double.Parse(gps[1]));
+        //     //     dest.Add(dropPoint);
+        //     // }
+        //     // Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+        //     // //dest.Add(origin);
+        //     // Location[] destination = dest.ToArray();
+        //     // dest.Clear();
+        //     // var request2 = new DirectionsRequest
+        //     // {
+        //     //     Key = key,
+        //     //     Origin = origin,
+        //     //     Destination = origin,
+        //     //     Waypoints = destination,
+        //     //     TravelMode = TravelMode.Driving,
+        //     //     Avoid = AvoidWay.Tolls,
+        //     //     Units = Units.Metric
+        //     // };
+        //     // var response = GoogleApi.GoogleMaps.Directions.Query(request2);
+        //     // if (response.Status == Status.Ok)
+        //     // {
+        //     //     var legs = response.Routes.First().Legs;
+        //     //     foreach (var leg in legs)
+        //     //     {
+        //     //         totalDistance = totalDistance + leg.Distance.Value;
+        //     //         totalSeconds = totalSeconds + leg.Duration.Value;
+        //     //     }
+        //     //     double distance = totalDistance / 1000.0;
+        //     //     int days = totalSeconds / 86400;
+        //     //     int hours = (totalSeconds - days * 86400) / 3600;
+        //     //     int minutes = (totalSeconds - days * 86400 - hours * 3600) / 60;
+        //     //     int seconds = totalSeconds - days * 86400 - hours * 3600 - minutes * 60;
+        //     //     Result result = new Result(distance, days, hours, minutes, seconds);
+        //     //     return Ok(result);
+        //     // }
+        //     // return BadRequest();
         // }
         private async Task<bool> updateFirstTrip(List<Order> firstTripOrder, string truckCode)
         {
@@ -502,7 +611,7 @@ namespace RouteAPI.Controllers
                 Waypoints = destination,
                 TravelMode = TravelMode.Driving,
                 Avoid = AvoidWay.Tolls,
-                //OptimizeWaypoints = true,
+                OptimizeWaypoints = true,
                 Units = Units.Metric
             };
             var response = GoogleApi.GoogleMaps.Directions.Query(request2);
@@ -1412,7 +1521,8 @@ namespace RouteAPI.Controllers
         [HttpPost("updatesuccess")]
         public async Task<IActionResult> updateDeliverySuccessStatus([FromBody]DeliveryForUpdateStatusDto deliveryForUpdateStatusDto)
         {
-            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId);
+            var delivery = await _repo.updateDeliveryStatus(deliveryForUpdateStatusDto.deliveryId,
+                deliveryForUpdateStatusDto.giveback, deliveryForUpdateStatusDto.coupon);
             if (delivery == null)
             {
                 return NotFound(new { success = false });

@@ -229,7 +229,7 @@ namespace RouteAPI.Data
             return delivery;
         }
 
-        public async Task<Delivery> updateDeliveryStatus(string deliveryId)
+        public async Task<Delivery> updateDeliveryStatus(string deliveryId, string giveback, string coupon)
         {
             var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.deliveryId == deliveryId);
             if (delivery == null)
@@ -237,6 +237,8 @@ namespace RouteAPI.Data
                 return null;
             }
             delivery.status = "จัดส่งแล้ว";
+            delivery.giveback = giveback;
+            delivery.coupon = coupon;
             await _context.SaveChangesAsync();
             return delivery;
         }
@@ -321,10 +323,55 @@ namespace RouteAPI.Data
             //var tempDate = DateTime.Parse(transDate);
             var delivery = await _context.Delivery
                 .Include(c => c.Customer)
-                .Where(d => d.status == status && d.truckCode == truckCode && 
+                .Where(d => d.status == status && d.truckCode == truckCode &&
                     d.trip == trip)
                 .ToListAsync();
             return delivery;
+        }
+
+        public async Task<IEnumerable<Customer>> getNewCustomer()
+        {
+            var customer = await _context.Customer.Where(s => s.status == "new").ToListAsync();
+            return customer;
+        }
+
+        public async Task<Customer> updateZone(string cusCode, string zoneId, string gps, string cusCond, string cusType, string day, double distanceToWh)
+        {
+            var customer = await _context.Customer.FirstOrDefaultAsync(c => c.cusCode == cusCode);
+            if (customer == null)
+            {
+                return null;
+            }
+            customer.status = "active";
+            customer.zoneId = zoneId;
+            customer.gps = gps;
+            customer.cusCond = cusCond;
+            customer.cusType = cusType;
+            customer.day = day;
+            customer.distanceToWh = distanceToWh;
+            await _context.SaveChangesAsync();
+            return customer;
+        }
+
+        public async Task<bool> checkUsedDate(string transdate)
+        {
+            var tempDate = DateTime.Parse(transdate);
+            var date = await _context.UsedDate.FirstOrDefaultAsync(s => s.transDate == tempDate);
+            if (date != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<UsedDate> insertUsedDate(UsedDate usedDate)
+        {
+            await _context.UsedDate.AddAsync(usedDate);
+            await _context.SaveChangesAsync();
+            return usedDate;
         }
     }
 }
