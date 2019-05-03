@@ -48,6 +48,7 @@ namespace RouteAPI.Models
         [Column(TypeName = "NVARCHAR(50)")]
         public string zoneId { get; set; }
         public double distanceToWh { get; set; }
+        public int dayInWeek { get; set; }
         //public virtual Zone zone { get; set; }
         //public ICollection<Delivery> deliveries { get; set; }
     }

@@ -130,6 +130,19 @@ namespace RouteAPI.Controllers
             }
             return Ok(new { success = "true" });
         }
+        [HttpPost("neworder")]
+        public async Task<IActionResult> newOrder([FromBody] DeliveryForNewDto deliveryForNewDto)
+        {
+            var deliveryForCreate = new Delivery
+            {
+                cusCode = deliveryForNewDto.cusCode,
+                quantity = deliveryForNewDto.quantity,
+                transDate = deliveryForNewDto.transDate,
+                status = "unassign"
+            };
+            var createCustomer = await _repo.addNewDelivery(deliveryForCreate);
+            return StatusCode(201, new { success = true });
+        }
         [HttpPost("auto")]
         public async Task<IActionResult> auto([FromBody] Dto dto)
         {
@@ -185,6 +198,9 @@ namespace RouteAPI.Controllers
                     Dto a = new Dto();
                     a.deliveries = delivery;
                     a.trucks = trucks;
+                    double actualTruck = totalQuantity / 80;
+                    var noOFTruck = Math.Round(actualTruck);
+                    a.noOfTruck = noOFTruck;
                     return Ok(new { success = true, manual = true, dto = a });
                 }
                 else
@@ -270,42 +286,74 @@ namespace RouteAPI.Controllers
             var truck = await _repo.searchCar(dto.truckCode);
             var firstTripData = await _repo.getCarDeliveryPerTrip(dto.truckCode, "พร้อมส่ง", "1");
             var secondTripData = await _repo.getCarDeliveryPerTrip(dto.truckCode, "พร้อมส่ง", "2");
-            return Ok(new { truck = truck, firstTrip = firstTripData, secondTrip = secondTripData });
+            var totalFirstQuantity = calculateTotalQuantity(firstTripData);
+            var totalSecondQuantity = calculateTotalQuantity(secondTripData);
+            var distanceFirst = calculateTotalDistance(firstTripData);
+            var distanceSecond = calculateTotalDistance(secondTripData);
+            return Ok(new { truck = truck, firstTrip = firstTripData, secondTrip = secondTripData, 
+                totalFirstQuantity = totalFirstQuantity, totalSecondQuantity = totalSecondQuantity, 
+                distanceFirst = distanceFirst, distanceSecond = distanceSecond});
         }
-        public async Task<bool> createPDF(IEnumerable<Truck> trucks)
+        private double calculateTotalDistance(IEnumerable<Delivery> deliveries)
         {
-            bool status = false;
-            foreach (var truck in trucks)
+            double totalDistance = 0;
+            string tmpWarehouseGPS = "13.698936,100.487154";
+            string[] warehouseGPS = tmpWarehouseGPS.Split(",");
+            Location origin = new Location(Double.Parse(warehouseGPS[0]), Double.Parse(warehouseGPS[1]));
+            List<Location> route = new List<Location>();
+            route.Add(origin);
+            foreach (var order in deliveries)
             {
-                var data = await _repo.getCarDeliveryPerTrip(truck.truckCode, "พร้อมส่ง", "1");
-                List<Delivery> reportData = data.ToList();
-                var globalSettings = new GlobalSettings
-                {
-                    ColorMode = ColorMode.Color,
-                    Orientation = Orientation.Portrait,
-                    PaperSize = PaperKind.A4,
-                    Margins = new MarginSettings { Top = 10 },
-                    DocumentTitle = "PDF Report",
-                    Out = @"D:\PDFCreator\Test.pdf"
-                };
-                var objectSettings = new ObjectSettings
-                {
-                    PagesCount = true,
-                    HtmlContent = TemplateGenerator.GetHTMLString(reportData),//TemplateGenerator.GetHTMLString(),
-                    WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
-                    HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
-                    FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
-                };
-                var pdf = new HtmlToPdfDocument()
-                {
-                    GlobalSettings = globalSettings,
-                    Objects = { objectSettings }
-                };
-                _converter.Convert(pdf);
+                string[] gps = order.Customer.gps.Split(",");
+                Location dropPoint = new Location(Double.Parse(gps[0]), Double.Parse(gps[1]));
+                route.Add(dropPoint);
             }
-            status = true;
-            return status;
-        }
+            route.Add(origin);
+            for (int i = 0; i + 1 < route.Count; i++)
+            {
+                double lat1 = route[i].Latitude;
+                double long1 = route[i].Longitude;
+                double lat2 = route[i + 1].Latitude;
+                double long2 = route[i + 1].Longitude;
+                totalDistance = totalDistance +
+                    DistanceMetrix.getDistanceMetrixInKM(lat1, long1, lat2, long2);
+            }
+            return totalDistance;
+        } 
+        // public async Task<bool> createPDF(IEnumerable<Truck> trucks)
+        // {
+        //     bool status = false;
+        //     foreach (var truck in trucks)
+        //     {
+        //         var data = await _repo.getCarDeliveryPerTrip(truck.truckCode, "พร้อมส่ง", "1");
+        //         List<Delivery> reportData = data.ToList();
+        //         var globalSettings = new GlobalSettings
+        //         {
+        //             ColorMode = ColorMode.Color,
+        //             Orientation = Orientation.Portrait,
+        //             PaperSize = PaperKind.A4,
+        //             Margins = new MarginSettings { Top = 10 },
+        //             DocumentTitle = "PDF Report",
+        //             Out = @"D:\PDFCreator\Test.pdf"
+        //         };
+        //         var objectSettings = new ObjectSettings
+        //         {
+        //             PagesCount = true,
+        //             HtmlContent = TemplateGenerator.GetHTMLString(reportData),//TemplateGenerator.GetHTMLString(),
+        //             WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },
+        //             HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
+        //             FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+        //         };
+        //         var pdf = new HtmlToPdfDocument()
+        //         {
+        //             GlobalSettings = globalSettings,
+        //             Objects = { objectSettings }
+        //         };
+        //         _converter.Convert(pdf);
+        //     }
+        //     status = true;
+        //     return status;
+        // }
         // [HttpGet("test")]
         // public async Task<IActionResult> test()
         // {
@@ -662,8 +710,9 @@ namespace RouteAPI.Controllers
                                         o.gps = order.gps;
                                         o.quantity = order.quantity;
                                         firstTripId.Add(o);
+                                        carQauntity = carQauntity + order.quantity;
                                         cu = 0;
-                                        carQauntity = 0;
+                                        //carQauntity = 0;
                                         break;
                                     }
                                     else
@@ -687,6 +736,7 @@ namespace RouteAPI.Controllers
                                     if (item.quantity == min)
                                     {
                                         firstTripId.Remove(item);
+                                        break;
                                     }
                                 }
                                 //จัดลง list เที่ยวแรก
@@ -753,7 +803,7 @@ namespace RouteAPI.Controllers
                                         o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
-                                        carQauntity = 0;
+                                        carQauntity = carQauntity + order.quantity;
                                         break;
                                     }
                                     else
@@ -766,6 +816,7 @@ namespace RouteAPI.Controllers
                             //คำนวณระยะทาง
                             //var totalDistance = getTotalDistance(firstTripId);
                             Result result = getTotalDistanceFromGoogleApi(firstTripId);
+
                             var totalDistance = result.totalDistance;
                             var hour = result.hours;
                             if (hour > 5)
@@ -854,7 +905,7 @@ namespace RouteAPI.Controllers
                                         o.quantity = order.quantity;
                                         firstTripId.Add(o);
                                         cu = 0;
-                                        carQauntity = 0;
+                                        carQauntity = carQauntity + order.quantity;
                                         break;
                                     }
                                     else
@@ -867,6 +918,7 @@ namespace RouteAPI.Controllers
                             //คำนวณระยะทาง
                             //var totalDistance = getTotalDistance(firstTripId);
                             Result result = getTotalDistanceFromGoogleApi(firstTripId);
+
                             var totalDistance = result.totalDistance;
                             var hour = result.hours;
                             if (hour > 5)
@@ -956,6 +1008,7 @@ namespace RouteAPI.Controllers
                             //คำนวณระยะทาง
                             //var totalDistance = getTotalDistance(firstTripId);
                             Result result = getTotalDistanceFromGoogleApi(firstTripId);
+
                             var totalDistance = result.totalDistance;
                             var hour = result.hours;
                             if (hour > 5)

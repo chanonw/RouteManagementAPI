@@ -20,5 +20,8 @@ namespace RouteAPI.Data
         public IEnumerable<Delivery> deliveries { get; set; }
         public IEnumerable<Truck> trucks { get; set; }
 
+        public double noOfTruck { get; set; }
+        public string dayName { get; set; }
+
     }
 }

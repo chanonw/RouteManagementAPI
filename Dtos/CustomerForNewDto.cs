@@ -14,5 +14,8 @@ namespace RouteAPI.Dtos
         public string city { get; set; }
         public string postalCode { get; set; }
         public string depBottle  { get; set; }
+        public string cusType { get; set; }
+        public string day { get; set; }
+        public int dayInWeek { get; set; }
     }
 }

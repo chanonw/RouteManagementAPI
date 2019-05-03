@@ -39,6 +39,10 @@ namespace RouteAPI.Controllers
                 city = customerForNewDto.city,
                 postalCode = customerForNewDto.postalCode,
                 depBottle = int.Parse(customerForNewDto.depBottle),
+                cusCond = "รอบปกติ",
+                cusType = customerForNewDto.cusType,
+                day = customerForNewDto.day,
+                dayInWeek = customerForNewDto.dayInWeek,
                 status = "new"
             };
             var createCustomer = await _repo.addNewCustomer(customerForCreate);
@@ -61,6 +65,12 @@ namespace RouteAPI.Controllers
                 return NotFound(new { success = false });
             }
             return Ok(new { success = true });
+        }
+        [HttpPost("getCustomerPerDay")]
+        public async Task<IActionResult> getCustomerPerDay([FromBody]Dto dto)
+        {
+            var customer = await _repo.getCustomerPerDay(dto.dayName);
+            return Ok(customer);
         }
     }
 }

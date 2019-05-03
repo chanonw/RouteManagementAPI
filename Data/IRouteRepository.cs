@@ -50,6 +50,7 @@ namespace RouteAPI.Data
         Task<bool> checkUsedDate(string transdate);
 
         Task<UsedDate> insertUsedDate(UsedDate usedDate);
-      
+        Task<Delivery> addNewDelivery(Delivery delivery);
+        Task<IEnumerable<Customer>> getCustomerPerDay(string dayName);
     }
 }

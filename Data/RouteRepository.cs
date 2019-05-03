@@ -250,8 +250,9 @@ namespace RouteAPI.Data
             {
                 return null;
             }
-            delivery.status = "เหตุขาดส่ง";
+            delivery.status = "pending";
             delivery.reason = reason;
+            delivery.trip = null;
             await _context.SaveChangesAsync();
             return delivery;
         }
@@ -372,6 +373,19 @@ namespace RouteAPI.Data
             await _context.UsedDate.AddAsync(usedDate);
             await _context.SaveChangesAsync();
             return usedDate;
+        }
+
+        public async Task<Delivery> addNewDelivery(Delivery delivery)
+        {
+            await _context.Delivery.AddAsync(delivery);
+            await _context.SaveChangesAsync();
+            return delivery;;
+        }
+
+        public async Task<IEnumerable<Customer>> getCustomerPerDay(string dayName)
+        {
+            var customer = await _context.Customer.Where(d => d.day == dayName).ToListAsync();
+            return customer;
         }
     }
 }
