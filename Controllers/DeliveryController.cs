@@ -665,8 +665,19 @@ namespace RouteAPI.Controllers
             var response = GoogleApi.GoogleMaps.Directions.Query(request2);
             if (response.Status == Status.Ok)
             {
+                var route = response.Routes.First();
+                var leg = response.Routes.First().Legs;
+                var waypointOrder = response.Routes.First().WaypointOrder;
+                var geoCodeWaypoint = response.WayPoints;
                 var overviewPath = response.Routes.First().OverviewPath;
-                return Ok(overviewPath);
+                var direction = new {
+                    route = route,
+                    leg = leg,
+                    waypointOrder = waypointOrder,
+                    geoCodeWaypoint = geoCodeWaypoint,
+                    overviewPath = overviewPath
+                };
+                return Ok(direction);
             }
             return BadRequest();
         }
