@@ -22,7 +22,7 @@ using System.IO;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class DeliveryController : Controller
+    public class DeliveryController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IRouteRepository _repo;
         private readonly IConfiguration _config;

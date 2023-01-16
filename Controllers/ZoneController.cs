@@ -7,7 +7,7 @@ using System.Linq;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class ZoneController : Controller
+    public class ZoneController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly DataContext _context;
         public ZoneController(DataContext context)

@@ -11,7 +11,7 @@ using RouteAPI.Models;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class TruckController : Controller
+    public class TruckController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly DataContext _context;
         private readonly IRouteRepository _repo;

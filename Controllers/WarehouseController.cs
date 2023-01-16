@@ -8,7 +8,7 @@ namespace RouteAPI.Controllers
 {
 
     [Route("api/[controller]")]
-    public class WarehouseController : Controller
+    public class WarehouseController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly DataContext _context;
         private readonly IRouteRepository _repo;

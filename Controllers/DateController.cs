@@ -6,7 +6,7 @@ using RouteAPI.Data;
 namespace RouteAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class DateController : Controller
+    public class DateController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IRouteRepository _repo;
         private readonly IConfiguration _config;
