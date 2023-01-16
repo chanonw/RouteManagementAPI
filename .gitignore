@@ -1,3 +1,12 @@
 .vscode
 bin
 obj
+.vs
+googleapi_result.json
+appsettings.json
+appsettings.Development.json
+*.sln
+*.suo
+launchSettings.json
+bfg.jar
+re.txt
