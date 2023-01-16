@@ -8,5 +8,3 @@ appsettings.Development.json
 *.sln
 *.suo
 launchSettings.json
-bfg.jar
-re.txt
